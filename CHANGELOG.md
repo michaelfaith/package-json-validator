@@ -1,3 +1,9 @@
+## [0.7.1](https://github.com/JoshuaKGoldberg/package-json-validator/compare/v0.7.0...v0.7.1) (2024-12-17)
+
+### Bug Fixes
+
+- add bin key back to package.json ([#101](https://github.com/JoshuaKGoldberg/package-json-validator/issues/101)) ([2c684a0](https://github.com/JoshuaKGoldberg/package-json-validator/commit/2c684a0addd2e9c24dbae8c771ecd817d41f7c04)), closes [#100](https://github.com/JoshuaKGoldberg/package-json-validator/issues/100)
+
 # [0.7.0](https://github.com/JoshuaKGoldberg/package-json-validator/compare/v0.6.8...v0.7.0) (2024-10-17)
 
 ### Features
