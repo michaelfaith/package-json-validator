@@ -317,6 +317,11 @@
 			v === "" ||
 			v === "latest" ||
 			(v.indexOf && v.indexOf("git") === 0) ||
+			// https://pnpm.io/next/workspaces#workspace-protocol-workspace
+			/^workspace:((\^|~)[0-9.x]*|(<=?|>=?)?[0-9.x]+|\*)?/.test(v) ||
+			// https://pnpm.io/next/catalogs
+			(v.indexOf && v.indexOf("catalog:") === 0) ||
+			(v.indexOf && v.indexOf("npm:") === 0) ||
 			false
 		);
 	};
