@@ -1,3 +1,9 @@
+## [0.7.2](https://github.com/JoshuaKGoldberg/package-json-validator/compare/v0.7.1...v0.7.2) (2024-12-30)
+
+### Bug Fixes
+
+- exclude demo from published package ([#104](https://github.com/JoshuaKGoldberg/package-json-validator/issues/104)) ([45508f6](https://github.com/JoshuaKGoldberg/package-json-validator/commit/45508f6bbccb6f79d67486277ae93434f8a08003)), closes [#97](https://github.com/JoshuaKGoldberg/package-json-validator/issues/97) [#97](https://github.com/JoshuaKGoldberg/package-json-validator/issues/97)
+
 ## [0.7.1](https://github.com/JoshuaKGoldberg/package-json-validator/compare/v0.7.0...v0.7.1) (2024-12-17)
 
 ### Bug Fixes
