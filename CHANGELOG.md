@@ -1,3 +1,9 @@
+## [0.7.3](https://github.com/JoshuaKGoldberg/package-json-validator/compare/v0.7.2...v0.7.3) (2024-12-31)
+
+### Bug Fixes
+
+- add support for catalog:, npm:, and workspace: protocol ([#103](https://github.com/JoshuaKGoldberg/package-json-validator/issues/103)) ([91c139a](https://github.com/JoshuaKGoldberg/package-json-validator/commit/91c139ad3b260e0638e8bab0ce85b62ff12061f5)), closes [#71](https://github.com/JoshuaKGoldberg/package-json-validator/issues/71) [#71](https://github.com/JoshuaKGoldberg/package-json-validator/issues/71)
+
 ## [0.7.2](https://github.com/JoshuaKGoldberg/package-json-validator/compare/v0.7.1...v0.7.2) (2024-12-30)
 
 ### Bug Fixes
