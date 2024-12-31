@@ -121,6 +121,16 @@ describe("NPM", () => {
 					"x-version": "1.2.x",
 					"tilde-top": "~1",
 					"caret-top": "^1",
+					"workspace-package-no-range": "workspace:",
+					"workspace-package-caret": "workspace:^",
+					"workspace-package-any": "workspace:*",
+					"workspace-package-tilde-version": "workspace:~1.2.3",
+					"workspace-gt-version": "workspace:>1.2.3",
+					"workspace-pre-release": "workspace:1.2.3-rc.1",
+					"catalog-package": "catalog:",
+					"catalog-named-package": "catalog:react19",
+					"svgo-v1": "npm:svgo@1.3.2",
+					"svgo-v2": "npm:svgo@2.0.3",
 				},
 				devDependencies: {
 					range: "1.2.3 - 2.3.4",
@@ -151,6 +161,10 @@ describe("NPM", () => {
 			const json = getPackageJson({
 				devDependencies: {
 					"package-name": "abc123",
+					"bad-catalog": "catalob:",
+					"bad-workspace": "workspace:abc123",
+					"bad-workspace-range": "workspace:^>1.2.3",
+					"bad-npm": "npm;svgo@^1.2.3",
 				},
 			});
 
@@ -158,6 +172,10 @@ describe("NPM", () => {
 
 			assert.deepStrictEqual(result.errors, [
 				"Invalid version range for dependency package-name: abc123",
+				"Invalid version range for dependency bad-catalog: catalob:",
+				"Invalid version range for dependency bad-workspace: workspace:abc123",
+				"Invalid version range for dependency bad-workspace-range: workspace:^>1.2.3",
+				"Invalid version range for dependency bad-npm: npm;svgo@^1.2.3",
 			]);
 		});
 
