@@ -1,3 +1,11 @@
+# Changelog
+
+# [0.8.0](https://github.com/JoshuaKGoldberg/package-json-validator/compare/v0.7.3...v0.8.0) (2025-01-15)
+
+### Features
+
+- migrate to TypeScript ([#110](https://github.com/JoshuaKGoldberg/package-json-validator/issues/110)) ([c313d93](https://github.com/JoshuaKGoldberg/package-json-validator/commit/c313d93c005abb572b70212af80105ff36e76fc7)), closes [#91](https://github.com/JoshuaKGoldberg/package-json-validator/issues/91) [#91](https://github.com/JoshuaKGoldberg/package-json-validator/issues/91)
+
 ## [0.7.3](https://github.com/JoshuaKGoldberg/package-json-validator/compare/v0.7.2...v0.7.3) (2024-12-31)
 
 ### Bug Fixes
