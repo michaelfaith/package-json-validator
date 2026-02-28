@@ -43,7 +43,7 @@ const npmWarningFields = {
 	license: "MIT",
 	repository: {
 		type: "git",
-		url: "git@github.com:JoshuaKGoldberg/package-json-validator.git",
+		url: "git@github.com:michaelfaith/package-json-validator.git",
 	},
 };
 
@@ -131,7 +131,7 @@ describe(validate, () => {
 						"svgo-v2": "npm:svgo@2.0.3",
 						"tilde-first": "~1.2",
 						"tilde-top": "~1",
-						url: "https://github.com/JoshuaKGoldberg/package-json-validator",
+						url: "https://github.com/michaelfaith/package-json-validator",
 						"workspace-gt-version": "workspace:>1.2.3",
 						"workspace-package-any": "workspace:*",
 						"workspace-package-caret": "workspace:^",
@@ -214,13 +214,13 @@ describe(validate, () => {
 			});
 
 			test("Dependencies with scope", () => {
-				// reference: https://github.com/JoshuaKGoldberg/package-json-validator/issues/49
+				// reference: https://github.com/michaelfaith/package-json-validator/issues/49
 				const json = getPackageJson({
 					dependencies: {
 						"@reactivex/rxjs": "^5.0.0-alpha.7",
 						empty: "",
 						star: "*",
-						url: "https://github.com/JoshuaKGoldberg/package-json-validator",
+						url: "https://github.com/michaelfaith/package-json-validator",
 					},
 				});
 				const result = validate(JSON.stringify(json), {
@@ -352,7 +352,7 @@ describe(validate, () => {
 						"svgo-v2": "npm:svgo@2.0.3",
 						"tilde-first": "~1.2",
 						"tilde-top": "~1",
-						url: "https://github.com/JoshuaKGoldberg/package-json-validator",
+						url: "https://github.com/michaelfaith/package-json-validator",
 						"workspace-gt-version": "workspace:>1.2.3",
 						"workspace-package-any": "workspace:*",
 						"workspace-package-caret": "workspace:^",
@@ -443,13 +443,13 @@ describe(validate, () => {
 			});
 
 			test("Dependencies with scope", () => {
-				// reference: https://github.com/JoshuaKGoldberg/package-json-validator/issues/49
+				// reference: https://github.com/michaelfaith/package-json-validator/issues/49
 				const json = getPackageJson({
 					dependencies: {
 						"@reactivex/rxjs": "^5.0.0-alpha.7",
 						empty: "",
 						star: "*",
-						url: "https://github.com/JoshuaKGoldberg/package-json-validator",
+						url: "https://github.com/michaelfaith/package-json-validator",
 					},
 				});
 				const result = validate(json, {

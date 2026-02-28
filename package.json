@@ -9,19 +9,15 @@
 		"package.json validator",
 		"validator"
 	],
-	"homepage": "https://github.com/JoshuaKGoldberg/package-json-validator#readme",
+	"homepage": "https://github.com/michaelfaith/package-json-validator#readme",
 	"bugs": {
-		"url": "https://github.com/JoshuaKGoldberg/package-json-validator/issues"
+		"url": "https://github.com/michaelfaith/package-json-validator/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/JoshuaKGoldberg/package-json-validator.git"
+		"url": "git+https://github.com/michaelfaith/package-json-validator.git"
 	},
 	"license": "MIT",
-	"author": {
-		"name": "Nick Sullivan",
-		"email": "nick@sullivanflock.com"
-	},
 	"contributors": [
 		{
 			"name": "Nick Sullivan",

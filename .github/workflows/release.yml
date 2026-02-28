@@ -88,7 +88,7 @@ jobs:
 
             The release is available on:
 
-            * [GitHub releases](https://github.com/JoshuaKGoldberg/package-json-validator/releases/tag/{release_tag})
+            * [GitHub releases](https://github.com/michaelfaith/package-json-validator/releases/tag/{release_tag})
             * [npm package (@${{ needs.publish.outputs.dist_tag }} dist-tag)](https://www.npmjs.com/package/package-json-validator/v/${{ env.npm_version }})
 
             Cheers! 📦🚀
