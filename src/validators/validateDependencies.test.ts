@@ -36,7 +36,7 @@ describe(validateDependencies, () => {
 			"svgo-v2": "npm:svgo@2.0.3",
 			"tilde-first": "~1.2",
 			"tilde-top": "~1",
-			url: "https://github.com/JoshuaKGoldberg/package-json-validator",
+			url: "https://github.com/michaelfaith/package-json-validator",
 			"verion-build": "1.2.3+build2012",
 			"workspace-gt-version": "workspace:>1.2.3",
 			"workspace-package-any": "workspace:*",
@@ -45,7 +45,7 @@ describe(validateDependencies, () => {
 			"workspace-package-tilde-version": "workspace:~1.2.3",
 			"workspace-pre-release": "workspace:1.2.3-rc.1",
 			"x-version": "1.2.x",
-			// reference: https://github.com/JoshuaKGoldberg/package-json-validator/issues/49
+			// reference: https://github.com/michaelfaith/package-json-validator/issues/49
 			"@reactivex/rxjs": "^5.0.0-alpha.7",
 			"git-https-reference": "git+https://isaacs@github.com/npm/cli.git",
 			"git-reference": "git://github.com/npm/cli.git#v1.0.27",
@@ -101,7 +101,7 @@ describe(validateDependencies, () => {
 			"_relative-tilde-without-protocol": "~/path",
 			"_svgo-v1": "npm:svgo@1.3.2",
 			"_svgo-v2": "npm:svgo@2.0.3",
-			_url: "https://github.com/JoshuaKGoldberg/package-json-validator",
+			_url: "https://github.com/michaelfaith/package-json-validator",
 			"_workspace-gt-version": "workspace:>1.2.3",
 			"_workspace-package-any": "workspace:*",
 			"_workspace-package-caret": "workspace:^",

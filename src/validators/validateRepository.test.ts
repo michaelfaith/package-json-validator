@@ -4,13 +4,13 @@ import { validateRepository } from "./validateRepository.ts";
 
 describe(validateRepository, () => {
 	it.each([
-		"git+https://github.com/JoshuaKGoldberg/package-json-validator.git",
-		"https://github.com/JoshuaKGoldberg/package-json-validator",
-		"https://github.com/JoshuaKGoldberg/package-json-validator.git",
-		"http://github.com/JoshuaKGoldberg/package-json-validator.git",
-		"git://github.com/JoshuaKGoldberg/package-json-validator.git",
-		"git://github.com/JoshuaKGoldberg/package-json-validator",
-		"git@github.com:JoshuaKGoldberg/package-json-validator.git",
+		"git+https://github.com/michaelfaith/package-json-validator.git",
+		"https://github.com/michaelfaith/package-json-validator",
+		"https://github.com/michaelfaith/package-json-validator.git",
+		"http://github.com/michaelfaith/package-json-validator.git",
+		"git://github.com/michaelfaith/package-json-validator.git",
+		"git://github.com/michaelfaith/package-json-validator",
+		"git@github.com:michaelfaith/package-json-validator.git",
 	])(
 		"should return no issues if the value is a valid object (with directory) (%s)",
 		(url) => {
@@ -30,7 +30,7 @@ describe(validateRepository, () => {
 	it("should return no issues if the value is a valid object (without directory)", () => {
 		const result = validateRepository({
 			type: "git",
-			url: "git+https://github.com/JoshuaKGoldberg/package-json-validator.git",
+			url: "git+https://github.com/michaelfaith/package-json-validator.git",
 		});
 		expect(result.errorMessages).toEqual([]);
 		expect(result.childResults).toHaveLength(2);
@@ -126,8 +126,7 @@ describe(validateRepository, () => {
 		const result = validateRepository({
 			"": "packages/lib-a",
 			"  ": "git",
-			"    ":
-				"git+https://github.com/JoshuaKGoldberg/package-json-validator.git",
+			"    ": "git+https://github.com/michaelfaith/package-json-validator.git",
 		});
 		expect(result.issues).toEqual([
 			{
@@ -174,7 +173,7 @@ describe(validateRepository, () => {
 	it("should return an issue if the value is an array", () => {
 		const result = validateRepository([
 			"git",
-			"git+https://github.com/JoshuaKGoldberg/package-json-validator.git",
+			"git+https://github.com/michaelfaith/package-json-validator.git",
 		]);
 		expect(result.issues).toHaveLength(1);
 		expect(result.errorMessages).toEqual([
