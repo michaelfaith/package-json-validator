@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.2](https://github.com/michaelfaith/package-json-validator/compare/v1.0.1...v1.0.2) (2026-03-01)
+
+
+### 🩹 Bug Fixes
+
+* update repo references ([#735](https://github.com/michaelfaith/package-json-validator/issues/735)) ([0b45120](https://github.com/michaelfaith/package-json-validator/commit/0b451206ca73a0f7a1578e74c38b73d7c8bd4e61))
+* **validateExports:** allowing nested null paths ([#734](https://github.com/michaelfaith/package-json-validator/issues/734)) ([dba9434](https://github.com/michaelfaith/package-json-validator/commit/dba9434f1ce6348b6bb45470330e3179be90ccd6))
+
 ## [1.0.1](https://github.com/michaelfaith/package-json-validator/compare/v1.0.0...v1.0.1) (2026-02-22)
 
 
