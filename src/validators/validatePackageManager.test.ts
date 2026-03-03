@@ -100,7 +100,7 @@ describe(validatePackageManager, () => {
 		const result = validatePackageManager("pnpm@invalid");
 
 		expect(result.errorMessages).toEqual([
-			'the version "invalid" is not valid. It should be a valid semver version (with optional hash).',
+			'the version "invalid" is not valid. It should be a valid semver version (optionally with a hash).',
 		]);
 	});
 
@@ -108,7 +108,7 @@ describe(validatePackageManager, () => {
 		const result = validatePackageManager("pnpm@^10.3.0");
 
 		expect(result.errorMessages).toEqual([
-			'the version "^10.3.0" is not valid. It should be a valid semver version (with optional hash).',
+			'the version "^10.3.0" is not valid. It should be a valid semver version (optionally with a hash).',
 		]);
 	});
 
@@ -117,7 +117,7 @@ describe(validatePackageManager, () => {
 
 		expect(result.errorMessages).toEqual([
 			'the package manager "unsupported" is not supported. Supported package managers are: npm, pnpm, yarn, bun',
-			'the version "invalid" is not valid. It should be a valid semver version (with optional hash).',
+			'the version "invalid" is not valid. It should be a valid semver version (optionally with a hash).',
 		]);
 	});
 });

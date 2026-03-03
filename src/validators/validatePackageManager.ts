@@ -20,7 +20,7 @@ const validatePackageManagerString = (value: string): string[] => {
 		}
 		if (!version || !versionRegex.test(version)) {
 			results.push(
-				`the version "${version}" is not valid. It should be a valid semver version (with optional hash).`,
+				`the version "${version}" is not valid. It should be a valid semver version (optionally with a hash).`,
 			);
 		}
 	}
