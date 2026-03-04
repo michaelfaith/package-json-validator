@@ -1,6 +1,5 @@
 import type { SpecMap } from "./Spec.types.ts";
 
-import { validateFieldType } from "./utils/index.ts";
 import {
 	validateAuthor,
 	validateBin,
@@ -202,10 +201,7 @@ export const validate: ValidateFunction = (
 	for (name in map) {
 		const field = map[name];
 
-		if (
-			parsed[name] === undefined &&
-			(!field.or || (field.or && parsed[field.or] === undefined))
-		) {
+		if (parsed[name] === undefined) {
 			if (field.required) {
 				errors.push({
 					field: name,
@@ -217,39 +213,14 @@ export const validate: ValidateFunction = (
 				recommendations.push(`Missing optional field: ${name}`);
 			}
 			continue;
-		} else if (parsed[name] === undefined) {
-			// It's empty, but not necessary
-			continue;
 		}
 
-		// Type checking
-		if (field.types || field.type) {
-			// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-			const typeErrors = validateFieldType(name, field, parsed[name]);
-			if (typeErrors.length > 0) {
-				errors.push(...typeErrors.map((e) => ({ field: name, message: e })));
-				continue;
-			}
-		}
-
-		// Regexp format check
-		// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-		if (field.format && !field.format.test(parsed[name])) {
-			errors.push({
-				field: name,
-				message: `Value for field ${name}, ${parsed[name]} does not match format: ${field.format.toString()}`,
-			});
-		}
-
-		// Validation function check
-		if (field.validate && typeof field.validate === "function") {
-			// Validation is expected to return an array of errors (empty means no errors)
-			errors.push(
-				...field
-					.validate(name, parsed[name])
-					.map((e) => ({ field: name, message: e })),
-			);
-		}
+		// Validation is expected to return an array of errors (empty means no errors)
+		errors.push(
+			...field
+				.validate(name, parsed[name])
+				.map((e) => ({ field: name, message: e })),
+		);
 	}
 
 	out.valid = errors.length > 0 ? false : true;
