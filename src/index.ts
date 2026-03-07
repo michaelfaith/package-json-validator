@@ -23,6 +23,7 @@ export {
 	validateName,
 	validateDependencies as validateOptionalDependencies,
 	validateOs,
+	validatePackageManager,
 	validateDependencies as validatePeerDependencies,
 	validatePrivate,
 	validatePublishConfig,
