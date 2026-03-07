@@ -10,6 +10,7 @@ export { validateDirectories } from "./validateDirectories.ts";
 export { validateEngines } from "./validateEngines.ts";
 export { validateExports } from "./validateExports.ts";
 export { validateFiles } from "./validateFiles.ts";
+export { validateFunding } from "./validateFunding.ts";
 export { validateHomepage } from "./validateHomepage.ts";
 export { validateKeywords } from "./validateKeywords.ts";
 export { validateLicense } from "./validateLicense.ts";
