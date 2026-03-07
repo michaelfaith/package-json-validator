@@ -90,6 +90,15 @@ export class Result {
 	}
 
 	/**
+	 * Creates a new {@link Issue} for each message and adds them to this Result.
+	 */
+	public addIssues(messages: string[]): void {
+		for (const message of messages) {
+			this.addIssue(message);
+		}
+	}
+
+	/**
 	 * Flattens this Result object (along with all child results) and pulls all issues from flattened child results into the top-level result.
 	 */
 	public flatten(): this {

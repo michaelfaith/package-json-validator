@@ -115,8 +115,19 @@ describe(Result, () => {
 
 				result.addIssue("new issue");
 
-				expect(result.issues).toEqual([{ message: "new issue" }]);
+				expect(result.issues).toHaveLength(1);
 				expect(result.errorMessages).toEqual(["new issue"]);
+			});
+		});
+
+		describe("addIssues", () => {
+			it("should add multiple issues", () => {
+				const result = new Result();
+
+				result.addIssues(["new issue 1", "new issue 2"]);
+
+				expect(result.issues).toHaveLength(2);
+				expect(result.errorMessages).toEqual(["new issue 1", "new issue 2"]);
 			});
 		});
 

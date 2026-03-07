@@ -502,6 +502,39 @@ const packageData = {
 const result = validateFiles(packageData.files);
 ```
 
+### validateFunding(value)
+
+This function validates the value of the `funding` property of a `package.json`.
+It takes the value, and validates that it's one of the following.
+
+- a `string` url
+- an `object` with properties `type` and `url`, with `url` being a valid url
+- an `Array` consisting of items of the above two
+
+It returns a `Result` object (See [Result Types](#result-types)).
+
+#### Examples
+
+```ts
+import { validateFunding } from "package-json-validator";
+
+const packageData = {
+	funding: [
+		{
+			type: "individual",
+			url: "http://npmjs.com/donate",
+		},
+		"http://npmjs.com/donate-also",
+		{
+			type: "patreon",
+			url: "https://www.patreon.com/user",
+		},
+	],
+};
+
+const result = validateFunding(packageData.funding);
+```
+
 ### validateHomepage(value)
 
 This function validates the value of the `homepage` property of a `package.json`, checking that the value is a string containing a valid url.

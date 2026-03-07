@@ -14,6 +14,7 @@ export {
 	validateEngines,
 	validateExports,
 	validateFiles,
+	validateFunding,
 	validateHomepage,
 	validateKeywords,
 	validateLicense,
