@@ -651,7 +651,7 @@ const result = validateOs(packageData.os);
 
 This function validates the value of the `packageManager` property of a `package.json`.
 It takes the value, and checks that it's a string with a valid package manager and version.
-The package manager portion should be `npm`, `pnpm`, or `yarn`, while the version portion should be a valid semver version.
+The package manager portion should be `npm`, `pnpm`, `yarn`, `bun`, or `deno`, while the version portion should be a valid semver version.
 
 It returns a `Result` object (See [Result Types](#result-types)).
 

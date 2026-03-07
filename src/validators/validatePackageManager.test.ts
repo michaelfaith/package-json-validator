@@ -8,6 +8,7 @@ describe(validatePackageManager, () => {
 		"pnpm@10.3.0",
 		"yarn@4.2.3",
 		"bun@1.0.0",
+		"deno@1.0.0",
 		"yarn@4.2.3+sha224.953c8233f7a92884eee2de69a1b92d1f2ec1655e66d08071ba9a02fa",
 	])(
 		"should return no issues for valid package manager '%s'",
@@ -92,7 +93,7 @@ describe(validatePackageManager, () => {
 		const result = validatePackageManager("invalid@10.3.0");
 
 		expect(result.errorMessages).toEqual([
-			'the package manager "invalid" is not supported. Supported package managers are: npm, pnpm, yarn, bun',
+			'the package manager "invalid" is not supported. Supported package managers are: npm, pnpm, yarn, bun, deno',
 		]);
 	});
 
@@ -116,7 +117,7 @@ describe(validatePackageManager, () => {
 		const result = validatePackageManager("unsupported@invalid");
 
 		expect(result.errorMessages).toEqual([
-			'the package manager "unsupported" is not supported. Supported package managers are: npm, pnpm, yarn, bun',
+			'the package manager "unsupported" is not supported. Supported package managers are: npm, pnpm, yarn, bun, deno',
 			'the version "invalid" is not valid. It should be a valid semver version (optionally with a hash).',
 		]);
 	});

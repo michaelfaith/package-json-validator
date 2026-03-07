@@ -1,6 +1,6 @@
 import { Result } from "../Result.ts";
 
-const packageManagers = ["npm", "pnpm", "yarn", "bun"];
+const packageManagers = ["npm", "pnpm", "yarn", "bun", "deno"];
 const versionRegex =
 	/^\d+\.\d+\.\d+(?:-[a-zA-Z0-9.]+)?(?:\+sha(?:224|256|384|512)\.[a-fA-F0-9]+)?$/;
 
