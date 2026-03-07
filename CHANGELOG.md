@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/michaelfaith/package-json-validator/compare/v1.0.2...v1.1.0) (2026-03-07)
+
+
+### 🚀 Features
+
+* add function to validate `funding` ([#751](https://github.com/michaelfaith/package-json-validator/issues/751)) ([93acebf](https://github.com/michaelfaith/package-json-validator/commit/93acebfb1daced42fd17e9551ca94be34fdfd5aa))
+* add function to validate `packageManager` ([#746](https://github.com/michaelfaith/package-json-validator/issues/746)) ([457a84d](https://github.com/michaelfaith/package-json-validator/commit/457a84d8c2b0687eb918fdd8ab43729119352302))
+
 ## [1.0.2](https://github.com/michaelfaith/package-json-validator/compare/v1.0.1...v1.0.2) (2026-03-01)
 
 
