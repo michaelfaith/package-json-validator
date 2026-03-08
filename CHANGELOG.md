@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/michaelfaith/package-json-validator/compare/v1.1.0...v1.2.0) (2026-03-08)
+
+
+### 🚀 Features
+
+* add function to validate `bugs` ([#758](https://github.com/michaelfaith/package-json-validator/issues/758)) ([136d49d](https://github.com/michaelfaith/package-json-validator/commit/136d49d6dfb6fc83fd612386319aea3e09bed323))
+
 ## [1.1.0](https://github.com/michaelfaith/package-json-validator/compare/v1.0.2...v1.1.0) (2026-03-07)
 
 
