@@ -1,6 +1,6 @@
 import { emailFormat, urlFormat } from "../formats.ts";
 import { ChildResult, Result } from "../Result.ts";
-import { type People, type Person } from "./validation.types.ts";
+import { type People, type Person } from "./People.types.ts";
 
 export const isPersonArray = (obj: unknown): obj is Person[] => {
 	return Array.isArray(obj) && obj.every((item) => isPerson(item));

@@ -3,6 +3,7 @@ import type { SpecMap } from "./Spec.types.ts";
 import {
 	validateAuthor,
 	validateBin,
+	validateBugs,
 	validateBundleDependencies,
 	validateConfig,
 	validateContributors,
@@ -26,7 +27,6 @@ import {
 	validateScripts,
 	validateSideEffects,
 	validateType,
-	validateUrlOrMailto,
 	validateVersion,
 	validateWorkspaces,
 } from "./validators/index.ts";
@@ -39,7 +39,10 @@ const getSpecMap = (isPrivate: boolean): SpecMap => ({
 		warning: true,
 	},
 	bin: { validate: (_, value) => validateBin(value).errorMessages },
-	bugs: { validate: validateUrlOrMailto, warning: true },
+	bugs: {
+		validate: (_, value) => validateBugs(value).errorMessages,
+		warning: true,
+	},
 	bundledDependencies: {
 		validate: (_, value) => validateBundleDependencies(value).errorMessages,
 	},
