@@ -1,5 +1,6 @@
 export { validateAuthor } from "./validateAuthor.ts";
 export { validateBin } from "./validateBin.ts";
+export { validateBugs } from "./validateBugs.ts";
 export { validateBundleDependencies } from "./validateBundleDependencies.ts";
 export { validateConfig } from "./validateConfig.ts";
 export { validateContributors } from "./validateContributors.ts";
@@ -25,6 +26,5 @@ export { validateRepository } from "./validateRepository.ts";
 export { validateScripts } from "./validateScripts.ts";
 export { validateSideEffects } from "./validateSideEffects.ts";
 export { validateType } from "./validateType.ts";
-export { validateUrlOrMailto } from "./validateUrlOrMailto.ts";
 export { validateVersion } from "./validateVersion.ts";
 export { validateWorkspaces } from "./validateWorkspaces.ts";

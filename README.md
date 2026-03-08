@@ -240,6 +240,33 @@ const packageData = {
 const result = validateBin(packageData.bin);
 ```
 
+### validateBugs(value)
+
+This function validates the value of the `bugs` property of a `package.json`.
+It takes the value, and validates that it's one of the following.
+
+- a `string` url
+- an `object` with either properties `email` or `url` (or both)
+- `email` should be a valid email address
+- `url` should be a valid URL
+
+It returns a `Result` object (See [Result Types](#result-types)).
+
+#### Examples
+
+```ts
+import { validateBugs } from "package-json-validator";
+
+const packageData = {
+	bugs: {
+		email: "example@npmjs.com",
+		url: "https://github.com/npm/example/issues",
+	},
+};
+
+const result = validateBugs(packageData.bugs);
+```
+
 ### validateBundleDependencies(value)
 
 This function validates the value of the `bundleDependencies` property of a `package.json`.

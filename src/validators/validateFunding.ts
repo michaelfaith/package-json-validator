@@ -1,9 +1,6 @@
 import { urlFormat } from "../formats.ts";
 import { Result } from "../Result.ts";
-
-const isPlainObject = (value: unknown): value is Record<string, unknown> => {
-	return typeof value === "object" && value !== null && !Array.isArray(value);
-};
+import { isPlainObject } from "../utils/index.ts";
 
 /**
  * The object should consist of only the properties `type` and `url`, both of which are required.
