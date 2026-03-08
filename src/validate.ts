@@ -35,92 +35,92 @@ import {
 // https://nodejs.org/api/packages.html
 const getSpecMap = (isPrivate: boolean): SpecMap => ({
 	author: {
-		validate: (_, value) => validateAuthor(value).errorMessages,
+		validate: validateAuthor,
 		warning: true,
 	},
-	bin: { validate: (_, value) => validateBin(value).errorMessages },
+	bin: { validate: validateBin },
 	bugs: {
-		validate: (_, value) => validateBugs(value).errorMessages,
+		validate: validateBugs,
 		warning: true,
 	},
 	bundledDependencies: {
-		validate: (_, value) => validateBundleDependencies(value).errorMessages,
+		validate: validateBundleDependencies,
 	},
 	bundleDependencies: {
-		validate: (_, value) => validateBundleDependencies(value).errorMessages,
+		validate: validateBundleDependencies,
 	},
-	config: { validate: (_, value) => validateConfig(value).errorMessages },
+	config: { validate: validateConfig },
 	contributors: {
-		validate: (_, value) => validateContributors(value).errorMessages,
+		validate: validateContributors,
 	},
-	cpu: { validate: (_, value) => validateCpu(value).errorMessages },
+	cpu: { validate: validateCpu },
 	dependencies: {
 		recommended: true,
-		validate: (_, value) => validateDependencies(value).errorMessages,
+		validate: validateDependencies,
 	},
 	description: {
-		validate: (_, value) => validateDescription(value).errorMessages,
+		validate: validateDescription,
 		warning: true,
 	},
 	devDependencies: {
-		validate: (_, value) => validateDependencies(value).errorMessages,
+		validate: validateDependencies,
 	},
 	directories: {
-		validate: (_, value) => validateDirectories(value).errorMessages,
+		validate: validateDirectories,
 	},
 	engines: {
 		recommended: true,
-		validate: (_, value) => validateEngines(value).errorMessages,
+		validate: validateEngines,
 	},
-	exports: { validate: (_, value) => validateExports(value).errorMessages },
-	files: { validate: (_, value) => validateFiles(value).errorMessages },
+	exports: { validate: validateExports },
+	files: { validate: validateFiles },
 	homepage: {
 		recommended: true,
-		validate: (_, value) => validateHomepage(value).errorMessages,
+		validate: validateHomepage,
 	},
 	keywords: {
-		validate: (_, value) => validateKeywords(value).errorMessages,
+		validate: validateKeywords,
 		warning: true,
 	},
 	license: {
-		validate: (_, value) => validateLicense(value).errorMessages,
+		validate: validateLicense,
 		warning: true,
 	},
-	main: { validate: (_, value) => validateMain(value).errorMessages },
-	man: { validate: (_, value) => validateMan(value).errorMessages },
+	main: { validate: validateMain },
+	man: { validate: validateMan },
 	name: {
 		required: !isPrivate,
-		validate: (_, value) => validateName(value).errorMessages,
+		validate: validateName,
 	},
 	optionalDependencies: {
-		validate: (_, value) => validateDependencies(value).errorMessages,
+		validate: validateDependencies,
 	},
-	os: { validate: (_, value) => validateOs(value).errorMessages },
+	os: { validate: validateOs },
 	peerDependencies: {
-		validate: (_, value) => validateDependencies(value).errorMessages,
+		validate: validateDependencies,
 	},
-	private: { validate: (_, value) => validatePrivate(value).errorMessages },
+	private: { validate: validatePrivate },
 	publishConfig: {
-		validate: (_, value) => validatePublishConfig(value).errorMessages,
+		validate: validatePublishConfig,
 	},
 	repository: {
-		validate: (_, value) => validateRepository(value).errorMessages,
+		validate: validateRepository,
 		warning: true,
 	},
-	scripts: { validate: (_, value) => validateScripts(value).errorMessages },
+	scripts: { validate: validateScripts },
 	sideEffects: {
-		validate: (_, value) => validateSideEffects(value).errorMessages,
+		validate: validateSideEffects,
 	},
 	type: {
 		recommended: true,
-		validate: (_, value) => validateType(value).errorMessages,
+		validate: validateType,
 	},
 	version: {
 		required: !isPrivate,
-		validate: (_, value) => validateVersion(value).errorMessages,
+		validate: validateVersion,
 	},
 	workspaces: {
-		validate: (_, value) => validateWorkspaces(value).errorMessages,
+		validate: validateWorkspaces,
 	},
 });
 
@@ -221,8 +221,8 @@ export const validate: ValidateFunction = (
 		// Validation is expected to return an array of errors (empty means no errors)
 		errors.push(
 			...field
-				.validate(name, parsed[name])
-				.map((e) => ({ field: name, message: e })),
+				.validate(parsed[name])
+				.errorMessages.map((e) => ({ field: name, message: e })),
 		);
 	}
 
