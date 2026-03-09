@@ -159,4 +159,21 @@ describe(validateFunding, () => {
 			"the value should be a valid URL",
 		]);
 	});
+
+	it("should return issues if the value is an array with items of invalid type", () => {
+		const result = validateFunding([[], 123, null]);
+		expect(result.issues).toHaveLength(0);
+		expect(result.childResults).toHaveLength(3);
+		const arrayFundingItemResult = result.childResults[0];
+		const numberFundingItemResult = result.childResults[1];
+		const nullFundingItemResult = result.childResults[2];
+		expect(arrayFundingItemResult.errorMessages).toHaveLength(1);
+		expect(numberFundingItemResult.errorMessages).toHaveLength(1);
+		expect(nullFundingItemResult.errorMessages).toHaveLength(1);
+		expect(result.errorMessages).toEqual([
+			"the value should be an object with `type` and `url` or a string URL",
+			"the value should be an object with `type` and `url` or a string URL",
+			"the value should be an object with `type` and `url` or a string URL",
+		]);
+	});
 });

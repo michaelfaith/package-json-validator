@@ -68,7 +68,7 @@ const validateFundingItem = (value: unknown): Result => {
 		result = validateFundingObject(value);
 	} else {
 		result.addIssue(
-			"the value should be an object with `type` and `url`, a string, or an Array of the two",
+			"the value should be an object with `type` and `url` or a string URL",
 		);
 	}
 	return result;
@@ -97,8 +97,12 @@ export const validateFunding = (value: unknown): Result => {
 			const childResult = validateFundingItem(item);
 			result.addChildResult(i, childResult);
 		}
-	} else {
+	} else if (typeof value === "string" || isPlainObject(value)) {
 		result = validateFundingItem(value);
+	} else {
+		result.addIssue(
+			"the value should be an object with `type` and `url`, a string, or an Array of the two",
+		);
 	}
 	return result;
 };
