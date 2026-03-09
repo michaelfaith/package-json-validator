@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/michaelfaith/package-json-validator/compare/v1.2.0...v1.2.1) (2026-03-09)
+
+
+### 🩹 Bug Fixes
+
+* **validateFunding:** array within array error message isn't accurate ([#763](https://github.com/michaelfaith/package-json-validator/issues/763)) ([25a6748](https://github.com/michaelfaith/package-json-validator/commit/25a67484333b9c1c9e5d76c213cf5f801345bffe))
+
 ## [1.2.0](https://github.com/michaelfaith/package-json-validator/compare/v1.1.0...v1.2.0) (2026-03-08)
 
 
