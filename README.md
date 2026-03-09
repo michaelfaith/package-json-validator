@@ -441,6 +441,52 @@ const packageData = {
 const result = validateDirectories(packageData.directories);
 ```
 
+### validateDevEngines(value)
+
+This function validates the value of the `devEngines` property of a `package.json`.
+It takes the value, and validates it against the following criteria.
+
+- it should be an `object` with any of the following properties
+  - `cpu`
+  - `libc`
+  - `os`
+  - `packageManager`
+  - `runtime`
+- The value of each property should be an object or an Array of objects with the following properties
+  - `name` (required): the name of the engine, e.g. "node", "npm", "yarn", "bun"
+  - `version` (optional): the version of the engine, which should be a valid semver range
+  - `onFail` (optional): should be one of the following values: `warn`, `error`, `ignore` or `download`
+
+It returns a `Result` object (See [Result Types](#result-types)).
+
+#### Examples
+
+```ts
+import { validateDevEngines } from "package-json-validator";
+
+const packageData = {
+	devEngines: {
+		runtime: {
+			name: "node",
+			version: "^20.19.0 || >=22.12.0",
+			onFail: "download",
+		},
+		packageManager: {
+			name: "pnpm",
+			version: "^10.0.0",
+			onFail: "error",
+		},
+	},
+};
+
+const result = validateDevEngines(packageData.devEngines);
+```
+
+#### See Also
+
+- https://docs.npmjs.com/cli/v11/configuring-npm/package-json#devengines
+- https://pnpm.io/package_json#devenginesruntime
+
 ### validateEngines(value)
 
 This function validates the value of the `engines` property of a `package.json`.
