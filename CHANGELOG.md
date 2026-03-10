@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/michaelfaith/package-json-validator/compare/v1.2.1...v1.3.0) (2026-03-10)
+
+
+### 🚀 Features
+
+* add function to validate `devEngines` ([#765](https://github.com/michaelfaith/package-json-validator/issues/765)) ([e141591](https://github.com/michaelfaith/package-json-validator/commit/e14159132f18f233b886b64ac1c60fc716aaaf86))
+
 ## [1.2.1](https://github.com/michaelfaith/package-json-validator/compare/v1.2.0...v1.2.1) (2026-03-09)
 
 
