@@ -82,6 +82,10 @@ const validateDevEngineObject = (value: unknown): Result => {
 		if (!keys.includes("name")) {
 			result.addIssue("missing required property `name` in devEngine object");
 		}
+	} else if (value === null) {
+		result.addIssue(
+			"the value is `null`, but should be an object with at least `name` and optionally `version` and `onFail`",
+		);
 	} else {
 		const valueType = Array.isArray(value) ? "Array" : typeof value;
 		result.addIssue(

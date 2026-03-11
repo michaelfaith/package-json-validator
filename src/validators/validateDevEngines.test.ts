@@ -113,13 +113,16 @@ describe(validateDevEngines, () => {
 
 	it("should return an issue if the top-level property value is not of the correct type", () => {
 		const mockBadDevEnginesObject = {
+			packageManager: null,
 			runtime: 123,
 		};
 		const result = validateDevEngines(mockBadDevEnginesObject);
 		expect(result.issues).toHaveLength(0);
-		expect(result.childResults).toHaveLength(1);
+		expect(result.childResults).toHaveLength(2);
 		expect(result.childResults[0].issues).toHaveLength(1);
+		expect(result.childResults[1].issues).toHaveLength(1);
 		expect(result.errorMessages).toEqual([
+			"the value is `null`, but should be an object with at least `name` and optionally `version` and `onFail`",
 			"the value should be an object with at least `name` and optionally `version` and `onFail`, not `number`",
 		]);
 	});
