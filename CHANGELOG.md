@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.1](https://github.com/michaelfaith/package-json-validator/compare/v1.3.0...v1.3.1) (2026-03-11)
+
+
+### 🩹 Bug Fixes
+
+* handle null values for top-level devEngines properties correctly ([#771](https://github.com/michaelfaith/package-json-validator/issues/771)) ([dc46085](https://github.com/michaelfaith/package-json-validator/commit/dc46085d2a602cd2b754385d369572120c373ab5))
+
 ## [1.3.0](https://github.com/michaelfaith/package-json-validator/compare/v1.2.1...v1.3.0) (2026-03-10)
 
 
