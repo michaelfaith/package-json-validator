@@ -446,7 +446,7 @@ const result = validateDirectories(packageData.directories);
 This function validates the value of the `devEngines` property of a `package.json`.
 It takes the value, and validates it against the following criteria.
 
-- it should be an `object` with any of the following properties
+- It should be an `object` with any of the following properties
   - `cpu`
   - `libc`
   - `os`

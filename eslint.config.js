@@ -82,6 +82,7 @@ export default defineConfig(
 	{
 		extends: [markdown.configs.recommended],
 		files: ["**/*.md"],
+		ignores: ["CHANGELOG.md"],
 		rules: {
 			// https://github.com/eslint/markdown/issues/294
 			"markdown/no-missing-label-refs": "off",
