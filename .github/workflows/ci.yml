@@ -8,18 +8,9 @@ on:
       - main
 
 jobs:
-  # Gatekeeper job to ensure that if ci ran because of a label event, we're only running if the label is "ci"
-  check_trigger:
-    name: Check Trigger
-    if: github.event.action != 'labeled' || github.event.label.name == 'ci'
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "Trigger condition met, proceeding with CI..."
-
-  # Actual CI jobs
   build:
     name: Build
-    needs: check_trigger
+    if: github.event.action != 'labeled' || github.event.label.name == 'ci'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -29,7 +20,7 @@ jobs:
 
   dedupe_check:
     name: Dedupe Check
-    needs: check_trigger
+    if: github.event.action != 'labeled' || github.event.label.name == 'ci'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -38,7 +29,7 @@ jobs:
 
   lint:
     name: Lint
-    needs: check_trigger
+    if: github.event.action != 'labeled' || github.event.label.name == 'ci'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -48,7 +39,7 @@ jobs:
 
   lint_knip:
     name: Lint Knip
-    needs: check_trigger
+    if: github.event.action != 'labeled' || github.event.label.name == 'ci'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -57,7 +48,7 @@ jobs:
 
   prettier:
     name: Prettier
-    needs: check_trigger
+    if: github.event.action != 'labeled' || github.event.label.name == 'ci'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -66,7 +57,7 @@ jobs:
 
   test:
     name: Test
-    needs: check_trigger
+    if: github.event.action != 'labeled' || github.event.label.name == 'ci'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
@@ -79,7 +70,7 @@ jobs:
 
   type_check:
     name: Type Check
-    needs: check_trigger
+    if: github.event.action != 'labeled' || github.event.label.name == 'ci'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
