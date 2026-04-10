@@ -674,20 +674,14 @@ describe(validate, () => {
 	});
 
 	describe("New return type", () => {
-		it("should return an issue for invalid JSON string input", () => {
-			const result = validate("invalid", true);
-
-			expect(result.issues).toHaveLength(1);
-			expect(result.errorMessages).toHaveLength(1);
-			expect(result.errorMessages[0]).toContain("Invalid JSON");
+		it("should throw for invalid JSON string input", () => {
+			expect(() => validate("invalid", true)).toThrow("Invalid JSON");
 		});
 
-		it("should return an issue for invalid input type", () => {
-			const result = validate(123 as unknown as string, true);
-
-			expect(result.issues).toHaveLength(1);
-			expect(result.errorMessages).toHaveLength(1);
-			expect(result.errorMessages[0]).toContain("Invalid data - Not a string");
+		it("should throw for invalid input type", () => {
+			expect(() => validate(123 as unknown as string, true)).toThrow(
+				"Invalid data - Not a string",
+			);
 		});
 
 		it("should return a successful Result for valid package data", () => {

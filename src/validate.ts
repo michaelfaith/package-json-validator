@@ -214,10 +214,8 @@ export function validate(
 			const parsedData = typeof data == "object" ? data : parse(data);
 
 			// If this is a string, then it's an error message resulting from parsing.
-			// So we add it as an issue and return immediately.
 			if (typeof parsedData == "string") {
-				result.addIssue(parsedData);
-				return result;
+				throw new Error(parsedData);
 			}
 
 			const map = getSpecMap(
