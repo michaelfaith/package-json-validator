@@ -1,5 +1,6 @@
 import type { SpecMap } from "./Spec.types.ts";
 
+import { Result } from "./Result.ts";
 import {
 	validateAuthor,
 	validateBin,
@@ -153,17 +154,12 @@ const parse = (data: string) => {
 	return parsed;
 };
 
-export type ValidateFunction = (
-	data: object | string,
-	options?: ValidationOptions,
-) => ValidationOutput;
-
 export interface ValidationOptions {
 	recommendations?: boolean;
 	warnings?: boolean;
 }
 
-export interface ValidationOutput {
+interface LegacyValidationOutput {
 	critical?: Record<string, string> | string;
 	errors?: ValidationError[];
 	recommendations?: string[];
@@ -182,13 +178,85 @@ interface ValidationError {
  * @param options The options for validation, if using the deprecated spec name parameter.
  * @returns an object with the validation results.
  */
-export const validate: ValidateFunction = (
+export function validate(
 	data: object | string,
-	options: ValidationOptions = {},
-): ValidationOutput => {
+	options?: ValidationOptions,
+): LegacyValidationOutput;
+
+/**
+ * Validate a package.json object (or string) against the npm spec.
+ * @param data The package.json data to validate, either as a string or an object.
+ * @param useNewReturnType Opt-in to use the new return type (Result) instead of the legacy output.  This is a temporary option to allow users to migrate to the new return type before it becomes the default in a future major release.
+ * @returns an object with the validation results.
+ */
+export function validate(
+	data: object | string,
+	useNewReturnType: false,
+): LegacyValidationOutput;
+
+/**
+ * Validate a package.json object (or string) against the npm spec.
+ * @param data The package.json data to validate, either as a string or an object.
+ * @param useNewReturnType Opt-in to use the new return type (Result) instead of the legacy output.  This is a temporary option to allow users to migrate to the new return type before it becomes the default in a future major release.
+ * @returns an object with the validation results.
+ */
+export function validate(data: object | string, useNewReturnType: true): Result;
+export function validate(
+	data: object | string,
+	optionsOrUseNewReturnType: boolean | ValidationOptions = {},
+) {
+	// Should we use the new return type?
+	if (typeof optionsOrUseNewReturnType === "boolean") {
+		if (optionsOrUseNewReturnType) {
+			const result = new Result();
+
+			// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+			const parsedData = typeof data == "object" ? data : parse(data);
+
+			// If this is a string, then it's an error message resulting from parsing.
+			if (typeof parsedData == "string") {
+				throw new Error(parsedData);
+			}
+
+			const map = getSpecMap(
+				(parsedData.private as boolean | undefined) ?? false,
+			);
+
+			const keys = Object.keys(map);
+			for (let i = 0; i < keys.length; i++) {
+				const name = keys[i];
+				const property = map[name];
+
+				if (parsedData[name] === undefined) {
+					if (property.required) {
+						result.addIssue(`Missing required property: ${name}`);
+					}
+					continue;
+				}
+
+				// Each validator returns a Result object that will be a child of the main result.
+				// This allows us to maintain the full structure of the validation results,
+				// including which fields have which issues, and any nested child results for complex fields.
+				const propertyResult = property.validate(parsedData[name]);
+				result.addChildResult(i, propertyResult);
+			}
+
+			return result;
+		} else {
+			return validateLegacy(data, {});
+		}
+	} else {
+		return validateLegacy(data, optionsOrUseNewReturnType);
+	}
+}
+
+const validateLegacy = (
+	data: object | string,
+	options: ValidationOptions,
+): LegacyValidationOutput => {
 	// eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
 	const parsed = typeof data == "object" ? data : parse(data);
-	const out: ValidationOutput = { valid: false };
+	const out: LegacyValidationOutput = { valid: false };
 
 	if (typeof parsed == "string") {
 		out.critical = parsed;

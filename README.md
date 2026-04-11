@@ -69,7 +69,7 @@ The index of this property in relation to its parent's collection (properties or
 
 The message with information about this issue.
 
-## API
+## Functions
 
 ### validate(data, options?)
 
@@ -143,28 +143,88 @@ const text = JSON.stringify({
 });
 
 const data = validate(text);
+
+console.log(data);
+
+// {
+//   valid: true,
+//   warnings: [
+//     'Missing recommended field: description',
+//     'Missing recommended field: keywords',
+//     'Missing recommended field: bugs',
+//     'Missing recommended field: licenses',
+//     'Missing recommended field: author',
+//     'Missing recommended field: contributors',
+//     'Missing recommended field: repository'
+//   ],
+//   recommendations: [
+//     'Missing optional field: homepage',
+//     'Missing optional field: engines'
+//   ]
+// }
 ```
 
-Output for above example:
+#### New Return Type (>= 1.4.0)
 
-```js
-console.log(data);
-// {
-//  valid: true,
-//   warnings: [
-//    'Missing recommended field: description',
-//    'Missing recommended field: keywords',
-//    'Missing recommended field: bugs',
-//    'Missing recommended field: licenses',
-//    'Missing recommended field: author',
-//    'Missing recommended field: contributors',
-//    'Missing recommended field: repository'
-//  ],
-//  recommendations: [
-//    'Missing optional field: homepage',
-//    'Missing optional field: engines'
-//  ]
-// }
+Starting in v1.4, you can opt-in to the new `Result` return type for `validate`.
+This has been the return type for all of the more granular `validate*` functions for a while now, and gives more specific information about which parts of the `package.json` are failing validation.
+See [Result Types](#result-types) for more details about this construct.
+
+If you'd like to opt-in to the new behavior before it becomes the default experience, pass `true` into the second parameter.
+
+```ts
+import { validate } from "package-json-validator";
+
+const data = {
+	name: "packageJsonValidator",
+	version: "0.1.0",
+	private: true,
+	dependencies: {
+		"date-fns": "^2.29.3",
+		install: "^0.13.0",
+		react: "^18.2.0",
+		"react-chartjs-2": "^5.0.1",
+		"react-dom": "^18.2.0",
+		"react-material-ui-carousel": "^3.4.2",
+		"react-multi-carousel": "^2.8.2",
+		"react-redux": "^8.0.5",
+		"react-router-dom": "^6.4.3",
+		"react-scripts": "5.0.1",
+		redux: "^4.2.0",
+		"styled-components": "^5.3.6",
+		"web-vitals": "^2.1.4",
+	},
+	scripts: {
+		start: "react-scripts start",
+	},
+	eslintConfig: {
+		extends: ["react-app", "react-app/jest"],
+	},
+	browserslist: {
+		production: [">0.2%", "not dead", "not op_mini all"],
+		development: [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version",
+		],
+	},
+};
+
+let result = validate(data, true);
+
+console.log(result.issues.length); // 0
+console.log(result.errorMessages.length); // 0
+console.log(result.childResults.length); // 7 (one for each top-level property)
+
+result = validate({}, true);
+
+console.log(result.issues.length); // 2
+console.log(result.childResults.length); // 0
+console.log(result.errorMessages);
+// [
+//   'Missing required property: name',
+//   'Missing required property: version',
+// ]
 ```
 
 ### validateAuthor(value)
