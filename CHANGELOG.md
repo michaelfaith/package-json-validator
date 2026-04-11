@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/michaelfaith/package-json-validator/compare/v1.3.1...v1.4.0) (2026-04-11)
+
+
+### 🚀 Features
+
+* add option to `validate` to return new type ([#804](https://github.com/michaelfaith/package-json-validator/issues/804)) ([ec9f028](https://github.com/michaelfaith/package-json-validator/commit/ec9f028496f6e07c974be4280979c127bb7e325c))
+
 ## [1.3.1](https://github.com/michaelfaith/package-json-validator/compare/v1.3.0...v1.3.1) (2026-03-11)
 
 
