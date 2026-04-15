@@ -1,0 +1,24 @@
+name: Label Trigger
+
+on:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  label-filter:
+    if: github.event.label.name == 'ci'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Token
+        id: create_token
+        uses: actions/create-github-app-token@v3
+        with:
+          client-id: ${{ vars.FAITHBOT_APP_CLIENT_ID }}
+          private-key: ${{ secrets.FAITHBOT_APP_PRIVATE_KEY }}
+
+      - name: Trigger CI
+        run: |
+          gh workflow run ci.yml \
+            --ref ${{ github.event.pull_request.head.ref }}
+        env:
+          GH_TOKEN: ${{ steps.create_token.outputs.token }}
