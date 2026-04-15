@@ -19,6 +19,7 @@ jobs:
       - name: Trigger CI
         run: |
           gh workflow run ci.yml \
+            --repo ${{ github.repository }} \
             --ref ${{ github.event.pull_request.head.ref }}
         env:
           GH_TOKEN: ${{ steps.create_token.outputs.token }}
