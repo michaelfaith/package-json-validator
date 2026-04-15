@@ -5,7 +5,12 @@ on:
     types: [opened, reopened, synchronize]
   push:
     branches: [main]
-  workflow_dispatch: ~
+  repository_dispatch:
+    types: [run-ci] # Triggered by the Label Trigger workflow when the "ci" label is added to a pull request
+
+env:
+  # Use the dispatch payload if available, otherwise use the default SHA
+  TARGET_SHA: ${{ github.event.client_payload.sha || github.sha }}
 
 jobs:
   build:
@@ -13,6 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ref: ${{ env.TARGET_SHA }}
       - uses: ./.github/actions/prepare
       - run: pnpm build
       - run: node lib/index.mjs
@@ -21,6 +28,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ref: ${{ env.TARGET_SHA }}
       - uses: ./.github/actions/prepare
       - run: pnpm dedupe --check --prefer-offline
   lint:
@@ -28,6 +37,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ref: ${{ env.TARGET_SHA }}
       - uses: ./.github/actions/prepare
       - run: pnpm build
       - run: pnpm lint
@@ -36,6 +47,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ref: ${{ env.TARGET_SHA }}
       - uses: ./.github/actions/prepare
       - run: pnpm lint:knip
   prettier:
@@ -43,6 +56,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ref: ${{ env.TARGET_SHA }}
       - uses: ./.github/actions/prepare
       - run: pnpm format --list-different
   test:
@@ -50,6 +65,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ref: ${{ env.TARGET_SHA }}
       - uses: ./.github/actions/prepare
       - run: pnpm run test --coverage
       - uses: codecov/codecov-action@v5
@@ -61,5 +78,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6
+        with:
+          ref: ${{ env.TARGET_SHA }}
       - uses: ./.github/actions/prepare
       - run: pnpm typecheck
