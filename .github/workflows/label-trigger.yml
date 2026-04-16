@@ -18,6 +18,11 @@ jobs:
 
       - name: Trigger CI
         run: |
+          if [ -z "${{ steps.create_token.outputs.token }}" ]; then
+            echo "Error: Token generation failed"
+            exit 1
+          fi
+
           gh api \
             --method POST \
             -H "Accept: application/vnd.github.v3+json" \
