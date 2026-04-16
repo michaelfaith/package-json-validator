@@ -23,11 +23,12 @@ jobs:
             exit 1
           fi
 
-          gh api \
-            --method POST \
-            -H "Accept: application/vnd.github.v3+json" \
-            /repos/${{ github.repository }}/dispatches \
-            -f event_type='run-ci' \
-            -F client_payload='{"pr_number": ${{ github.event.pull_request.number }}, "sha": "${{ github.event.pull_request.head.sha }}"}'
+          echo '{
+            "event_type": "run-ci",
+            "client_payload": {
+              "pr_number": ${{ github.event.pull_request.number }},
+              "sha": "${{ github.event.pull_request.head.sha }}"
+            }
+          }' | gh api /repos/${{ github.repository }}/dispatches --input -
         env:
           GH_TOKEN: ${{ steps.create_token.outputs.token }}
