@@ -18,8 +18,11 @@ jobs:
 
       - name: Trigger CI
         run: |
-          curl -X POST \
-            -H "Authorization: Bearer ${{ steps.create_token.outputs.token }}" \
+          gh api \
+            --method POST \
             -H "Accept: application/vnd.github.v3+json" \
-            https://github.com{{ github.repository }}/dispatches \
-            -d '{"event_type": "run-ci", "client_payload": {"pr_number": "${{ github.event.pull_request.number }}", "sha": "${{ github.event.pull_request.head.sha }}"}}'
+            /repos/${{ github.repository }}/dispatches \
+            -f event_type='run-ci' \
+            -F client_payload='{"pr_number": ${{ github.event.pull_request.number }}, "sha": "${{ github.event.pull_request.head.sha }}"}'
+        env:
+          GH_TOKEN: ${{ steps.create_token.outputs.token }}
