@@ -231,7 +231,7 @@ describe(validate, () => {
 						{
 							field: "devDependencies",
 							message:
-								"invalid version spec for dependency `bad-npm`: invalid tag name: tags may not have any characters that encodeURIComponent encodes",
+								"invalid version spec for dependency `bad-npm`: tags may not have any characters that encodeURIComponent encodes",
 						},
 					]);
 				});
@@ -249,7 +249,7 @@ describe(validate, () => {
 						{
 							field: "peerDependencies",
 							message:
-								"invalid version spec for dependency `package-name`: invalid tag name: tags may not have any characters that encodeURIComponent encodes",
+								"invalid version spec for dependency `package-name`: tags may not have any characters that encodeURIComponent encodes",
 						},
 					]);
 				});
@@ -513,7 +513,7 @@ describe(validate, () => {
 						{
 							field: "devDependencies",
 							message:
-								"invalid version spec for dependency `bad-npm`: invalid tag name: tags may not have any characters that encodeURIComponent encodes",
+								"invalid version spec for dependency `bad-npm`: tags may not have any characters that encodeURIComponent encodes",
 						},
 					]);
 				});
@@ -531,7 +531,7 @@ describe(validate, () => {
 						{
 							field: "peerDependencies",
 							message:
-								"invalid version spec for dependency `package-name`: invalid tag name: tags may not have any characters that encodeURIComponent encodes",
+								"invalid version spec for dependency `package-name`: tags may not have any characters that encodeURIComponent encodes",
 						},
 					]);
 				});
@@ -703,12 +703,12 @@ describe(validate, () => {
 
 			expect(result.issues).toHaveLength(0);
 			expect(result.errorMessages).toContain(
-				"invalid version spec for dependency `package-name`: invalid tag name: tags may not have any characters that encodeURIComponent encodes",
+				"invalid version spec for dependency `package-name`: tags may not have any characters that encodeURIComponent encodes",
 			);
 			expect(
 				result.childResults.some((child) =>
 					child.errorMessages.includes(
-						"invalid version spec for dependency `package-name`: invalid tag name: tags may not have any characters that encodeURIComponent encodes",
+						"invalid version spec for dependency `package-name`: tags may not have any characters that encodeURIComponent encodes",
 					),
 				),
 			).toBe(true);

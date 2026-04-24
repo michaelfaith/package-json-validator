@@ -146,13 +146,13 @@ describe(validateDependencies, () => {
 				"bad jsr: protocol",
 				"bad-jsr",
 				"jsr;@scope\\package@^1.0.0",
-				"invalid tag name: tags may not have any characters that encodeURIComponent encodes",
+				"tags may not have any characters that encodeURIComponent encodes",
 			],
 			[
 				"bad npm: protocol",
 				"bad-npm",
 				"npm;svgo@^1.2.3",
-				"invalid tag name: tags may not have any characters that encodeURIComponent encodes",
+				"tags may not have any characters that encodeURIComponent encodes",
 			],
 			[
 				"invalid git protocol",

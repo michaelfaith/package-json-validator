@@ -23,7 +23,7 @@ const parseSpecWithNpa = (
 		// The message contains the dummy package name, should use custom message
 		if (code === "EINVALIDTAGNAME") {
 			errorMessage =
-				"invalid tag name: tags may not have any characters that encodeURIComponent encodes";
+				"tags may not have any characters that encodeURIComponent encodes";
 		}
 
 		return { error: errorMessage };
