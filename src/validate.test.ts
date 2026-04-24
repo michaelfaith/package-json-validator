@@ -226,17 +226,12 @@ describe(validate, () => {
 						{
 							field: "devDependencies",
 							message:
-								"invalid version range for dependency bad-catalog: catalob:",
+								'invalid version spec for dependency `bad-catalog`: Unsupported URL Type "catalob:": catalob:',
 						},
 						{
 							field: "devDependencies",
 							message:
-								"invalid version range for dependency bad-npm: npm;svgo@^1.2.3",
-						},
-						{
-							field: "devDependencies",
-							message:
-								"invalid version range for dependency package-name: abc123",
+								"invalid version spec for dependency `bad-npm`: invalid tag name: tags may not have any characters that encodeURIComponent encodes",
 						},
 					]);
 				});
@@ -244,7 +239,7 @@ describe(validate, () => {
 				it("reports a complaint when peerDependencies has an invalid range", () => {
 					const json = getPackageJson({
 						peerDependencies: {
-							"package-name": "abc123",
+							"package-name": "jsr;",
 						},
 					});
 
@@ -254,7 +249,7 @@ describe(validate, () => {
 						{
 							field: "peerDependencies",
 							message:
-								"invalid version range for dependency package-name: abc123",
+								"invalid version spec for dependency `package-name`: invalid tag name: tags may not have any characters that encodeURIComponent encodes",
 						},
 					]);
 				});
@@ -513,17 +508,12 @@ describe(validate, () => {
 						{
 							field: "devDependencies",
 							message:
-								"invalid version range for dependency bad-catalog: catalob:",
+								'invalid version spec for dependency `bad-catalog`: Unsupported URL Type "catalob:": catalob:',
 						},
 						{
 							field: "devDependencies",
 							message:
-								"invalid version range for dependency bad-npm: npm;svgo@^1.2.3",
-						},
-						{
-							field: "devDependencies",
-							message:
-								"invalid version range for dependency package-name: abc123",
+								"invalid version spec for dependency `bad-npm`: invalid tag name: tags may not have any characters that encodeURIComponent encodes",
 						},
 					]);
 				});
@@ -531,7 +521,7 @@ describe(validate, () => {
 				it("reports a complaint when peerDependencies has an invalid range", () => {
 					const json = getPackageJson({
 						peerDependencies: {
-							"package-name": "abc123",
+							"package-name": "jsr;",
 						},
 					});
 
@@ -541,7 +531,7 @@ describe(validate, () => {
 						{
 							field: "peerDependencies",
 							message:
-								"invalid version range for dependency package-name: abc123",
+								"invalid version spec for dependency `package-name`: invalid tag name: tags may not have any characters that encodeURIComponent encodes",
 						},
 					]);
 				});
@@ -705,7 +695,7 @@ describe(validate, () => {
 		it("should include nested validation issues in errorMessages", () => {
 			const json = getPackageJson({
 				devDependencies: {
-					"package-name": "abc123",
+					"package-name": ">-1.0.0",
 				},
 			});
 
@@ -713,12 +703,12 @@ describe(validate, () => {
 
 			expect(result.issues).toHaveLength(0);
 			expect(result.errorMessages).toContain(
-				"invalid version range for dependency package-name: abc123",
+				"invalid version spec for dependency `package-name`: invalid tag name: tags may not have any characters that encodeURIComponent encodes",
 			);
 			expect(
 				result.childResults.some((child) =>
 					child.errorMessages.includes(
-						"invalid version range for dependency package-name: abc123",
+						"invalid version spec for dependency `package-name`: invalid tag name: tags may not have any characters that encodeURIComponent encodes",
 					),
 				),
 			).toBe(true);
