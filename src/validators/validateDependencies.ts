@@ -92,29 +92,24 @@ export const validateDependencies = (value: unknown): Result => {
 				childResult.addIssue(`invalid dependency package name: \`${pkg}\``);
 			}
 
-			if (!isSpecString || !npaResult) {
+			if (isSpecString && npaResult) {
+				if (!("result" in npaResult)) {
+					const isPackageManagerSpecificNotation =
+						PACKAGE_MANAGER_SPECIFIC_PROTOCOLS.some((protocol) =>
+							spec.startsWith(`${protocol}:`),
+						);
+
+					if (!isPackageManagerSpecificNotation) {
+						childResult.addIssue(
+							`invalid version spec for dependency \`${pkg}\`: ${npaResult.error || spec}`,
+						);
+					}
+				}
+			} else {
 				childResult.addIssue(
 					`dependency version for \`${pkg}\` should be a string: ${spec}`,
 				);
-				continue;
 			}
-
-			if ("result" in npaResult) {
-				continue;
-			}
-
-			const isPackageManagerSpecificNotation =
-				PACKAGE_MANAGER_SPECIFIC_PROTOCOLS.some((protocol) =>
-					spec.startsWith(`${protocol}:`),
-				);
-
-			if (isPackageManagerSpecificNotation) {
-				continue;
-			}
-
-			childResult.addIssue(
-				`invalid version spec for dependency \`${pkg}\`: ${npaResult.error || spec}`,
-			);
 		}
 	} else {
 		const valueType = Array.isArray(value) ? "array" : typeof value;
