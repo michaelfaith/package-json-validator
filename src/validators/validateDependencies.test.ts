@@ -1,4 +1,5 @@
-import { describe, expect, it } from "vitest";
+import npmPackageArg from "npm-package-arg";
+import { describe, expect, it, vi } from "vitest";
 
 import { validateDependencies } from "./validateDependencies.ts";
 
@@ -145,7 +146,7 @@ describe(validateDependencies, () => {
 			[
 				"bad jsr: protocol",
 				"bad-jsr",
-				"jsr;@scope\\package@^1.0.0",
+				"jsr;svgo@^1.0.0",
 				"tags may not have any characters that encodeURIComponent encodes",
 			],
 			[
@@ -208,5 +209,36 @@ describe(validateDependencies, () => {
 			"the value is `null`, but should be a record of dependencies",
 		]);
 		expect(result.issues).toHaveLength(1);
+	});
+
+	it("should display raw version when error is thrown", () => {
+		const spy = vi
+			.spyOn(npmPackageArg, "resolve")
+			.mockThrow(new Error("Some error"));
+
+		const result = validateDependencies({
+			"bad-catalog": "catalob:",
+		});
+		expect(result.errorMessages).toEqual([
+			"invalid version spec for dependency `bad-catalog`: catalob:",
+		]);
+		expect(result.issues).toEqual([]);
+		expect(result.childResults[0].errorMessages).toStrictEqual([
+			"invalid version spec for dependency `bad-catalog`: catalob:",
+		]);
+		spy.mockRestore();
+	});
+
+	it("should return an issue when the dependency version is not a string", () => {
+		const result = validateDependencies({
+			"bad-version-type": 123,
+		});
+		expect(result.errorMessages).toEqual([
+			"dependency version for `bad-version-type` should be a string: 123",
+		]);
+		expect(result.issues).toEqual([]);
+		expect(result.childResults[0].errorMessages).toStrictEqual([
+			"dependency version for `bad-version-type` should be a string: 123",
+		]);
 	});
 });
