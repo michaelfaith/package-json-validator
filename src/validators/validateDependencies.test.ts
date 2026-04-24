@@ -1,4 +1,5 @@
-import { describe, expect, it } from "vitest";
+import npmPackageArg from "npm-package-arg";
+import { describe, expect, it, vi } from "vitest";
 
 import { validateDependencies } from "./validateDependencies.ts";
 
@@ -34,6 +35,7 @@ describe(validateDependencies, () => {
 			star: "*",
 			"svgo-v1": "npm:svgo@1.3.2",
 			"svgo-v2": "npm:svgo@2.0.3",
+			tag: "beta",
 			"tilde-first": "~1.2",
 			"tilde-top": "~1",
 			url: "https://github.com/michaelfaith/package-json-validator",
@@ -81,6 +83,7 @@ describe(validateDependencies, () => {
 			_lteq: "<=1.2.3",
 			_range: "1.2.3 - 2.3.4",
 			_star: "*",
+			_tag: "beta",
 			"_tilde-first": "~1.2",
 			"_tilde-top": "~1",
 			"_verion-build": "1.2.3+build2012",
@@ -118,11 +121,11 @@ describe(validateDependencies, () => {
 		});
 		expect(result.issues).toEqual([]);
 		expect(result.errorMessages).toEqual(
-			publishedKeys.map((key) => `invalid dependency package name: ${key}`),
+			publishedKeys.map((key) => `invalid dependency package name: \`${key}\``),
 		);
 		publishedKeys.forEach((key, i) => {
 			expect(result.childResults[i].errorMessages).toEqual([
-				`invalid dependency package name: ${key}`,
+				`invalid dependency package name: \`${key}\``,
 			]);
 		});
 		unpublishedKeys.forEach((_, i) => {
@@ -132,24 +135,45 @@ describe(validateDependencies, () => {
 		});
 	});
 
-	it("should report an issue when dependencies have an invalid range", () => {
-		const dependencies = {
-			"bad-catalog": "catalob:",
-			"bad-jsr": "jsr;@scope/package@^1.0.0",
-			"bad-npm": "npm;svgo@^1.2.3",
-			"invalid-git-protocol": "git+foo://github.com/npm/cli.git",
-			"invalid-github-reference-bad-reponame": "some/package?",
-			"invalid-github-reference-bad-username": "some--user/package",
-			"invalid-github-reference-too-many-slashes": "some/package/subpath",
-			"package-name": "abc123",
-		};
+	describe("should report an issue when dependencies have an invalid range", () => {
+		it.for([
+			[
+				"bad catalog: protocol",
+				"bad-catalog",
+				"catalob:",
+				`Unsupported URL Type "catalob:": catalob:`,
+			],
+			[
+				"bad jsr: protocol",
+				"bad-jsr",
+				"jsr;svgo@^1.0.0",
+				"tags may not have any characters that encodeURIComponent encodes",
+			],
+			[
+				"bad npm: protocol",
+				"bad-npm",
+				"npm;svgo@^1.2.3",
+				"tags may not have any characters that encodeURIComponent encodes",
+			],
+			[
+				"invalid git protocol",
+				"invalid-git-protocol",
+				"git+foo://github.com/npm/cli.git",
+				'Unsupported URL Type "git+foo:": git+foo://github.com/npm/cli.git',
+			],
+		] satisfies [
+			testCaseName: string,
+			name: string,
+			spec: string,
+			errorMessage: string,
+		][])("%s", ([, name, spec, errorMessage]) => {
+			const dependencies = { [name]: spec };
 
-		const result = validateDependencies(dependencies);
+			const result = validateDependencies(dependencies);
 
-		expect(result.issues).toEqual([]);
-		Object.entries(dependencies).forEach(([key, value], i) => {
-			expect(result.childResults[i].errorMessages).toEqual([
-				`invalid version range for dependency ${key}: ${value}`,
+			expect(result.issues).toEqual([]);
+			expect(result.childResults[0].errorMessages).toStrictEqual([
+				`invalid version spec for dependency \`${name}\`: ${errorMessage}`,
 			]);
 		});
 	});
@@ -185,5 +209,36 @@ describe(validateDependencies, () => {
 			"the value is `null`, but should be a record of dependencies",
 		]);
 		expect(result.issues).toHaveLength(1);
+	});
+
+	it("should display raw version when error is thrown", () => {
+		const spy = vi
+			.spyOn(npmPackageArg, "resolve")
+			.mockThrow(new Error("Some error"));
+
+		const result = validateDependencies({
+			"bad-catalog": "catalob:",
+		});
+		expect(result.errorMessages).toEqual([
+			"invalid version spec for dependency `bad-catalog`: catalob:",
+		]);
+		expect(result.issues).toEqual([]);
+		expect(result.childResults[0].errorMessages).toStrictEqual([
+			"invalid version spec for dependency `bad-catalog`: catalob:",
+		]);
+		spy.mockRestore();
+	});
+
+	it("should return an issue when the dependency version is not a string", () => {
+		const result = validateDependencies({
+			"bad-version-type": 123,
+		});
+		expect(result.errorMessages).toEqual([
+			"dependency version for `bad-version-type` should be a string: 123",
+		]);
+		expect(result.issues).toEqual([]);
+		expect(result.childResults[0].errorMessages).toStrictEqual([
+			"dependency version for `bad-version-type` should be a string: 123",
+		]);
 	});
 });
