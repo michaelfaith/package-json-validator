@@ -79,8 +79,7 @@ describe(validateEngines, () => {
 	});
 
 	it("should return an issue if the value is neither a string nor an object", () => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const result = validateEngines(123 as any);
+		const result = validateEngines(123);
 		expect(result.issues).toHaveLength(1);
 		expect(result.errorMessages).toEqual([
 			"the type should be `object`, not `number`",
