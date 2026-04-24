@@ -90,8 +90,7 @@ describe(validateBin, () => {
 	});
 
 	it("should return a Result with an issue if the bin field is neither a string nor an object", () => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const result = validateBin(123 as any);
+		const result = validateBin(123);
 		expect(result.issues).toHaveLength(1);
 		expect(result.errorMessages).toEqual([
 			"the type should be `string` or `object`, not `number`",
