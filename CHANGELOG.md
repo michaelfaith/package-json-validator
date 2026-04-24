@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/michaelfaith/package-json-validator/compare/v1.4.0...v1.4.1) (2026-04-24)
+
+
+### 🩹 Bug Fixes
+
+* **validateDependencies:** improve version validation ([#822](https://github.com/michaelfaith/package-json-validator/issues/822)) ([c364a95](https://github.com/michaelfaith/package-json-validator/commit/c364a95d46e39d5406614ec3d7b623638e3821a6))
+
 ## [1.4.0](https://github.com/michaelfaith/package-json-validator/compare/v1.3.1...v1.4.0) (2026-04-11)
 
 
