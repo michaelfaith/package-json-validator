@@ -7,7 +7,7 @@ const parseSpecWithNpa = (
 	spec: string,
 ): { error: string } | { result: ReturnType<typeof npmPackageArg> } => {
 	try {
-		const result = npmPackageArg(`dummy@${spec}`);
+		const result = npmPackageArg.resolve("dummy", spec);
 		return { result };
 	} catch (error) {
 		if (
