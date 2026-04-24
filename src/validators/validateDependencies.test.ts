@@ -120,11 +120,11 @@ describe(validateDependencies, () => {
 		});
 		expect(result.issues).toEqual([]);
 		expect(result.errorMessages).toEqual(
-			publishedKeys.map((key) => `invalid dependency package name: ${key}`),
+			publishedKeys.map((key) => `invalid dependency package name: \`${key}\``),
 		);
 		publishedKeys.forEach((key, i) => {
 			expect(result.childResults[i].errorMessages).toEqual([
-				`invalid dependency package name: ${key}`,
+				`invalid dependency package name: \`${key}\``,
 			]);
 		});
 		unpublishedKeys.forEach((_, i) => {

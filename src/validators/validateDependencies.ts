@@ -89,12 +89,12 @@ export const validateDependencies = (value: unknown): Result => {
 				!packageFormat.test(pkg) &&
 				!(isSpecString && isUnpublished(npaResult, spec))
 			) {
-				childResult.addIssue(`invalid dependency package name: ${pkg}`);
+				childResult.addIssue(`invalid dependency package name: \`${pkg}\``);
 			}
 
 			if (!isSpecString || !npaResult) {
 				childResult.addIssue(
-					`dependency version for ${pkg} should be a string: ${spec}`,
+					`dependency version for \`${pkg}\` should be a string: ${spec}`,
 				);
 				continue;
 			}
