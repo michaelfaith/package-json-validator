@@ -686,6 +686,25 @@ const packageData = {
 const result = validateFunding(packageData.funding);
 ```
 
+### validateGypfile(value)
+
+This function validates the value of the `gypfile` property of a `package.json`.
+It takes the value, and checks that it's a boolean.
+
+It returns a `Result` object (See [Result Types](#result-types)).
+
+#### Examples
+
+```ts
+import { validateGypfile } from "package-json-validator";
+
+const packageData = {
+	gypfile: false,
+};
+
+const result = validateGypfile(packageData.gypfile);
+```
+
 ### validateHomepage(value)
 
 This function validates the value of the `homepage` property of a `package.json`, checking that the value is a string containing a valid url.
@@ -842,7 +861,7 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validatePrivate } from "package-json-validator";
+import { validatePackageManager } from "package-json-validator";
 
 const packageData = {
 	packageManager: "pnpm@10.3.0",

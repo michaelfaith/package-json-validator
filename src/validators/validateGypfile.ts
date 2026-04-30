@@ -1,0 +1,21 @@
+import { Result } from "../Result.ts";
+
+/**
+ * Validate the `gypfile` field in a package.json, which should be a boolean value
+ */
+export const validateGypfile = (type: unknown): Result => {
+	const result = new Result();
+
+	if (typeof type !== "boolean") {
+		if (type === null) {
+			result.addIssue("the value is `null`, but should be a `boolean`");
+		} else {
+			const valueType = Array.isArray(type) ? "Array" : typeof type;
+			result.addIssue(
+				`the value should be a \`boolean\`, not \`${valueType}\``,
+			);
+		}
+	}
+
+	return result;
+};
