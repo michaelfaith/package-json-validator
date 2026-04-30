@@ -300,6 +300,24 @@ const packageData = {
 const result = validateBin(packageData.bin);
 ```
 
+### validateBrowser(value)
+
+This function validates the value of the `browser` property of a `package.json`, checking that the value is a non-empty string.
+
+It returns a `Result` object (See [Result Types](#result-types)).
+
+#### Examples
+
+```ts
+import { validateBrowser } from "package-json-validator";
+
+const packageData = {
+	browser: "index.umd.js",
+};
+
+const result = validateBrowser(packageData.browser);
+```
+
 ### validateBugs(value)
 
 This function validates the value of the `bugs` property of a `package.json`.

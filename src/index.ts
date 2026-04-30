@@ -3,6 +3,7 @@ export { validate } from "./validate.ts";
 export {
 	validateAuthor,
 	validateBin,
+	validateBrowser,
 	validateBugs,
 	validateBundleDependencies,
 	validateConfig,
