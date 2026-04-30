@@ -21,6 +21,7 @@ export {
 	validateGypfile,
 	validateHomepage,
 	validateKeywords,
+	validateLibc,
 	validateLicense,
 	validateMain,
 	validateMan,

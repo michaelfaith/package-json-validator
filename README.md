@@ -745,6 +745,25 @@ const packageData = {
 const result = validateKeywords(packageData.keywords);
 ```
 
+### validateLibc(value)
+
+This function validates the value of the `libc` property of a `package.json`.
+It takes the value, and validates that it's either a string or an Array of strings.
+
+It returns a `Result` object (See [Result Types](#result-types)).
+
+#### Examples
+
+```ts
+import { validateLibc } from "package-json-validator";
+
+const packageData = {
+	libc: "glibc",
+};
+
+const result = validateLibc(packageData.man);
+```
+
 ### validateLicense(value)
 
 This function validates the value of the `license` property of a `package.json`.
