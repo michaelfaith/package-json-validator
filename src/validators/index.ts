@@ -1,5 +1,6 @@
 export { validateAuthor } from "./validateAuthor.ts";
 export { validateBin } from "./validateBin.ts";
+export { validateBrowser } from "./validateBrowser.ts";
 export { validateBugs } from "./validateBugs.ts";
 export { validateBundleDependencies } from "./validateBundleDependencies.ts";
 export { validateConfig } from "./validateConfig.ts";
