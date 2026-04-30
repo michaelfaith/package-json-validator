@@ -17,6 +17,7 @@ export { validateFunding } from "./validateFunding.ts";
 export { validateGypfile } from "./validateGypfile.ts";
 export { validateHomepage } from "./validateHomepage.ts";
 export { validateKeywords } from "./validateKeywords.ts";
+export { validateLibc } from "./validateLibc.ts";
 export { validateLicense } from "./validateLicense.ts";
 export { validateMain } from "./validateMain.ts";
 export { validateMan } from "./validateMan.ts";
