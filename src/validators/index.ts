@@ -14,6 +14,7 @@ export { validateEngines } from "./validateEngines.ts";
 export { validateExports } from "./validateExports.ts";
 export { validateFiles } from "./validateFiles.ts";
 export { validateFunding } from "./validateFunding.ts";
+export { validateGypfile } from "./validateGypfile.ts";
 export { validateHomepage } from "./validateHomepage.ts";
 export { validateKeywords } from "./validateKeywords.ts";
 export { validateLicense } from "./validateLicense.ts";

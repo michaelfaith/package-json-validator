@@ -18,6 +18,7 @@ export {
 	validateExports,
 	validateFiles,
 	validateFunding,
+	validateGypfile,
 	validateHomepage,
 	validateKeywords,
 	validateLicense,
