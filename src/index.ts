@@ -30,6 +30,7 @@ export {
 	validateOs,
 	validatePackageManager,
 	validateDependencies as validatePeerDependencies,
+	validatePeerDependenciesMeta,
 	validatePrivate,
 	validatePublishConfig,
 	validateRepository,

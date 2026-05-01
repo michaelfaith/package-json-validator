@@ -24,6 +24,7 @@ export { validateMan } from "./validateMan.ts";
 export { validateName } from "./validateName.ts";
 export { validateOs } from "./validateOs.ts";
 export { validatePackageManager } from "./validatePackageManager.ts";
+export { validatePeerDependenciesMeta } from "./validatePeerDependenciesMeta.ts";
 export { validatePrivate } from "./validatePrivate.ts";
 export { validatePublishConfig } from "./validatePublishConfig.ts";
 export { validateRepository } from "./validateRepository.ts";

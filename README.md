@@ -889,6 +889,30 @@ const packageData = {
 const result = validatePackageManager(packageData.packageManager);
 ```
 
+### validatePeerDependenciesMeta(value)
+
+This function validates the value of the `peerDependenciesMeta` property of a `package.json`.
+It takes the value, and checks that it is an object whose keys are valid package names and whose values are objects with only an `optional` property.
+The `optional` property must be a boolean.
+
+It returns a `Result` object (See [Result Types](#result-types)).
+
+#### Examples
+
+```ts
+import { validatePeerDependenciesMeta } from "package-json-validator";
+
+const packageData = {
+	peerDependenciesMeta: {
+		react: {
+			optional: true,
+		},
+	},
+};
+
+const result = validatePeerDependenciesMeta(packageData.peerDependenciesMeta);
+```
+
 ### validatePrivate(value)
 
 This function validates the value of the `private` property of a `package.json`.
