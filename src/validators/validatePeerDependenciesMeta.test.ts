@@ -65,13 +65,13 @@ describe(validatePeerDependenciesMeta, () => {
 
 		expect(result.childResults).toHaveLength(3);
 		expect(result.childResults[0].errorMessages).toEqual([
-			"the value for peer dependency metadata `@scope/package` should be an object, not `Array`",
+			"the peer dependency metadata for `@scope/package` should be an object, not `Array`",
 		]);
 		expect(result.childResults[1].errorMessages).toEqual([
-			"the value for peer dependency metadata `react` should be an object, not `null`",
+			"the peer dependency metadata for `react` should be an object, not `null`",
 		]);
 		expect(result.childResults[2].errorMessages).toEqual([
-			"the value for peer dependency metadata `typescript` should be an object, not `number`",
+			"the peer dependency metadata for `typescript` should be an object, not `number`",
 		]);
 	});
 
@@ -92,16 +92,16 @@ describe(validatePeerDependenciesMeta, () => {
 		expect(result.childResults[0].childResults).toHaveLength(1);
 		expect(result.childResults[0].childResults[0].issues).toHaveLength(1);
 		expect(result.childResults[0].childResults[0].errorMessages).toEqual([
-			"the `optional` property for peer dependency metadata `@scope/package` should be a boolean, not `Array`",
+			"the value should be a boolean, not `Array`",
 		]);
 		expect(result.childResults[1].childResults).toHaveLength(1);
 		expect(result.childResults[1].childResults[0].issues).toHaveLength(1);
 		expect(result.childResults[1].childResults[0].errorMessages).toEqual([
-			"the `optional` property for peer dependency metadata `react` should be a boolean, not `string`",
+			"the value should be a boolean, not `string`",
 		]);
 		expect(result.childResults[2].childResults[0].issues).toHaveLength(1);
 		expect(result.childResults[2].childResults[0].errorMessages).toEqual([
-			"the `optional` property for peer dependency metadata `typescript` should be a boolean, not `null`",
+			"the value should be a boolean, not `null`",
 		]);
 	});
 
@@ -128,7 +128,7 @@ describe(validatePeerDependenciesMeta, () => {
 		});
 
 		expect(result.childResults[0].errorMessages).toEqual([
-			"peer dependency metadata for `react` should contain the `optional` property",
+			"the peer dependency metadata for `react` should contain the `optional` property",
 		]);
 	});
 });
