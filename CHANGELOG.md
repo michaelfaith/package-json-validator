@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.5.0](https://github.com/michaelfaith/package-json-validator/compare/v1.4.1...v1.5.0) (2026-05-01)
+
+
+### 🚀 Features
+
+* add validation for `browser` ([#839](https://github.com/michaelfaith/package-json-validator/issues/839)) ([599ffd6](https://github.com/michaelfaith/package-json-validator/commit/599ffd614c7915b08008ba019044bc8e45d10e66))
+* add validation for `gypfile` ([#842](https://github.com/michaelfaith/package-json-validator/issues/842)) ([1c90cfb](https://github.com/michaelfaith/package-json-validator/commit/1c90cfbb5966dc976252bd0158e7b1b5d4f1a7cb))
+* add validation for `libc` ([#843](https://github.com/michaelfaith/package-json-validator/issues/843)) ([02a7b8b](https://github.com/michaelfaith/package-json-validator/commit/02a7b8b28eeff61d1a8f81c807d395a05ed59d95))
+* add validation for `peerDependenciesMeta` ([#844](https://github.com/michaelfaith/package-json-validator/issues/844)) ([27de5e3](https://github.com/michaelfaith/package-json-validator/commit/27de5e37195e4762d07c1108ddacb8d3ff56fca4))
+
 ## [1.4.1](https://github.com/michaelfaith/package-json-validator/compare/v1.4.0...v1.4.1) (2026-04-24)
 
 
