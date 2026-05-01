@@ -5,7 +5,7 @@
 <p align="center">
 	<!-- prettier-ignore-start -->
 	<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-	<a href="#contributors" target="_blank"><img alt="👪 All Contributors: 42" src="https://img.shields.io/badge/%F0%9F%91%AA_all_contributors-42-21bb42.svg" /></a>
+	<a href="#contributors" target="_blank"><img alt="👪 All Contributors: 43" src="https://img.shields.io/badge/%F0%9F%91%AA_all_contributors-43-21bb42.svg" /></a>
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 	<!-- prettier-ignore-end -->
 	<a href="https://github.com/michaelfaith/package-json-validator/blob/main/.github/CODE_OF_CONDUCT.md" target="_blank"><img alt="🤝 Code of Conduct: Kept" src="https://img.shields.io/badge/%F0%9F%A4%9D_code_of_conduct-kept-21bb42" /></a>
@@ -1208,8 +1208,11 @@ Thanks! 💖
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/slavafomin"><img src="https://avatars.githubusercontent.com/u/1702725?v=4?s=100" width="100px;" alt="Slava Fomin II"/><br /><sub><b>Slava Fomin II</b></sub></a><br /><a href="#ideas-slavafomin" title="Ideas, Planning, & Feedback">🤔</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/hyoban"><img src="https://avatars.githubusercontent.com/u/38493346?v=4?s=100" width="100px;" alt="Stephen Zhou"/><br /><sub><b>Stephen Zhou</b></sub></a><br /><a href="https://github.com/michaelfaith/package-json-validator/commits?author=hyoban" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/vkrol"><img src="https://avatars.githubusercontent.com/u/153412?v=4?s=100" width="100px;" alt="Veniamin Krol"/><br /><sub><b>Veniamin Krol</b></sub></a><br /><a href="https://github.com/michaelfaith/package-json-validator/commits?author=vkrol" title="Code">💻</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/apps/faithbot-5000"><img src="https://avatars.githubusercontent.com/in/3356157?v=4?s=100" width="100px;" alt="faithbot-5000[bot]"/><br /><sub><b>faithbot-5000[bot]</b></sub></a><br /><a href="https://github.com/michaelfaith/package-json-validator/commits?author=faithbot-5000[bot]" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/gramergrater"><img src="https://avatars.githubusercontent.com/u/9351863?v=4?s=100" width="100px;" alt="gramergrater"/><br /><sub><b>gramergrater</b></sub></a><br /><a href="https://github.com/michaelfaith/package-json-validator/issues?q=author%3Agramergrater" title="Bug reports">🐛</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/michaelfaith"><img src="https://avatars.githubusercontent.com/u/8071845?v=4?s=100" width="100px;" alt="michael faith"/><br /><sub><b>michael faith</b></sub></a><br /><a href="https://github.com/michaelfaith/package-json-validator/commits?author=michaelfaith" title="Code">💻</a> <a href="#ideas-michaelfaith" title="Ideas, Planning, & Feedback">🤔</a> <a href="#infra-michaelfaith" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#tool-michaelfaith" title="Tools">🔧</a> <a href="#maintenance-michaelfaith" title="Maintenance">🚧</a> <a href="https://github.com/michaelfaith/package-json-validator/issues?q=author%3Amichaelfaith" title="Bug reports">🐛</a> <a href="https://github.com/michaelfaith/package-json-validator/commits?author=michaelfaith" title="Documentation">📖</a></td>
+    </tr>
+    <tr>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/sarahhagstrom"><img src="https://avatars.githubusercontent.com/u/1223862?v=4?s=100" width="100px;" alt="sarahhagstrom"/><br /><sub><b>sarahhagstrom</b></sub></a><br /><a href="https://github.com/michaelfaith/package-json-validator/commits?author=sarahhagstrom" title="Code">💻</a></td>
     </tr>
   </tbody>
