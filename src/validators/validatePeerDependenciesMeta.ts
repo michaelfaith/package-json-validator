@@ -42,7 +42,7 @@ export const validatePeerDependenciesMeta = (value: unknown): Result => {
 							? "Array"
 							: typeof pkgMeta;
 				childResult.addIssue(
-					`the value for peer dependency metadata \`${pkg}\` should be an object, not \`${pkgMetaType}\``,
+					`the peer dependency metadata for \`${pkg}\` should be an object, not \`${pkgMetaType}\``,
 				);
 			} else {
 				const keys = Object.keys(pkgMeta);
@@ -61,7 +61,7 @@ export const validatePeerDependenciesMeta = (value: unknown): Result => {
 										? "Array"
 										: typeof pkgMeta[key];
 							grandChildResult.addIssue(
-								`the \`optional\` property for peer dependency metadata \`${pkg}\` should be a boolean, not \`${optionalType}\``,
+								`the value should be a boolean, not \`${optionalType}\``,
 							);
 						}
 					} else {
@@ -73,7 +73,7 @@ export const validatePeerDependenciesMeta = (value: unknown): Result => {
 
 				if (!keys.includes("optional")) {
 					childResult.addIssue(
-						`peer dependency metadata for \`${pkg}\` should contain the \`optional\` property`,
+						`the peer dependency metadata for \`${pkg}\` should contain the \`optional\` property`,
 					);
 				}
 			}
