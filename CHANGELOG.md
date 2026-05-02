@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.1](https://github.com/michaelfaith/package-json-validator/compare/v1.5.0...v1.5.1) (2026-05-02)
+
+
+### 🩹 Bug Fixes
+
+* improve error messages for `validatePeerDependenciesMeta` ([#847](https://github.com/michaelfaith/package-json-validator/issues/847)) ([396f95f](https://github.com/michaelfaith/package-json-validator/commit/396f95f6ca9b3f746227bf6a81ad113eaff77d65))
+
 ## [1.5.0](https://github.com/michaelfaith/package-json-validator/compare/v1.4.1...v1.5.0) (2026-05-01)
 
 
