@@ -7,6 +7,10 @@ inputs:
     description: Node.js version to use
     default: "lts/*"
     required: false
+  strict-engines:
+    description: Whether to use strict engine compatibility checks
+    default: false
+    required: false
 
 runs:
   steps:
@@ -15,6 +19,13 @@ runs:
       with:
         cache: pnpm
         node-version: ${{ inputs.node-version }}
+    - run: pnpm config set --location=project strictEngines true
+      if: ${{ inputs.strict-engines == 'true' }}
+      shell: bash
     - run: pnpm install --frozen-lockfile
+      if: ${{ inputs.strict-engines == 'false' }}
+      shell: bash
+    - run: pnpm install
+      if: ${{ inputs.strict-engines == 'true' }}
       shell: bash
   using: composite
