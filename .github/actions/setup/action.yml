@@ -4,7 +4,7 @@ description: Sets up the repo for a typical CI job
 
 inputs:
   node-version:
-    description: "Node.js version to use"
+    description: Node.js version to use
     default: "lts/*"
     required: false
 
