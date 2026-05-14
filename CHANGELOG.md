@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/michaelfaith/package-json-validator/compare/v1.5.1...v1.5.2) (2026-05-14)
+
+
+### 🩹 Bug Fixes
+
+* **deps:** update dependency validate-npm-package-name to v8 ([#867](https://github.com/michaelfaith/package-json-validator/issues/867)) ([cbac991](https://github.com/michaelfaith/package-json-validator/commit/cbac991bd1ec39f4d596a7d51b981a1051cc1538))
+
 ## [1.5.1](https://github.com/michaelfaith/package-json-validator/compare/v1.5.0...v1.5.1) (2026-05-02)
 
 
