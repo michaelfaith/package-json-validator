@@ -1,222 +1,222 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from 'vitest';
 
-import { isPerson, isPersonArray, validatePeople } from "./validatePeople.ts";
+import { isPerson, isPersonArray, validatePeople } from './validatePeople.ts';
 
 describe(validatePeople, () => {
-	it("should validate string with only name", () => {
-		const result = validatePeople("Barney Rubble");
-		expect(result.errorMessages).toEqual([]);
-	});
+  it('should validate string with only name', () => {
+    const result = validatePeople('Barney Rubble');
+    expect(result.errorMessages).toEqual([]);
+  });
 
-	it("should validate string with name, email, and url", () => {
-		const result = validatePeople(
-			"Barney Rubble <b@rubble.com> (http://barneyrubble.tumblr.com/)",
-		);
-		expect(result.errorMessages).toEqual([]);
-	});
+  it('should validate string with name, email, and url', () => {
+    const result = validatePeople(
+      'Barney Rubble <b@rubble.com> (http://barneyrubble.tumblr.com/)',
+    );
+    expect(result.errorMessages).toEqual([]);
+  });
 
-	it("should validate person object", () => {
-		const person = {
-			email: "b@rubble.com",
-			name: "Barney Rubble",
-			url: "http://barneyrubble.tumblr.com/",
-		};
-		const result = validatePeople(person);
-		expect(result.errorMessages).toEqual([]);
-	});
+  it('should validate person object', () => {
+    const person = {
+      email: 'b@rubble.com',
+      name: 'Barney Rubble',
+      url: 'http://barneyrubble.tumblr.com/',
+    };
+    const result = validatePeople(person);
+    expect(result.errorMessages).toEqual([]);
+  });
 
-	it("should validate array of person objects", () => {
-		const barney = {
-			email: "b@rubble.com",
-			name: "Barney Rubble",
-			url: "http://barneyrubble.tumblr.com/",
-		};
-		const fred = {
-			email: "fred@theflintstones.com",
-			name: "Fred Flintstone",
-			url: "https://tiktok.com/@fred",
-		};
-		const result = validatePeople([barney, fred]);
-		expect(result.errorMessages).toEqual([]);
-	});
+  it('should validate array of person objects', () => {
+    const barney = {
+      email: 'b@rubble.com',
+      name: 'Barney Rubble',
+      url: 'http://barneyrubble.tumblr.com/',
+    };
+    const fred = {
+      email: 'fred@theflintstones.com',
+      name: 'Fred Flintstone',
+      url: 'https://tiktok.com/@fred',
+    };
+    const result = validatePeople([barney, fred]);
+    expect(result.errorMessages).toEqual([]);
+  });
 
-	it("should detect invalid email format", () => {
-		const barney = {
-			email: "brubble",
-			name: "Barney Rubble",
-			url: "http://barneyrubble.tumblr.com/",
-		};
-		const fred = {
-			email: "fred@theflintstones.com",
-			name: "Fred Flintstone",
-			url: "https://tiktok.com/@fred",
-		};
-		const result = validatePeople([barney, fred]);
-		expect(result.errorMessages).toHaveLength(1);
-		expect(result.issues).toEqual([]);
-		expect(result.childResults).toHaveLength(2);
+  it('should detect invalid email format', () => {
+    const barney = {
+      email: 'brubble',
+      name: 'Barney Rubble',
+      url: 'http://barneyrubble.tumblr.com/',
+    };
+    const fred = {
+      email: 'fred@theflintstones.com',
+      name: 'Fred Flintstone',
+      url: 'https://tiktok.com/@fred',
+    };
+    const result = validatePeople([barney, fred]);
+    expect(result.errorMessages).toHaveLength(1);
+    expect(result.issues).toEqual([]);
+    expect(result.childResults).toHaveLength(2);
 
-		const barneyResult = result.childResults[0];
-		expect(barneyResult.errorMessages).toHaveLength(1);
-		expect(barneyResult.issues).toEqual([]);
-		expect(barneyResult.childResults).toHaveLength(3);
+    const barneyResult = result.childResults[0];
+    expect(barneyResult.errorMessages).toHaveLength(1);
+    expect(barneyResult.issues).toEqual([]);
+    expect(barneyResult.childResults).toHaveLength(3);
 
-		const barneyEmailResult = barneyResult.childResults[0];
-		expect(barneyEmailResult.errorMessages).toEqual([
-			"email is not valid: brubble",
-		]);
-		expect(barneyEmailResult.issues).toHaveLength(1);
-	});
+    const barneyEmailResult = barneyResult.childResults[0];
+    expect(barneyEmailResult.errorMessages).toEqual([
+      'email is not valid: brubble',
+    ]);
+    expect(barneyEmailResult.issues).toHaveLength(1);
+  });
 
-	it("should detect invalid url", () => {
-		const barney = {
-			email: "brubble@theflintstones.com",
-			name: "Barney Rubble",
-			url: "not a url",
-		};
-		const fred = {
-			email: "fred@theflintstones.com",
-			name: "Fred Flintstone",
-			url: "https://tiktok.com/@fred",
-		};
-		const result = validatePeople([barney, fred]);
-		expect(result.errorMessages).toHaveLength(1);
-		expect(result.issues).toEqual([]);
-		expect(result.childResults).toHaveLength(2);
+  it('should detect invalid url', () => {
+    const barney = {
+      email: 'brubble@theflintstones.com',
+      name: 'Barney Rubble',
+      url: 'not a url',
+    };
+    const fred = {
+      email: 'fred@theflintstones.com',
+      name: 'Fred Flintstone',
+      url: 'https://tiktok.com/@fred',
+    };
+    const result = validatePeople([barney, fred]);
+    expect(result.errorMessages).toHaveLength(1);
+    expect(result.issues).toEqual([]);
+    expect(result.childResults).toHaveLength(2);
 
-		const barneyResult = result.childResults[0];
-		expect(barneyResult.errorMessages).toHaveLength(1);
-		expect(barneyResult.issues).toEqual([]);
-		expect(barneyResult.childResults).toHaveLength(3);
+    const barneyResult = result.childResults[0];
+    expect(barneyResult.errorMessages).toHaveLength(1);
+    expect(barneyResult.issues).toEqual([]);
+    expect(barneyResult.childResults).toHaveLength(3);
 
-		const barneyUrlResult = barneyResult.childResults[2];
-		expect(barneyUrlResult.errorMessages).toEqual([
-			"url is not valid: not a url",
-		]);
-		expect(barneyUrlResult.issues).toHaveLength(1);
-	});
+    const barneyUrlResult = barneyResult.childResults[2];
+    expect(barneyUrlResult.errorMessages).toEqual([
+      'url is not valid: not a url',
+    ]);
+    expect(barneyUrlResult.issues).toHaveLength(1);
+  });
 
-	it("should detect invalid web", () => {
-		const barney = {
-			email: "brubble@theflintstones.com",
-			name: "Barney Rubble",
-			web: "not a url",
-		};
-		const fred = {
-			email: "fred@theflintstones.com",
-			name: "Fred Flintstone",
-			web: "https://tiktok.com/@fred",
-		};
-		const result = validatePeople([barney, fred]);
-		expect(result.errorMessages).toHaveLength(1);
-		expect(result.issues).toEqual([]);
-		expect(result.childResults).toHaveLength(2);
+  it('should detect invalid web', () => {
+    const barney = {
+      email: 'brubble@theflintstones.com',
+      name: 'Barney Rubble',
+      web: 'not a url',
+    };
+    const fred = {
+      email: 'fred@theflintstones.com',
+      name: 'Fred Flintstone',
+      web: 'https://tiktok.com/@fred',
+    };
+    const result = validatePeople([barney, fred]);
+    expect(result.errorMessages).toHaveLength(1);
+    expect(result.issues).toEqual([]);
+    expect(result.childResults).toHaveLength(2);
 
-		const barneyResult = result.childResults[0];
-		expect(barneyResult.errorMessages).toHaveLength(1);
-		expect(barneyResult.issues).toEqual([]);
-		expect(barneyResult.childResults).toHaveLength(3);
+    const barneyResult = result.childResults[0];
+    expect(barneyResult.errorMessages).toHaveLength(1);
+    expect(barneyResult.issues).toEqual([]);
+    expect(barneyResult.childResults).toHaveLength(3);
 
-		const barneyUrlResult = barneyResult.childResults[2];
-		expect(barneyUrlResult.errorMessages).toEqual([
-			"url is not valid: not a url",
-		]);
-		expect(barneyUrlResult.issues).toHaveLength(1);
-	});
+    const barneyUrlResult = barneyResult.childResults[2];
+    expect(barneyUrlResult.errorMessages).toEqual([
+      'url is not valid: not a url',
+    ]);
+    expect(barneyUrlResult.issues).toHaveLength(1);
+  });
 
-	it("should require name", () => {
-		let result = validatePeople(
-			"<b@rubble.com> (http://barneyrubble.tumblr.com/)",
-		);
-		expect(result.errorMessages).toEqual(["person should have a name"]);
-		expect(result.issues.length).toBe(1);
+  it('should require name', () => {
+    let result = validatePeople(
+      '<b@rubble.com> (http://barneyrubble.tumblr.com/)',
+    );
+    expect(result.errorMessages).toEqual(['person should have a name']);
+    expect(result.issues.length).toBe(1);
 
-		// @ts-expect-error testing invalid param
-		result = validatePeople({
-			email: "<b@rubble.com>",
-			url: "http://barneyrubble.tumblr.com/",
-		});
-		expect(result.errorMessages).toEqual(["person should have a name"]);
-		expect(result.issues.length).toBe(1);
-	});
+    // @ts-expect-error testing invalid param
+    result = validatePeople({
+      email: '<b@rubble.com>',
+      url: 'http://barneyrubble.tumblr.com/',
+    });
+    expect(result.errorMessages).toEqual(['person should have a name']);
+    expect(result.issues.length).toBe(1);
+  });
 
-	it("should require non-empty name", () => {
-		let result = validatePeople({
-			email: "<b@rubble.com>",
-			name: "",
-			url: "http://barneyrubble.tumblr.com/",
-		});
-		expect(result.errorMessages).toEqual(["name should not be empty"]);
-		expect(result.childResults[1].issues.length).toBe(1);
+  it('should require non-empty name', () => {
+    let result = validatePeople({
+      email: '<b@rubble.com>',
+      name: '',
+      url: 'http://barneyrubble.tumblr.com/',
+    });
+    expect(result.errorMessages).toEqual(['name should not be empty']);
+    expect(result.childResults[1].issues.length).toBe(1);
 
-		result = validatePeople({
-			email: "<b@rubble.com>",
-			name: "     ",
-			url: "http://barneyrubble.tumblr.com/",
-		});
-		expect(result.errorMessages).toEqual(["name should not be empty"]);
-		expect(result.childResults[1].issues.length).toBe(1);
-	});
+    result = validatePeople({
+      email: '<b@rubble.com>',
+      name: '     ',
+      url: 'http://barneyrubble.tumblr.com/',
+    });
+    expect(result.errorMessages).toEqual(['name should not be empty']);
+    expect(result.childResults[1].issues.length).toBe(1);
+  });
 
-	it("should report error when not a string or object", () => {
-		// @ts-expect-error - testing invalid input
-		const result = validatePeople(1234);
-		expect(result.errorMessages).toEqual([
-			"person field must be an object or a string",
-		]);
-		expect(result.issues.length).toBe(1);
-	});
+  it('should report error when not a string or object', () => {
+    // @ts-expect-error - testing invalid input
+    const result = validatePeople(1234);
+    expect(result.errorMessages).toEqual([
+      'person field must be an object or a string',
+    ]);
+    expect(result.issues.length).toBe(1);
+  });
 
-	describe(isPerson, () => {
-		it("should return true for valid person object", () => {
-			const person = { name: "Barney Rubble" };
-			expect(isPerson(person)).toBe(true);
-		});
+  describe(isPerson, () => {
+    it('should return true for valid person object', () => {
+      const person = { name: 'Barney Rubble' };
+      expect(isPerson(person)).toBe(true);
+    });
 
-		it("should return false for invalid person object", () => {
-			const notAPerson = {
-				email: "<b@rubble.com>",
-				url: "http://barneyrubble.tumblr.com/",
-			};
-			expect(isPerson(notAPerson)).toBe(false);
-		});
+    it('should return false for invalid person object', () => {
+      const notAPerson = {
+        email: '<b@rubble.com>',
+        url: 'http://barneyrubble.tumblr.com/',
+      };
+      expect(isPerson(notAPerson)).toBe(false);
+    });
 
-		it.each(["Barney Rubble", ["Barney Rubble"], 42, true, null, undefined])(
-			"should return false for something that's not an object: %s",
-			(input) => {
-				expect(isPerson(input)).toBe(false);
-			},
-		);
-	});
+    it.each(['Barney Rubble', ['Barney Rubble'], 42, true, null, undefined])(
+      "should return false for something that's not an object: %s",
+      (input) => {
+        expect(isPerson(input)).toBe(false);
+      },
+    );
+  });
 
-	describe(isPersonArray, () => {
-		it("should return true for valid person array", () => {
-			const personArray = [
-				{ name: "Barney Rubble" },
-				{ name: "Fred Flintstone" },
-			];
-			expect(isPersonArray(personArray)).toBe(true);
-		});
+  describe(isPersonArray, () => {
+    it('should return true for valid person array', () => {
+      const personArray = [
+        { name: 'Barney Rubble' },
+        { name: 'Fred Flintstone' },
+      ];
+      expect(isPersonArray(personArray)).toBe(true);
+    });
 
-		it("should return false for invalid person array", () => {
-			const notAPersonArray = [
-				{
-					email: "<b@rubble.com>",
-					url: "http://barneyrubble.tumblr.com/",
-				},
-			];
-			expect(isPersonArray(notAPersonArray)).toBe(false);
-		});
+    it('should return false for invalid person array', () => {
+      const notAPersonArray = [
+        {
+          email: '<b@rubble.com>',
+          url: 'http://barneyrubble.tumblr.com/',
+        },
+      ];
+      expect(isPersonArray(notAPersonArray)).toBe(false);
+    });
 
-		it.each([
-			"Barney Rubble",
-			{ name: "Barney Rubble" },
-			42,
-			true,
-			null,
-			undefined,
-		])("should return false for something that's not an array: %s", (input) => {
-			expect(isPersonArray(input)).toBe(false);
-		});
-	});
+    it.each([
+      'Barney Rubble',
+      { name: 'Barney Rubble' },
+      42,
+      true,
+      null,
+      undefined,
+    ])("should return false for something that's not an array: %s", (input) => {
+      expect(isPersonArray(input)).toBe(false);
+    });
+  });
 });

@@ -1,16 +1,16 @@
 {
-	"compilerOptions": {
-		"declaration": true,
-		"esModuleInterop": true,
-		"module": "nodenext",
-		"moduleResolution": "nodenext",
-		"noEmit": true,
-		"resolveJsonModule": true,
-		"rewriteRelativeImportExtensions": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"target": "ES2024",
-		"types": ["node"]
-	},
-	"include": ["src"]
+  "compilerOptions": {
+    "declaration": true,
+    "esModuleInterop": true,
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "rewriteRelativeImportExtensions": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ES2024",
+    "types": ["node"]
+  },
+  "include": ["src"]
 }

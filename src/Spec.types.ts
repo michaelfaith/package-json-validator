@@ -1,10 +1,10 @@
-import type { Result } from "./Result.ts";
+import type { Result } from './Result.ts';
 
 export type SpecMap = Record<string, FieldSpec>;
 
 interface FieldSpec {
-	recommended?: boolean;
-	required?: boolean;
-	validate: (value: unknown) => Result;
-	warning?: boolean;
+  recommended?: boolean;
+  required?: boolean;
+  validate: (value: unknown) => Result;
+  warning?: boolean;
 }
