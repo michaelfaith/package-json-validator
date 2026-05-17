@@ -97,7 +97,7 @@ export default defineConfig(
 		languageOptions: {
 			parserOptions: {
 				projectService: {
-					allowDefaultProject: ["*.config.*s"],
+					allowDefaultProject: ["*.config.*s", ".simple-git-hooks.js"],
 				},
 				tsconfigRootDir: import.meta.dirname,
 			},

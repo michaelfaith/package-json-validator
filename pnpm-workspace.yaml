@@ -1,2 +1,4 @@
+allowBuilds:
+  simple-git-hooks: true
 minimumReleaseAge: 1440
 trustPolicy: no-downgrade

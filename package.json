@@ -54,12 +54,8 @@
 		"format": "prettier .",
 		"lint": "eslint . --max-warnings 0",
 		"lint:knip": "knip",
-		"prepare": "husky",
 		"test": "vitest",
 		"typecheck": "tsc"
-	},
-	"lint-staged": {
-		"*": "prettier --ignore-unknown --write"
 	},
 	"dependencies": {
 		"npm-package-arg": "^13.0.2",
@@ -87,13 +83,13 @@
 		"eslint-plugin-perfectionist": "5.9.0",
 		"eslint-plugin-regexp": "3.1.0",
 		"eslint-plugin-yml": "3.3.0",
-		"husky": "9.1.7",
 		"knip": "6.13.0",
-		"lint-staged": "17.0.2",
 		"prettier": "3.8.0",
 		"prettier-plugin-curly": "0.4.0",
 		"prettier-plugin-packagejson": "3.0.0",
 		"prettier-plugin-sh": "0.18.0",
+		"pretty-quick": "^4.2.2",
+		"simple-git-hooks": "^2.13.1",
 		"tsdown": "0.22.0",
 		"typescript": "6.0.3",
 		"typescript-eslint": "8.59.0",

@@ -22,7 +22,7 @@ npm install package-json-validator
 ```
 
 ```js
-import { validate } from "package-json-validator";
+import { validate } from 'package-json-validator';
 
 validate(/* ... */);
 ```
@@ -82,8 +82,8 @@ any violations are found.
 - `options` is an object with the following:
   ```ts
   interface Options {
-  	recommendations?: boolean; // show recommendations
-  	warnings?: boolean; // show warnings
+    recommendations?: boolean; // show recommendations
+    warnings?: boolean; // show warnings
   }
   ```
 
@@ -92,11 +92,11 @@ any violations are found.
 Example using an object:
 
 ```js
-import { validate } from "package-json-validator";
+import { validate } from 'package-json-validator';
 
 const packageData = {
-	name: "my-package",
-	version: "1.2.3",
+  name: 'my-package',
+  version: '1.2.3',
 };
 
 validate(packageData);
@@ -105,41 +105,41 @@ validate(packageData);
 Example using a string:
 
 ```js
-import { validate } from "package-json-validator";
+import { validate } from 'package-json-validator';
 
 const text = JSON.stringify({
-	name: "packageJsonValidator",
-	version: "0.1.0",
-	private: true,
-	dependencies: {
-		"date-fns": "^2.29.3",
-		install: "^0.13.0",
-		react: "^18.2.0",
-		"react-chartjs-2": "^5.0.1",
-		"react-dom": "^18.2.0",
-		"react-material-ui-carousel": "^3.4.2",
-		"react-multi-carousel": "^2.8.2",
-		"react-redux": "^8.0.5",
-		"react-router-dom": "^6.4.3",
-		"react-scripts": "5.0.1",
-		redux: "^4.2.0",
-		"styled-components": "^5.3.6",
-		"web-vitals": "^2.1.4",
-	},
-	scripts: {
-		start: "react-scripts start",
-	},
-	eslintConfig: {
-		extends: ["react-app", "react-app/jest"],
-	},
-	browserslist: {
-		production: [">0.2%", "not dead", "not op_mini all"],
-		development: [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version",
-		],
-	},
+  name: 'packageJsonValidator',
+  version: '0.1.0',
+  private: true,
+  dependencies: {
+    'date-fns': '^2.29.3',
+    install: '^0.13.0',
+    react: '^18.2.0',
+    'react-chartjs-2': '^5.0.1',
+    'react-dom': '^18.2.0',
+    'react-material-ui-carousel': '^3.4.2',
+    'react-multi-carousel': '^2.8.2',
+    'react-redux': '^8.0.5',
+    'react-router-dom': '^6.4.3',
+    'react-scripts': '5.0.1',
+    redux: '^4.2.0',
+    'styled-components': '^5.3.6',
+    'web-vitals': '^2.1.4',
+  },
+  scripts: {
+    start: 'react-scripts start',
+  },
+  eslintConfig: {
+    extends: ['react-app', 'react-app/jest'],
+  },
+  browserslist: {
+    production: ['>0.2%', 'not dead', 'not op_mini all'],
+    development: [
+      'last 1 chrome version',
+      'last 1 firefox version',
+      'last 1 safari version',
+    ],
+  },
 });
 
 const data = validate(text);
@@ -173,41 +173,41 @@ See [Result Types](#result-types) for more details about this construct.
 If you'd like to opt-in to the new behavior before it becomes the default experience, pass `true` into the second parameter.
 
 ```ts
-import { validate } from "package-json-validator";
+import { validate } from 'package-json-validator';
 
 const data = {
-	name: "packageJsonValidator",
-	version: "0.1.0",
-	private: true,
-	dependencies: {
-		"date-fns": "^2.29.3",
-		install: "^0.13.0",
-		react: "^18.2.0",
-		"react-chartjs-2": "^5.0.1",
-		"react-dom": "^18.2.0",
-		"react-material-ui-carousel": "^3.4.2",
-		"react-multi-carousel": "^2.8.2",
-		"react-redux": "^8.0.5",
-		"react-router-dom": "^6.4.3",
-		"react-scripts": "5.0.1",
-		redux: "^4.2.0",
-		"styled-components": "^5.3.6",
-		"web-vitals": "^2.1.4",
-	},
-	scripts: {
-		start: "react-scripts start",
-	},
-	eslintConfig: {
-		extends: ["react-app", "react-app/jest"],
-	},
-	browserslist: {
-		production: [">0.2%", "not dead", "not op_mini all"],
-		development: [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version",
-		],
-	},
+  name: 'packageJsonValidator',
+  version: '0.1.0',
+  private: true,
+  dependencies: {
+    'date-fns': '^2.29.3',
+    install: '^0.13.0',
+    react: '^18.2.0',
+    'react-chartjs-2': '^5.0.1',
+    'react-dom': '^18.2.0',
+    'react-material-ui-carousel': '^3.4.2',
+    'react-multi-carousel': '^2.8.2',
+    'react-redux': '^8.0.5',
+    'react-router-dom': '^6.4.3',
+    'react-scripts': '5.0.1',
+    redux: '^4.2.0',
+    'styled-components': '^5.3.6',
+    'web-vitals': '^2.1.4',
+  },
+  scripts: {
+    start: 'react-scripts start',
+  },
+  eslintConfig: {
+    extends: ['react-app', 'react-app/jest'],
+  },
+  browserslist: {
+    production: ['>0.2%', 'not dead', 'not op_mini all'],
+    development: [
+      'last 1 chrome version',
+      'last 1 firefox version',
+      'last 1 safari version',
+    ],
+  },
 };
 
 let result = validate(data, true);
@@ -241,24 +241,24 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateAuthor } from "package-json-validator";
+import { validateAuthor } from 'package-json-validator';
 
 const packageData = {
-	author: {
-		email: "b@rubble.com",
-		name: "Barney Rubble",
-		url: "http://barnyrubble.tumblr.com/",
-	},
+  author: {
+    email: 'b@rubble.com',
+    name: 'Barney Rubble',
+    url: 'http://barnyrubble.tumblr.com/',
+  },
 };
 
 const result = validateAuthor(packageData.author);
 ```
 
 ```ts
-import { validateAuthor } from "package-json-validator";
+import { validateAuthor } from 'package-json-validator';
 
 const packageData = {
-	author: "Barney Rubble <b@rubble.com> (http://barnyrubble.tumblr.com/)",
+  author: 'Barney Rubble <b@rubble.com> (http://barnyrubble.tumblr.com/)',
 };
 
 const result = validateAuthor(packageData.author);
@@ -278,23 +278,23 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateBin } from "package-json-validator";
+import { validateBin } from 'package-json-validator';
 
 const packageData = {
-	bin: "./my-cli.js",
+  bin: './my-cli.js',
 };
 
 const result = validateBin(packageData.bin);
 ```
 
 ```ts
-import { validateBin } from "package-json-validator";
+import { validateBin } from 'package-json-validator';
 
 const packageData = {
-	bin: {
-		"my-cli": "./my-cli.js",
-		"my-dev-cli": "./dev/my-cli.js",
-	},
+  bin: {
+    'my-cli': './my-cli.js',
+    'my-dev-cli': './dev/my-cli.js',
+  },
 };
 
 const result = validateBin(packageData.bin);
@@ -309,10 +309,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateBrowser } from "package-json-validator";
+import { validateBrowser } from 'package-json-validator';
 
 const packageData = {
-	browser: "index.umd.js",
+  browser: 'index.umd.js',
 };
 
 const result = validateBrowser(packageData.browser);
@@ -333,13 +333,13 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateBugs } from "package-json-validator";
+import { validateBugs } from 'package-json-validator';
 
 const packageData = {
-	bugs: {
-		email: "example@npmjs.com",
-		url: "https://github.com/npm/example/issues",
-	},
+  bugs: {
+    email: 'example@npmjs.com',
+    url: 'https://github.com/npm/example/issues',
+  },
 };
 
 const result = validateBugs(packageData.bugs);
@@ -358,10 +358,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateBundleDependencies } from "package-json-validator";
+import { validateBundleDependencies } from 'package-json-validator';
 
 const packageData = {
-	bundleDependencies: ["renderized", "super-streams"],
+  bundleDependencies: ['renderized', 'super-streams'],
 };
 
 const result = validateBundleDependencies(packageData.bundleDependencies);
@@ -377,14 +377,14 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateConfig } from "package-json-validator";
+import { validateConfig } from 'package-json-validator';
 
 const packageData = {
-	config: {
-		debug: true,
-		host: "localhost",
-		port: 8080,
-	},
+  config: {
+    debug: true,
+    host: 'localhost',
+    port: 8080,
+  },
 };
 
 const result = validateConfig(packageData.config);
@@ -404,16 +404,16 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateContributors } from "package-json-validator";
+import { validateContributors } from 'package-json-validator';
 
 const packageData = {
-	contributors: [
-		{
-			email: "b@rubble.com",
-			name: "Barney Rubble",
-			url: "http://barnyrubble.tumblr.com/",
-		},
-	],
+  contributors: [
+    {
+      email: 'b@rubble.com',
+      name: 'Barney Rubble',
+      url: 'http://barnyrubble.tumblr.com/',
+    },
+  ],
 };
 
 const result = validateContributors(packageData.contributors);
@@ -437,10 +437,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateCpu } from "package-json-validator";
+import { validateCpu } from 'package-json-validator';
 
 const packageData = {
-	cpu: ["x64", "ia32"],
+  cpu: ['x64', 'ia32'],
 };
 
 const result = validateCpu(packageData.cpu);
@@ -462,14 +462,14 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateDependencies } from "package-json-validator";
+import { validateDependencies } from 'package-json-validator';
 
 const packageData = {
-	dependencies: {
-		"@catalog/package": "catalog:",
-		"@my/package": "^1.2.3",
-		"@workspace/package": "workspace:^",
-	},
+  dependencies: {
+    '@catalog/package': 'catalog:',
+    '@my/package': '^1.2.3',
+    '@workspace/package': 'workspace:^',
+  },
 };
 
 const result = validateDependencies(packageData.dependencies);
@@ -484,10 +484,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateDescription } from "package-json-validator";
+import { validateDescription } from 'package-json-validator';
 
 const packageData = {
-	description: "The Fragile",
+  description: 'The Fragile',
 };
 
 const result = validateDescription(packageData.description);
@@ -507,13 +507,13 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateDirectories } from "package-json-validator";
+import { validateDirectories } from 'package-json-validator';
 
 const packageData = {
-	directories: {
-		bin: "dist/bin",
-		man: "docs",
-	},
+  directories: {
+    bin: 'dist/bin',
+    man: 'docs',
+  },
 };
 
 const result = validateDirectories(packageData.directories);
@@ -540,21 +540,21 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateDevEngines } from "package-json-validator";
+import { validateDevEngines } from 'package-json-validator';
 
 const packageData = {
-	devEngines: {
-		runtime: {
-			name: "node",
-			version: "^20.19.0 || >=22.12.0",
-			onFail: "download",
-		},
-		packageManager: {
-			name: "pnpm",
-			version: "^10.0.0",
-			onFail: "error",
-		},
-	},
+  devEngines: {
+    runtime: {
+      name: 'node',
+      version: '^20.19.0 || >=22.12.0',
+      onFail: 'download',
+    },
+    packageManager: {
+      name: 'pnpm',
+      version: '^10.0.0',
+      onFail: 'error',
+    },
+  },
 };
 
 const result = validateDevEngines(packageData.devEngines);
@@ -578,12 +578,12 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateEngines } from "package-json-validator";
+import { validateEngines } from 'package-json-validator';
 
 const packageData = {
-	engines: {
-		node: "^20.19.0 || >=22.12.0",
-	},
+  engines: {
+    node: '^20.19.0 || >=22.12.0',
+  },
 };
 
 const result = validateEngines(packageData.engines);
@@ -603,29 +603,29 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateExports } from "package-json-validator";
+import { validateExports } from 'package-json-validator';
 
 const packageData = {
-	exports: "./index.js",
+  exports: './index.js',
 };
 
 const result = validateExports(packageData.exports);
 ```
 
 ```ts
-import { validateExports } from "package-json-validator";
+import { validateExports } from 'package-json-validator';
 
 const packageData = {
-	exports: {
-		".": {
-			types: "./index.d.ts",
-			default: "./index.js",
-		},
-		"./secondary": {
-			types: "./secondary.d.ts",
-			default: "./secondary.js",
-		},
-	},
+  exports: {
+    '.': {
+      types: './index.d.ts',
+      default: './index.js',
+    },
+    './secondary': {
+      types: './secondary.d.ts',
+      default: './secondary.js',
+    },
+  },
 };
 
 const result = validateExports(packageData.exports);
@@ -644,10 +644,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateFiles } from "package-json-validator";
+import { validateFiles } from 'package-json-validator';
 
 const packageData = {
-	files: ["dist", "CHANGELOG.md"],
+  files: ['dist', 'CHANGELOG.md'],
 };
 
 const result = validateFiles(packageData.files);
@@ -667,20 +667,20 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateFunding } from "package-json-validator";
+import { validateFunding } from 'package-json-validator';
 
 const packageData = {
-	funding: [
-		{
-			type: "individual",
-			url: "http://npmjs.com/donate",
-		},
-		"http://npmjs.com/donate-also",
-		{
-			type: "patreon",
-			url: "https://www.patreon.com/user",
-		},
-	],
+  funding: [
+    {
+      type: 'individual',
+      url: 'http://npmjs.com/donate',
+    },
+    'http://npmjs.com/donate-also',
+    {
+      type: 'patreon',
+      url: 'https://www.patreon.com/user',
+    },
+  ],
 };
 
 const result = validateFunding(packageData.funding);
@@ -696,10 +696,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateGypfile } from "package-json-validator";
+import { validateGypfile } from 'package-json-validator';
 
 const packageData = {
-	gypfile: false,
+  gypfile: false,
 };
 
 const result = validateGypfile(packageData.gypfile);
@@ -714,10 +714,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateHomepage } from "package-json-validator";
+import { validateHomepage } from 'package-json-validator';
 
 const packageData = {
-	homepage: "The Fragile",
+  homepage: 'The Fragile',
 };
 
 const result = validateDescription(packageData.homepage);
@@ -736,10 +736,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateKeywords } from "package-json-validator";
+import { validateKeywords } from 'package-json-validator';
 
 const packageData = {
-	keywords: ["eslint", "package.json"],
+  keywords: ['eslint', 'package.json'],
 };
 
 const result = validateKeywords(packageData.keywords);
@@ -755,10 +755,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateLibc } from "package-json-validator";
+import { validateLibc } from 'package-json-validator';
 
 const packageData = {
-	libc: "glibc",
+  libc: 'glibc',
 };
 
 const result = validateLibc(packageData.man);
@@ -774,10 +774,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateLicense } from "package-json-validator";
+import { validateLicense } from 'package-json-validator';
 
 const packageData = {
-	license: "MIT",
+  license: 'MIT',
 };
 
 const result = validateLicense(packageData.license);
@@ -792,10 +792,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateMain } from "package-json-validator";
+import { validateMain } from 'package-json-validator';
 
 const packageData = {
-	main: "index.js",
+  main: 'index.js',
 };
 
 const result = validateMain(packageData.main);
@@ -814,10 +814,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateMan } from "package-json-validator";
+import { validateMan } from 'package-json-validator';
 
 const packageData = {
-	man: ["./man/foo.1", "./man/bar.1"],
+  man: ['./man/foo.1', './man/bar.1'],
 };
 
 const result = validateMan(packageData.man);
@@ -833,10 +833,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateName } from "package-json-validator";
+import { validateName } from 'package-json-validator';
 
 const packageData = {
-	name: "some-package",
+  name: 'some-package',
 };
 
 const result = validateName(packageData.name);
@@ -860,10 +860,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateOs } from "package-json-validator";
+import { validateOs } from 'package-json-validator';
 
 const packageData = {
-	os: ["linux", "win32"],
+  os: ['linux', 'win32'],
 };
 
 const result = validateOs(packageData.os);
@@ -880,10 +880,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validatePackageManager } from "package-json-validator";
+import { validatePackageManager } from 'package-json-validator';
 
 const packageData = {
-	packageManager: "pnpm@10.3.0",
+  packageManager: 'pnpm@10.3.0',
 };
 
 const result = validatePackageManager(packageData.packageManager);
@@ -900,14 +900,14 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validatePeerDependenciesMeta } from "package-json-validator";
+import { validatePeerDependenciesMeta } from 'package-json-validator';
 
 const packageData = {
-	peerDependenciesMeta: {
-		react: {
-			optional: true,
-		},
-	},
+  peerDependenciesMeta: {
+    react: {
+      optional: true,
+    },
+  },
 };
 
 const result = validatePeerDependenciesMeta(packageData.peerDependenciesMeta);
@@ -923,10 +923,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validatePrivate } from "package-json-validator";
+import { validatePrivate } from 'package-json-validator';
 
 const packageData = {
-	private: true,
+  private: true,
 };
 
 const result = validatePrivate(packageData.private);
@@ -960,12 +960,12 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validatePublishConfig } from "package-json-validator";
+import { validatePublishConfig } from 'package-json-validator';
 
 const packageData = {
-	publishConfig: {
-		provenance: true,
-	},
+  publishConfig: {
+    provenance: true,
+  },
 };
 
 const result = validatePublishConfig(packageData.publishConfig);
@@ -987,24 +987,24 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateRepository } from "package-json-validator";
+import { validateRepository } from 'package-json-validator';
 
 const packageData = {
-	repository: {
-		type: "git",
-		url: "git+https://github.com/michaelfaith/package-json-validator.git",
-		directory: "packages/package-json-validator",
-	},
+  repository: {
+    type: 'git',
+    url: 'git+https://github.com/michaelfaith/package-json-validator.git',
+    directory: 'packages/package-json-validator',
+  },
 };
 
 const result = validateRepository(packageData.repository);
 ```
 
 ```ts
-import { validateRepository } from "package-json-validator";
+import { validateRepository } from 'package-json-validator';
 
 const packageData = {
-	repository: "github:michaelfaith/package-json-validator",
+  repository: 'github:michaelfaith/package-json-validator',
 };
 
 const result = validateRepository(packageData.repository);
@@ -1024,14 +1024,14 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateScripts } from "package-json-validator";
+import { validateScripts } from 'package-json-validator';
 
 const packageData = {
-	scripts: {
-		build: "rollup -c",
-		lint: "eslint .",
-		test: "vitest",
-	},
+  scripts: {
+    build: 'rollup -c',
+    lint: 'eslint .',
+    test: 'vitest',
+  },
 };
 
 const result = validateScripts(packageData.scripts);
@@ -1050,10 +1050,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateSideEffects } from "package-json-validator";
+import { validateSideEffects } from 'package-json-validator';
 
 const packageData = {
-	sideEffects: false,
+  sideEffects: false,
 };
 
 const result = validateSideEffects(packageData.sideEffects);
@@ -1072,10 +1072,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateType } from "package-json-validator";
+import { validateType } from 'package-json-validator';
 
 const packageData = {
-	type: "module",
+  type: 'module',
 };
 
 const result = validateType(packageData.type);
@@ -1091,10 +1091,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateVersion } from "package-json-validator";
+import { validateVersion } from 'package-json-validator';
 
 const packageData = {
-	version: "1.2.3",
+  version: '1.2.3',
 };
 
 const result = validateVersion(packageData.version);
@@ -1113,10 +1113,10 @@ It returns a `Result` object (See [Result Types](#result-types)).
 #### Examples
 
 ```ts
-import { validateWorkspaces } from "package-json-validator";
+import { validateWorkspaces } from 'package-json-validator';
 
 const packageData = {
-	workspaces: ["./app", "./packages/*"],
+  workspaces: ['./app', './packages/*'],
 };
 
 const result = validateWorkspaces(packageData.cpu);
