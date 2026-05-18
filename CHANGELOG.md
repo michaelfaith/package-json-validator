@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/michaelfaith/package-json-validator/compare/v1.5.1...v1.5.2) (2026-05-18)
+
+
+### 🩹 Bug Fixes
+
+* **deps:** update dependency npm-package-arg to v14 ([#884](https://github.com/michaelfaith/package-json-validator/issues/884)) ([dc9747f](https://github.com/michaelfaith/package-json-validator/commit/dc9747f6b786a2cc974d951d32ac699c6fb68acc))
+
 ## [1.5.1](https://github.com/michaelfaith/package-json-validator/compare/v1.5.0...v1.5.1) (2026-05-02)
 
 
