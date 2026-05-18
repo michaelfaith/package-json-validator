@@ -58,7 +58,7 @@
     "typecheck": "tsc"
   },
   "dependencies": {
-    "npm-package-arg": "^13.0.2",
+    "npm-package-arg": "^14.0.0",
     "semver": "^7.7.2",
     "validate-npm-package-license": "^3.0.4",
     "validate-npm-package-name": "^7.0.0"
