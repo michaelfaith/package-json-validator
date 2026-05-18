@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       npm-package-arg:
-        specifier: ^14.0.0
-        version: 14.0.0
+        specifier: ^13.0.2
+        version: 13.0.2
       semver:
         specifier: ^7.7.2
         version: 7.8.0
@@ -1199,10 +1199,6 @@ packages:
   hookable@6.1.1:
     resolution: {integrity: sha512-U9LYDy1CwhMCnprUfeAZWZGByVbhd54hwepegYTK7Pi5NvqEj63ifz5z+xukznehT7i6NIZRu89Ay1AZmRsLEQ==}
 
-  hosted-git-info@10.1.0:
-    resolution: {integrity: sha512-GquyT8u4Y0JkvqQNuKanSa2z5tYEjPLqHeYW8yjJ3v7DTNvofVBctIVBh6TToHELghuaQAVh8LkVF0AqqZS01w==}
-    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
-
   hosted-git-info@9.0.3:
     resolution: {integrity: sha512-Hc+ghLoSt6QaYZUv0WBiIvmMDZuZZ7oaDvdH8MbfOO4lOsxdXLEvuC6ePoGs9H1X9oCLyq6+NVN0MKqD+ydxyg==}
     engines: {node: ^20.17.0 || >=22.9.0}
@@ -1558,10 +1554,6 @@ packages:
     resolution: {integrity: sha512-IciCE3SY3uE84Ld8WZU23gAPPV9rIYod4F+rc+vJ7h7cwAJt9Vk6TVsK60ry7Uj3SRS3bqRRIGuTp9YVlk6WNA==}
     engines: {node: ^20.17.0 || >=22.9.0}
 
-  npm-package-arg@14.0.0:
-    resolution: {integrity: sha512-69XQh3k+dtGa1p+7RaR57IuG3rCko96xr/nUfN4yDYBXbTYICiWcOpsFKLN2GtGE9cyIljE+f1exnaYt9MvM+Q==}
-    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
-
   object-deep-merge@2.0.0:
     resolution: {integrity: sha512-3DC3UMpeffLTHiuXSy/UG4NOIYTLlY9u3V82+djSCLYClWobZiS4ivYzpIUWrRY/nfsJ8cWsKyG3QfyLePmhvg==}
 
@@ -1658,10 +1650,6 @@ packages:
   proc-log@6.1.0:
     resolution: {integrity: sha512-iG+GYldRf2BQ0UDUAd6JQ/RwzaQy6mXmsk/IzlYyal4A4SNFw54MeH4/tLkF4I5WoWG9SQwuqWzS99jaFQHBuQ==}
     engines: {node: ^20.17.0 || >=22.9.0}
-
-  proc-log@7.0.0:
-    resolution: {integrity: sha512-FYgfaA69XZ93zaXLoMNQ+ViDXGGBgR8aLh03txzcFhV+9xOXx7+8DLCULrKKpR9+GsH9ZfHm82aSUPpozX0Ztg==}
-    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
   punycode@2.3.1:
     resolution: {integrity: sha512-vYt7UD1U9Wg6138shLtLOvdAu+8DsC/ilFtEVHcH+wydcSpNE20AfSOduf6MkRFahL5FY7X1oU7nKVZFtfq8Fg==}
@@ -1914,10 +1902,6 @@ packages:
   validate-npm-package-name@7.0.2:
     resolution: {integrity: sha512-hVDIBwsRruT73PbK7uP5ebUt+ezEtCmzZz3F59BSr2F6OVFnJ/6h8liuvdLrQ88Xmnk6/+xGGuq+pG9WwTuy3A==}
     engines: {node: ^20.17.0 || >=22.9.0}
-
-  validate-npm-package-name@8.0.0:
-    resolution: {integrity: sha512-SCv6OOV6Xj2/3cXy3dGmADluJTNcL3o7hZAglNPTe+WYuEuvxgJzxPrSDLZhF+CwyQOubqgecjMmTJGMVLWjYQ==}
-    engines: {node: ^22.22.2 || ^24.15.0 || >=26.0.0}
 
   vite@8.0.13:
     resolution: {integrity: sha512-MFtjBYgzmSxmgA4RAfjIyXWpGe1oALnjgUTzzV7QLx/TKxCzjtMH6Fd9/eVK+5Fg1qNoz5VAwsmMs/NofrmJvw==}
@@ -3028,10 +3012,6 @@ snapshots:
 
   hookable@6.1.1: {}
 
-  hosted-git-info@10.1.0:
-    dependencies:
-      lru-cache: 11.3.6
-
   hosted-git-info@9.0.3:
     dependencies:
       lru-cache: 11.3.6
@@ -3553,13 +3533,6 @@ snapshots:
       semver: 7.8.0
       validate-npm-package-name: 7.0.2
 
-  npm-package-arg@14.0.0:
-    dependencies:
-      hosted-git-info: 10.1.0
-      proc-log: 7.0.0
-      semver: 7.8.0
-      validate-npm-package-name: 8.0.0
-
   object-deep-merge@2.0.0: {}
 
   obug@2.1.1: {}
@@ -3693,8 +3666,6 @@ snapshots:
       tslib: 2.8.1
 
   proc-log@6.1.0: {}
-
-  proc-log@7.0.0: {}
 
   punycode@2.3.1: {}
 
@@ -3944,8 +3915,6 @@ snapshots:
       spdx-expression-parse: 3.0.1
 
   validate-npm-package-name@7.0.2: {}
-
-  validate-npm-package-name@8.0.0: {}
 
   vite@8.0.13(@types/node@24.12.0)(jiti@2.7.0)(yaml@2.9.0):
     dependencies:
