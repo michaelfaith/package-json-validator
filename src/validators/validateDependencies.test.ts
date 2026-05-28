@@ -24,6 +24,7 @@ describe(validateDependencies, () => {
       'jsr-package': 'jsr:^1.0.0',
       'jsr-package-exact': 'jsr:1.0.0',
       'jsr-scoped-package': 'jsr:@valibot/valibot@^1.0.0',
+      link: 'link:../relative/path',
       lt: '<1.2.3',
       lteq: '<=1.2.3',
       patch: 'patch:some-package@^1.2.3',

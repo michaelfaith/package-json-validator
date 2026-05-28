@@ -54,10 +54,11 @@ const isUnpublished = (
 };
 
 const PACKAGE_MANAGER_SPECIFIC_PROTOCOLS = [
-  'jsr', // https://jsr.io/docs/using-packages
   'catalog', // https://pnpm.io/next/catalogs
-  'workspace', // https://pnpm.io/next/workspaces#workspace-protocol-workspace
+  'jsr', // https://jsr.io/docs/using-packages
+  'link', // https://yarnpkg.com/protocol/link
   'patch', // https://yarnpkg.com/protocol/patch
+  'workspace', // https://pnpm.io/next/workspaces#workspace-protocol-workspace
 ];
 
 /**
