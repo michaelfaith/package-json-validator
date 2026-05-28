@@ -401,6 +401,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "hh-lohmann",
+      "name": "hh.lohmann",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6406712?v=4",
+      "profile": "https://github.com/hh-lohmann",
+      "contributions": [
+        "doc"
+      ]
     }
   ],
   "contributorsPerLine": 7,
