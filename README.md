@@ -30,7 +30,7 @@ validate(/* ... */);
 For tools that run these validations, see:
 
 - [eslint-plugin-package-json](https://github.com/michaelfaith/eslint-plugin-package-json): to detect all violations and keep them warned against via ESLint
-- [package-json-validator-cli](https://github.com/michaelfaith/package-json-validator-cli): if you want just a one-shot tool to run in the CLI
+- [package-json-validator-cli](https://github.com/JoshuaKGoldberg/package-json-validator-cli): if you want just a one-shot tool to run in the CLI
 
 ## Result Types
 
