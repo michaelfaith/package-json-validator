@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.2](https://github.com/michaelfaith/package-json-validator/compare/v1.5.1...v1.5.2) (2026-05-28)
+
+
+### 🩹 Bug Fixes
+
+* support `link` protocol in `validateDependencies` ([#900](https://github.com/michaelfaith/package-json-validator/issues/900)) ([b5e140b](https://github.com/michaelfaith/package-json-validator/commit/b5e140b2f0dbe8da0e27b7cf6dc8099aae9e475b))
+
 ## [1.5.1](https://github.com/michaelfaith/package-json-validator/compare/v1.5.0...v1.5.1) (2026-05-02)
 
 
