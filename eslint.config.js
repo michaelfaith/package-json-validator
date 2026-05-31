@@ -46,6 +46,10 @@ export default defineConfig(
       // at the transpiled js file, it treats usage on the ts src as a violation.
       'n/hashbang': 'off',
 
+      // Covered by Prettier
+      'perfectionist/sort-imports': 'off',
+      'perfectionist/sort-named-imports': 'off',
+
       // Stylistic concerns that don't interfere with Prettier
       'logical-assignment-operators': [
         'error',
@@ -55,9 +59,6 @@ export default defineConfig(
       'no-useless-rename': 'error',
       'object-shorthand': 'error',
       'operator-assignment': 'error',
-
-      // Covered by prettier
-      'perfectionist/sort-imports': 'off',
     },
     settings: {
       perfectionist: { partitionByComment: true, type: 'natural' },
