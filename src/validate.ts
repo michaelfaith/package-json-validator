@@ -1,6 +1,5 @@
-import type { SpecMap } from './Spec.types.ts';
-
 import { Result } from './Result.ts';
+import type { SpecMap } from './Spec.types.ts';
 import {
   validateAuthor,
   validateBin,

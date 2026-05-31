@@ -55,6 +55,9 @@ export default defineConfig(
       'no-useless-rename': 'error',
       'object-shorthand': 'error',
       'operator-assignment': 'error',
+
+      // Covered by prettier
+      'perfectionist/sort-imports': 'off',
     },
     settings: {
       perfectionist: { partitionByComment: true, type: 'natural' },
