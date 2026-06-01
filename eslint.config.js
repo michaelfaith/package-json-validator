@@ -1,11 +1,12 @@
 import comments from '@eslint-community/eslint-plugin-eslint-comments/configs';
 import eslint from '@eslint/js';
+import eslintJson from '@eslint/json';
 import markdown from '@eslint/markdown';
 import vitest from '@vitest/eslint-plugin';
 import jsdoc from 'eslint-plugin-jsdoc';
 import jsonc from 'eslint-plugin-jsonc';
 import n from 'eslint-plugin-n';
-import packageJson from 'eslint-plugin-package-json';
+import packageJson from 'eslint-plugin-package-json/experimental';
 import perfectionist from 'eslint-plugin-perfectionist';
 import * as regexp from 'eslint-plugin-regexp';
 import yml from 'eslint-plugin-yml';
@@ -80,8 +81,11 @@ export default defineConfig(
     files: ['**/*.json', '**/*.jsonc'],
   },
   {
-    extends: [packageJson.configs['recommended-publishable']],
+    extends: [packageJson.configs.recommended],
     files: ['package.json'],
+    plugins: {
+      json: eslintJson,
+    },
   },
   {
     extends: [markdown.configs.recommended],
