@@ -203,7 +203,7 @@ export function validate(data: object | string, useNewReturnType: true): Result;
 export function validate(
   data: object | string,
   optionsOrUseNewReturnType: boolean | ValidationOptions = {},
-) {
+): LegacyValidationOutput | Result {
   // Should we use the new return type?
   if (typeof optionsOrUseNewReturnType === 'boolean') {
     if (optionsOrUseNewReturnType) {
