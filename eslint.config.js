@@ -111,6 +111,10 @@ export default defineConfig(
       },
     },
     rules: {
+      '@typescript-eslint/consistent-type-exports': 'error',
+      '@typescript-eslint/consistent-type-imports': 'error',
+      '@typescript-eslint/explicit-module-boundary-types': 'error',
+
       '@typescript-eslint/no-deprecated': 'off',
       '@typescript-eslint/no-dynamic-delete': 'off',
       '@typescript-eslint/restrict-template-expressions': 'off',
