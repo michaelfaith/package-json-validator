@@ -117,6 +117,8 @@ export default defineConfig(
 
       '@typescript-eslint/no-deprecated': 'off',
       '@typescript-eslint/no-dynamic-delete': 'off',
+      // incompatible with `isolatedDeclarations`
+      '@typescript-eslint/no-inferrable-types': 'off',
       '@typescript-eslint/restrict-template-expressions': 'off',
 
       // TODO: Eventually clean this up
