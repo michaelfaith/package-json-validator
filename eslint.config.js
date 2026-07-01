@@ -34,22 +34,18 @@ export default defineConfig(
       eslint.configs.recommended,
       comments.recommended,
       n.configs['flat/recommended'],
-      perfectionist.configs['recommended-natural'],
       regexp.configs['flat/recommended'],
     ],
     files: JS_TS_FILES,
+    plugins: {
+      perfectionist,
+    },
     rules: {
       '@typescript-eslint/consistent-type-imports': 'error',
       'n/no-missing-import': 'off',
 
-      // Using a ts bin file throws this rule off.
-      // It uses the package.json as a source of truth, and since the package points
-      // at the transpiled js file, it treats usage on the ts src as a violation.
-      'n/hashbang': 'off',
-
-      // Covered by Prettier
-      'perfectionist/sort-imports': 'off',
-      'perfectionist/sort-named-imports': 'off',
+      'perfectionist/sort-exports': 'error',
+      'perfectionist/sort-union-types': 'error',
 
       // Stylistic concerns that don't interfere with Prettier
       'logical-assignment-operators': [
