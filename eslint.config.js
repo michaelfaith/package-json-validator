@@ -44,11 +44,6 @@ export default defineConfig(
       '@typescript-eslint/consistent-type-imports': 'error',
       'n/no-missing-import': 'off',
 
-      // Using a ts bin file throws this rule off.
-      // It uses the package.json as a source of truth, and since the package points
-      // at the transpiled js file, it treats usage on the ts src as a violation.
-      'n/hashbang': 'off',
-
       'perfectionist/sort-exports': 'error',
       'perfectionist/sort-union-types': 'error',
 

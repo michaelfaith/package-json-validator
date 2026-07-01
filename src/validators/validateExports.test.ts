@@ -1,4 +1,3 @@
-/* eslint-disable perfectionist/sort-objects */
 import { describe, expect, it } from 'vitest';
 
 import { validateExports } from './validateExports.ts';
@@ -185,4 +184,3 @@ describe(validateExports, () => {
     expect(result.issues).toHaveLength(1);
   });
 });
-/* eslint-enable perfectionist/sort-objects */
