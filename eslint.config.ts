@@ -3,6 +3,7 @@ import eslint from '@eslint/js';
 import eslintJson from '@eslint/json';
 import markdown from '@eslint/markdown';
 import vitest from '@vitest/eslint-plugin';
+import type { Linter } from 'eslint';
 import jsdoc from 'eslint-plugin-jsdoc';
 import jsonc from 'eslint-plugin-jsonc';
 import n from 'eslint-plugin-n';
@@ -17,7 +18,7 @@ const JS_FILES = ['**/*.js'];
 const TS_FILES = ['**/*.ts'];
 const JS_TS_FILES = [...JS_FILES, ...TS_FILES];
 
-export default defineConfig(
+const config: Linter.Config[] = defineConfig(
   {
     ignores: [
       '**/*.snap',
@@ -35,17 +36,36 @@ export default defineConfig(
       comments.recommended,
       n.configs['flat/recommended'],
       regexp.configs['flat/recommended'],
+      tseslint.configs.strictTypeChecked,
+      tseslint.configs.stylisticTypeChecked,
     ],
     files: JS_TS_FILES,
+    languageOptions: {
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: ['.simple-git-hooks.js'],
+        },
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
     plugins: {
       perfectionist,
     },
     rules: {
+      '@typescript-eslint/consistent-type-exports': 'error',
       '@typescript-eslint/consistent-type-imports': 'error',
-      'n/no-missing-import': 'off',
+      '@typescript-eslint/explicit-module-boundary-types': 'error',
 
-      'perfectionist/sort-exports': 'error',
-      'perfectionist/sort-union-types': 'error',
+      '@typescript-eslint/no-dynamic-delete': 'off',
+
+      // incompatible with `isolatedDeclarations`
+      '@typescript-eslint/no-inferrable-types': 'off',
+      '@typescript-eslint/restrict-template-expressions': 'off',
+
+      // TODO: Eventually clean this up
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+
+      'n/no-missing-import': 'off',
 
       // Stylistic concerns that don't interfere with Prettier
       'logical-assignment-operators': [
@@ -56,9 +76,11 @@ export default defineConfig(
       'no-useless-rename': 'error',
       'object-shorthand': 'error',
       'operator-assignment': 'error',
+      'perfectionist/sort-exports': 'error',
     },
     settings: {
       perfectionist: { partitionByComment: true, type: 'natural' },
+      vitest: { typecheck: true },
     },
   },
   {
@@ -77,7 +99,7 @@ export default defineConfig(
     files: ['**/*.json', '**/*.jsonc'],
   },
   {
-    extends: [packageJson.configs.recommended],
+    extends: [packageJson.configs.recommended, packageJson.configs.stylistic],
     files: ['package.json'],
     plugins: {
       json: eslintJson,
@@ -90,38 +112,6 @@ export default defineConfig(
     rules: {
       // https://github.com/eslint/markdown/issues/294
       'markdown/no-missing-label-refs': 'off',
-    },
-  },
-  {
-    extends: [
-      tseslint.configs.strictTypeChecked,
-      tseslint.configs.stylisticTypeChecked,
-    ],
-    files: JS_TS_FILES,
-    languageOptions: {
-      parserOptions: {
-        projectService: {
-          allowDefaultProject: ['*.config.*s', '.simple-git-hooks.js'],
-        },
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-    rules: {
-      '@typescript-eslint/consistent-type-exports': 'error',
-      '@typescript-eslint/consistent-type-imports': 'error',
-      '@typescript-eslint/explicit-module-boundary-types': 'error',
-
-      '@typescript-eslint/no-deprecated': 'off',
-      '@typescript-eslint/no-dynamic-delete': 'off',
-      // incompatible with `isolatedDeclarations`
-      '@typescript-eslint/no-inferrable-types': 'off',
-      '@typescript-eslint/restrict-template-expressions': 'off',
-
-      // TODO: Eventually clean this up
-      '@typescript-eslint/no-unsafe-member-access': 'off',
-    },
-    settings: {
-      vitest: { typecheck: true },
     },
   },
   {
@@ -154,9 +144,11 @@ export default defineConfig(
     },
   },
   {
-    files: ['./eslint.config.js', './**/*.test.*'],
+    files: ['./eslint.config.ts', './**/*.test.*'],
     rules: {
       'n/no-unsupported-features/node-builtins': 'off',
     },
   },
 );
+
+export default config;

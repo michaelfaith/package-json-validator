@@ -1,6 +1,6 @@
 import { coverageConfigDefaults, defineConfig } from 'vitest/config';
 
-export default defineConfig({
+const config: ReturnType<typeof defineConfig> = defineConfig({
   test: {
     clearMocks: true,
     coverage: {
@@ -16,3 +16,5 @@ export default defineConfig({
     setupFiles: ['console-fail-test/setup'],
   },
 });
+
+export default config;
