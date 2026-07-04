@@ -84,6 +84,9 @@ importers:
       eslint-plugin-yml:
         specifier: 3.5.0
         version: 3.5.0(eslint@10.6.0(jiti@2.7.0))
+      jiti:
+        specifier: ^2.7.0
+        version: 2.7.0
       knip:
         specifier: 6.23.0
         version: 6.23.0

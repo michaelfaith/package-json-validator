@@ -35,17 +35,36 @@ export default defineConfig(
       comments.recommended,
       n.configs['flat/recommended'],
       regexp.configs['flat/recommended'],
+      tseslint.configs.strictTypeChecked,
+      tseslint.configs.stylisticTypeChecked,
     ],
     files: JS_TS_FILES,
+    languageOptions: {
+      parserOptions: {
+        projectService: {
+          allowDefaultProject: ['*.config.*s', '.simple-git-hooks.js'],
+        },
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
     plugins: {
       perfectionist,
     },
     rules: {
+      '@typescript-eslint/consistent-type-exports': 'error',
       '@typescript-eslint/consistent-type-imports': 'error',
-      'n/no-missing-import': 'off',
+      '@typescript-eslint/explicit-module-boundary-types': 'error',
 
-      'perfectionist/sort-exports': 'error',
-      'perfectionist/sort-union-types': 'error',
+      '@typescript-eslint/no-dynamic-delete': 'off',
+
+      // incompatible with `isolatedDeclarations`
+      '@typescript-eslint/no-inferrable-types': 'off',
+      '@typescript-eslint/restrict-template-expressions': 'off',
+
+      // TODO: Eventually clean this up
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+
+      'n/no-missing-import': 'off',
 
       // Stylistic concerns that don't interfere with Prettier
       'logical-assignment-operators': [
@@ -56,9 +75,11 @@ export default defineConfig(
       'no-useless-rename': 'error',
       'object-shorthand': 'error',
       'operator-assignment': 'error',
+      'perfectionist/sort-exports': 'error',
     },
     settings: {
       perfectionist: { partitionByComment: true, type: 'natural' },
+      vitest: { typecheck: true },
     },
   },
   {
@@ -93,38 +114,6 @@ export default defineConfig(
     },
   },
   {
-    extends: [
-      tseslint.configs.strictTypeChecked,
-      tseslint.configs.stylisticTypeChecked,
-    ],
-    files: JS_TS_FILES,
-    languageOptions: {
-      parserOptions: {
-        projectService: {
-          allowDefaultProject: ['*.config.*s', '.simple-git-hooks.js'],
-        },
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
-    rules: {
-      '@typescript-eslint/consistent-type-exports': 'error',
-      '@typescript-eslint/consistent-type-imports': 'error',
-      '@typescript-eslint/explicit-module-boundary-types': 'error',
-
-      '@typescript-eslint/no-deprecated': 'off',
-      '@typescript-eslint/no-dynamic-delete': 'off',
-      // incompatible with `isolatedDeclarations`
-      '@typescript-eslint/no-inferrable-types': 'off',
-      '@typescript-eslint/restrict-template-expressions': 'off',
-
-      // TODO: Eventually clean this up
-      '@typescript-eslint/no-unsafe-member-access': 'off',
-    },
-    settings: {
-      vitest: { typecheck: true },
-    },
-  },
-  {
     extends: [vitest.configs.recommended],
     files: ['**/*.test.*'],
     rules: {
@@ -154,7 +143,7 @@ export default defineConfig(
     },
   },
   {
-    files: ['./eslint.config.js', './**/*.test.*'],
+    files: ['./eslint.config.ts', './**/*.test.*'],
     rules: {
       'n/no-unsupported-features/node-builtins': 'off',
     },
