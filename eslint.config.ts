@@ -3,6 +3,7 @@ import eslint from '@eslint/js';
 import eslintJson from '@eslint/json';
 import markdown from '@eslint/markdown';
 import vitest from '@vitest/eslint-plugin';
+import type { Linter } from 'eslint';
 import jsdoc from 'eslint-plugin-jsdoc';
 import jsonc from 'eslint-plugin-jsonc';
 import n from 'eslint-plugin-n';
@@ -17,7 +18,7 @@ const JS_FILES = ['**/*.js'];
 const TS_FILES = ['**/*.ts'];
 const JS_TS_FILES = [...JS_FILES, ...TS_FILES];
 
-export default defineConfig(
+const config: Linter.Config[] = defineConfig(
   {
     ignores: [
       '**/*.snap',
@@ -149,3 +150,5 @@ export default defineConfig(
     },
   },
 );
+
+export default config;
