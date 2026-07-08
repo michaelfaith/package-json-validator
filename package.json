@@ -74,6 +74,7 @@
     "@types/semver": "7.7.0",
     "@types/validate-npm-package-license": "3.0.3",
     "@types/validate-npm-package-name": "4.0.2",
+    "@typescript/native": "npm:typescript@^7.0.2",
     "@vitest/coverage-v8": "4.1.0",
     "@vitest/eslint-plugin": "1.6.9",
     "console-fail-test": "0.6.0",
@@ -94,7 +95,7 @@
     "pretty-quick": "4.2.2",
     "simple-git-hooks": "2.13.1",
     "tsdown": "0.22.0",
-    "typescript": "6.0.3",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
     "typescript-eslint": "8.62.0",
     "vitest": "4.1.0"
   },
