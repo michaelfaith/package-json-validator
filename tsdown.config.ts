@@ -1,7 +1,5 @@
 import { defineConfig, type UserConfig } from 'tsdown';
 
-const config: UserConfig = defineConfig({
-  entry: ['src/index.ts'],
-});
+const config: UserConfig = defineConfig({});
 
 export default config;
