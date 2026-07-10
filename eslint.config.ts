@@ -24,7 +24,7 @@ const config: Linter.Config[] = defineConfig(
       '**/*.snap',
       'README.md/*.js',
       'coverage',
-      'lib',
+      'dist',
       'node_modules',
       'pnpm-lock.yaml',
     ],

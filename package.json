@@ -38,16 +38,15 @@
   "type": "module",
   "exports": {
     ".": {
-      "type": "./lib/index.d.mts",
-      "default": "./lib/index.mjs"
+      "type": "./dist/index.d.mts",
+      "default": "./dist/index.mjs"
     },
     "./package.json": "./package.json"
   },
-  "main": "lib/index.mjs",
-  "types": "lib/index.d.mts",
+  "main": "dist/index.mjs",
+  "types": "dist/index.d.mts",
   "files": [
-    "CHANGELOG.md",
-    "lib/"
+    "dist/"
   ],
   "scripts": {
     "build": "tsdown",
@@ -75,11 +74,11 @@
     "@types/validate-npm-package-license": "3.0.3",
     "@types/validate-npm-package-name": "4.0.2",
     "@typescript/native": "npm:typescript@7.0.2",
-    "@vitest/coverage-v8": "4.1.0",
-    "@vitest/eslint-plugin": "1.6.9",
+    "@vitest/coverage-v8": "4.1.10",
+    "@vitest/eslint-plugin": "1.6.22",
     "console-fail-test": "0.6.0",
     "eslint": "10.6.0",
-    "eslint-plugin-jsdoc": "63.0.0",
+    "eslint-plugin-jsdoc": "63.0.12",
     "eslint-plugin-jsonc": "3.3.0",
     "eslint-plugin-n": "18.2.1",
     "eslint-plugin-package-json": "1.5.0",
@@ -97,7 +96,7 @@
     "tsdown": "0.22.0",
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "typescript-eslint": "8.63.0",
-    "vitest": "4.1.0"
+    "vitest": "4.1.10"
   },
   "packageManager": "pnpm@11.10.0",
   "engines": {
