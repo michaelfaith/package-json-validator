@@ -12,7 +12,7 @@ const config: ReturnType<typeof defineConfig> = defineConfig({
       include: ['src'],
       reporter: ['html', 'lcov', 'text'],
     },
-    exclude: ['lib', 'node_modules'],
+    exclude: ['dist', 'node_modules'],
     setupFiles: ['console-fail-test/setup'],
   },
 });
