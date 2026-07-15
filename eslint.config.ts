@@ -65,8 +65,6 @@ const config: Linter.Config[] = defineConfig(
       // TODO: Eventually clean this up
       '@typescript-eslint/no-unsafe-member-access': 'off',
 
-      'n/no-missing-import': 'off',
-
       // Stylistic concerns that don't interfere with Prettier
       'logical-assignment-operators': [
         'error',
@@ -80,7 +78,6 @@ const config: Linter.Config[] = defineConfig(
     },
     settings: {
       perfectionist: { partitionByComment: true, type: 'natural' },
-      vitest: { typecheck: true },
     },
   },
   {
@@ -121,6 +118,7 @@ const config: Linter.Config[] = defineConfig(
       '@typescript-eslint/no-unsafe-assignment': 'off',
       'vitest/prefer-describe-function-title': 'error',
     },
+    settings: { vitest: { typecheck: true } },
   },
   {
     extends: [yml.configs['flat/standard'], yml.configs['flat/prettier']],
