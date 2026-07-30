@@ -461,7 +461,7 @@ describe(validateDependencies, () => {
       const spy = vi
         .spyOn(npmPackageArgModule, 'default')
         .mockImplementation(() => {
-          // eslint-disable-next-line @typescript-eslint/only-throw-error
+          // eslint-disable-next-line @typescript-eslint/only-throw-error -- simulating the throwing of a non-Error
           throw { message: 'some weird error' };
         });
 
