@@ -3,9 +3,33 @@ import npmPackageArg from 'npm-package-arg';
 import { packageFormat } from '../formats.ts';
 import { ChildResult, Result } from '../Result.ts';
 
-const parseSpecWithNpa = (
-  spec: string,
-): { error: string } | { result: ReturnType<typeof npmPackageArg> } => {
+type ParseArgReturn =
+  | {
+      error: string;
+      result?: never;
+    }
+  | {
+      error?: never;
+      result: ReturnType<typeof npmPackageArg>;
+    };
+
+const parsePackageArg = (arg: string): ParseArgReturn => {
+  try {
+    const result = npmPackageArg(arg);
+    return { result };
+  } catch (error) {
+    if (
+      !(error instanceof Error) ||
+      !('code' in error && typeof error.code === 'string')
+    ) {
+      return { error: '' };
+    }
+
+    return { error: error.message };
+  }
+};
+
+const parseSpecWithNpa = (spec: string): ParseArgReturn => {
   try {
     const result = npmPackageArg.resolve('dummy', spec);
     return { result };
@@ -61,12 +85,21 @@ const PACKAGE_MANAGER_SPECIFIC_PROTOCOLS = [
   'workspace', // https://pnpm.io/next/workspaces#workspace-protocol-workspace
 ];
 
+const parseProtocol = /^\S+?:(\S+)/;
+
+interface Options {
+  allowNamedRegistries?: boolean;
+}
+
 /**
  * Validates dependencies, making sure the object is a set of key value pairs
  * with package names and versions
  * @returns An array with validation errors (if any violations are found)
  */
-export const validateDependencies = (value: unknown): Result => {
+export const validateDependencies = (
+  value: unknown,
+  { allowNamedRegistries }: Options = {},
+): Result => {
   const result = new Result();
 
   if (value == null) {
@@ -95,15 +128,31 @@ export const validateDependencies = (value: unknown): Result => {
 
       if (isSpecString && npaResult) {
         if (!('result' in npaResult)) {
-          const isPackageManagerSpecificNotation =
+          const isKnownPackageManagerProtocol =
             PACKAGE_MANAGER_SPECIFIC_PROTOCOLS.some((protocol) =>
               spec.startsWith(`${protocol}:`),
             );
+          if (!isKnownPackageManagerProtocol) {
+            const protocolMatch = parseProtocol.exec(spec);
+            if (allowNamedRegistries && protocolMatch) {
+              // e.g. work:svgo@^1.0.0 -> svg0@^1.0.0
+              const protocolPackageArg = protocolMatch[1];
 
-          if (!isPackageManagerSpecificNotation) {
-            childResult.addIssue(
-              `invalid version spec for dependency \`${pkg}\`: ${npaResult.error || spec}`,
-            );
+              // Parse the portion right of the custom protocol to validate that.
+              const protocolArgParseResult =
+                parsePackageArg(protocolPackageArg);
+              if (typeof protocolArgParseResult.error === 'string') {
+                childResult.addIssue(
+                  `invalid custom protocol arg for dependency \`${pkg}\`: ${protocolArgParseResult.error || protocolPackageArg}`,
+                );
+              }
+            }
+            // Ignore parsing errors from version using one of the known package manager protocols
+            else {
+              childResult.addIssue(
+                `invalid version spec for dependency \`${pkg}\`: ${npaResult.error || spec}`,
+              );
+            }
           }
         }
       } else {
