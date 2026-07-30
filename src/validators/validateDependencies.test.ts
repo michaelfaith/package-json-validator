@@ -257,7 +257,9 @@ describe(validateDependencies, () => {
       const dependencies = {
         ...validDependencies,
         // Custom protocol (https://github.com/michaelfaith/package-json-validator/issues/994)
-        'custom-protocol': 'work:foo@1.2.3',
+        'custom-registry': 'work:foo@1.2.3',
+        'custom-registry-with-url':
+          'work:git+https://isaacs@github.com/npm/cli.git',
       };
 
       const result = validateDependencies(dependencies, options);
@@ -362,6 +364,12 @@ describe(validateDependencies, () => {
           'bad-npm',
           'npm;svgo@^1.2.3',
           'tags may not have any characters that encodeURIComponent encodes',
+        ],
+        [
+          'empty custom protocol',
+          'empty-custom-protocol',
+          'work:',
+          'Unsupported URL Type "work:": work:',
         ],
       ] satisfies [
         testCaseName: string,
