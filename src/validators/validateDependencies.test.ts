@@ -260,6 +260,7 @@ describe(validateDependencies, () => {
         'custom-registry': 'work:foo@1.2.3',
         'custom-registry-with-url':
           'work:git+https://isaacs@github.com/npm/cli.git',
+        'custom-registry-with-space': 'work registry:foo@1.2.3',
       };
 
       const result = validateDependencies(dependencies, options);

@@ -85,7 +85,7 @@ const PACKAGE_MANAGER_SPECIFIC_PROTOCOLS = [
   'workspace', // https://pnpm.io/next/workspaces#workspace-protocol-workspace
 ];
 
-const parseProtocol = /^\S+?:(\S+)/;
+const parseProtocol = /^.+?:(\S+)/;
 
 interface Options {
   allowNamedRegistries?: boolean;
