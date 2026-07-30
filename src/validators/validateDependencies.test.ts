@@ -1,7 +1,10 @@
 import npmPackageArg from 'npm-package-arg';
+import * as npmPackageArgModule from 'npm-package-arg';
 import { describe, expect, it, vi } from 'vitest';
 
 import { validateDependencies } from './validateDependencies.ts';
+
+vi.mock('npm-package-arg', { spy: true });
 
 describe(validateDependencies, () => {
   it('should return no errors if the value is an empty object', () => {
@@ -452,6 +455,30 @@ describe(validateDependencies, () => {
       expect(result.childResults[0].errorMessages).toStrictEqual([
         'invalid custom protocol arg for dependency `bad-custom-protocol`: Unsupported URL Type "git+foo:": git+foo://github.com/npm/cli.git',
       ]);
+    });
+
+    it('should use the raw protocol package arg when npm-package-arg throws and unknown error', () => {
+      const spy = vi
+        .spyOn(npmPackageArgModule, 'default')
+        .mockImplementation(() => {
+          // eslint-disable-next-line @typescript-eslint/only-throw-error
+          throw { message: 'some weird error' };
+        });
+
+      const result = validateDependencies(
+        {
+          'bad-custom-protocol': 'work:git+foo://github.com/npm/cli.git',
+        },
+        options,
+      );
+      expect(result.errorMessages).toEqual([
+        'invalid custom protocol arg for dependency `bad-custom-protocol`: git+foo://github.com/npm/cli.git',
+      ]);
+      expect(result.issues).toEqual([]);
+      expect(result.childResults[0].errorMessages).toStrictEqual([
+        'invalid custom protocol arg for dependency `bad-custom-protocol`: git+foo://github.com/npm/cli.git',
+      ]);
+      spy.mockRestore();
     });
   });
 });
