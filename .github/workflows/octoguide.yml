@@ -32,13 +32,17 @@ on:
 jobs:
   octoguide:
     if: ${{ !endsWith(github.actor, '[bot]') && !contains(github.event.pull_request.labels.*.name, 'autorelease') }}
+    runs-on: ubuntu-latest
     permissions:
       discussions: write
       issues: write
       pull-requests: write
-    runs-on: ubuntu-latest
     steps:
       - uses: JoshuaKGoldberg/octoguide@31040aabf74c2142cc94da2a65d97dfd90edde5c # 0.21.8
         with:
           config: strict
           github-token: ${{ secrets.GITHUB_TOKEN }}
+          rules: |
+            {
+              "pr-branch-non-default": false
+            }
