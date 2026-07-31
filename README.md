@@ -445,9 +445,9 @@ const packageData = {
 const result = validateCpu(packageData.cpu);
 ```
 
-### validateDependencies(value)
+### validateDependencies(value, options)
 
-Also: `validateDevDependencies(value)`, `validateOptionalDependencies(value)`, and `validatePeerDependencies(value)`
+Also: `validateDevDependencies`, `validateOptionalDependencies`, and `validatePeerDependencies`
 
 These functions validate the value of their respective `dependency` property.
 They take the value, and validate it against the following criteria.
@@ -472,6 +472,25 @@ const packageData = {
 };
 
 const result = validateDependencies(packageData.dependencies);
+```
+
+#### Options
+
+- `allowNamedRegistries`: Relaxes validation on dependency versions to allow for named registries, a feature [supported by pnpm](https://pnpm.io/settings#namedregistries) since 11.1.0 (Default: `false`)
+
+```ts
+import { validateDependencies } from 'package-json-validator';
+
+const packageData = {
+  dependencies: {
+    '@my/package': '^1.2.3',
+    '@company/package': 'work:svgo@^1.0.0', // Would have failed validation
+  },
+};
+
+const result = validateDependencies(packageData.dependencies, {
+  allowNamedRegistries: true,
+});
 ```
 
 ### validateDescription(value)
