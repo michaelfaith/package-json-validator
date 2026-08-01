@@ -5,7 +5,7 @@ description: Sets up the repo for a typical CI job
 inputs:
   install-flags:
     description: Flags to pass to `pnpm install`
-    default: '--frozen-lockfile'
+    default: --frozen-lockfile
     required: false
   node-version:
     description: Node.js version to use
