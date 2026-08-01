@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/michaelfaith/package-json-validator/compare/v1.5.2...v1.6.0) (2026-08-01)
+
+
+### 🚀 Features
+
+* add option to `validateDependencies` to allow for named registries ([#996](https://github.com/michaelfaith/package-json-validator/issues/996)) ([815bffc](https://github.com/michaelfaith/package-json-validator/commit/815bffcba77ed1d7dda4e6b292a16812622165d3))
+
 ## [1.5.2](https://github.com/michaelfaith/package-json-validator/compare/v1.5.1...v1.5.2) (2026-05-28)
 
 
