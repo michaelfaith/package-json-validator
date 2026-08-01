@@ -38,7 +38,7 @@ jobs:
     steps:
       - uses: $/.github/actions/setup
         with:
-          install-flags: '--prod --engine-strict --ignore-scripts'
+          install-flags: --prod --engine-strict --ignore-scripts
           node-version: ${{ matrix.node-version }}
 
   format_check:
