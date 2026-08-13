@@ -87,7 +87,7 @@ const PACKAGE_MANAGER_SPECIFIC_PROTOCOLS = [
 
 const parseProtocol = /^.+?:(\S+)/;
 
-interface Options {
+export interface ValidateDependenciesOptions {
   allowNamedRegistries?: boolean;
 }
 
@@ -98,7 +98,7 @@ interface Options {
  */
 export const validateDependencies = (
   value: unknown,
-  { allowNamedRegistries }: Options = {},
+  { allowNamedRegistries }: ValidateDependenciesOptions = {},
 ): Result => {
   const result = new Result();
 

@@ -474,7 +474,7 @@ const packageData = {
 const result = validateDependencies(packageData.dependencies);
 ```
 
-#### Options
+#### ValidateDependenciesOptions
 
 - `allowNamedRegistries`: Relaxes validation on dependency versions to allow for named registries, a feature [supported by pnpm](https://pnpm.io/settings#namedregistries) since 11.1.0 (Default: `false`)
 
