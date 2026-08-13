@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.1](https://github.com/michaelfaith/package-json-validator/compare/v1.6.0...v1.6.1) (2026-08-13)
+
+
+### 🩹 Bug Fixes
+
+* export `ValidateDependenciesOptions` ([#1021](https://github.com/michaelfaith/package-json-validator/issues/1021)) ([041524a](https://github.com/michaelfaith/package-json-validator/commit/041524ac9578b8e4d7995be09574b7b247cd2a42))
+
 ## [1.6.0](https://github.com/michaelfaith/package-json-validator/compare/v1.5.2...v1.6.0) (2026-08-01)
 
 
