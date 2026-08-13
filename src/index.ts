@@ -39,4 +39,5 @@ export {
   validateType,
   validateVersion,
   validateWorkspaces,
+  type ValidateDependenciesOptions,
 } from './validators/index.ts';
