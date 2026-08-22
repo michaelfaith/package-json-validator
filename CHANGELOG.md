@@ -1,5 +1,38 @@
 # Changelog
 
+## [1.0.0](https://github.com/michaelfaith/package-json-validator/compare/v1.0.0-beta.1...v1.0.0) (2026-08-22)
+
+
+* start rc cycle ([#709](https://github.com/michaelfaith/package-json-validator/issues/709)) ([935f5db](https://github.com/michaelfaith/package-json-validator/commit/935f5db2693fd9ee1566e3bf91e3a571fa5f45bb))
+* trigger 1.0.0 release ([#716](https://github.com/michaelfaith/package-json-validator/issues/716)) ([2dc6f7b](https://github.com/michaelfaith/package-json-validator/commit/2dc6f7b601233a34be94a8c1d3e8e05573b15808))
+
+
+### 🚀 Features
+
+* add function to validate `bugs` ([#758](https://github.com/michaelfaith/package-json-validator/issues/758)) ([136d49d](https://github.com/michaelfaith/package-json-validator/commit/136d49d6dfb6fc83fd612386319aea3e09bed323))
+* add function to validate `devEngines` ([#765](https://github.com/michaelfaith/package-json-validator/issues/765)) ([e141591](https://github.com/michaelfaith/package-json-validator/commit/e14159132f18f233b886b64ac1c60fc716aaaf86))
+* add function to validate `funding` ([#751](https://github.com/michaelfaith/package-json-validator/issues/751)) ([93acebf](https://github.com/michaelfaith/package-json-validator/commit/93acebfb1daced42fd17e9551ca94be34fdfd5aa))
+* add function to validate `packageManager` ([#746](https://github.com/michaelfaith/package-json-validator/issues/746)) ([457a84d](https://github.com/michaelfaith/package-json-validator/commit/457a84d8c2b0687eb918fdd8ab43729119352302))
+* add option to `validate` to return new type ([#804](https://github.com/michaelfaith/package-json-validator/issues/804)) ([ec9f028](https://github.com/michaelfaith/package-json-validator/commit/ec9f028496f6e07c974be4280979c127bb7e325c))
+* add option to `validateDependencies` to allow for named registries ([#996](https://github.com/michaelfaith/package-json-validator/issues/996)) ([815bffc](https://github.com/michaelfaith/package-json-validator/commit/815bffcba77ed1d7dda4e6b292a16812622165d3))
+* add validation for `browser` ([#839](https://github.com/michaelfaith/package-json-validator/issues/839)) ([599ffd6](https://github.com/michaelfaith/package-json-validator/commit/599ffd614c7915b08008ba019044bc8e45d10e66))
+* add validation for `gypfile` ([#842](https://github.com/michaelfaith/package-json-validator/issues/842)) ([1c90cfb](https://github.com/michaelfaith/package-json-validator/commit/1c90cfbb5966dc976252bd0158e7b1b5d4f1a7cb))
+* add validation for `libc` ([#843](https://github.com/michaelfaith/package-json-validator/issues/843)) ([02a7b8b](https://github.com/michaelfaith/package-json-validator/commit/02a7b8b28eeff61d1a8f81c807d395a05ed59d95))
+* add validation for `peerDependenciesMeta` ([#844](https://github.com/michaelfaith/package-json-validator/issues/844)) ([27de5e3](https://github.com/michaelfaith/package-json-validator/commit/27de5e37195e4762d07c1108ddacb8d3ff56fca4))
+
+
+### 🩹 Bug Fixes
+
+* export `ValidateDependenciesOptions` ([#1021](https://github.com/michaelfaith/package-json-validator/issues/1021)) ([041524a](https://github.com/michaelfaith/package-json-validator/commit/041524ac9578b8e4d7995be09574b7b247cd2a42))
+* handle null values for top-level devEngines properties correctly ([#771](https://github.com/michaelfaith/package-json-validator/issues/771)) ([dc46085](https://github.com/michaelfaith/package-json-validator/commit/dc46085d2a602cd2b754385d369572120c373ab5))
+* improve error messages for `validatePeerDependenciesMeta` ([#847](https://github.com/michaelfaith/package-json-validator/issues/847)) ([396f95f](https://github.com/michaelfaith/package-json-validator/commit/396f95f6ca9b3f746227bf6a81ad113eaff77d65))
+* remove 1.0.0 changelog entry ([#725](https://github.com/michaelfaith/package-json-validator/issues/725)) ([e91367b](https://github.com/michaelfaith/package-json-validator/commit/e91367b0af9a7bf3bee6db670219f386a3fb7860))
+* support `link` protocol in `validateDependencies` ([#900](https://github.com/michaelfaith/package-json-validator/issues/900)) ([b5e140b](https://github.com/michaelfaith/package-json-validator/commit/b5e140b2f0dbe8da0e27b7cf6dc8099aae9e475b))
+* update repo references ([#735](https://github.com/michaelfaith/package-json-validator/issues/735)) ([0b45120](https://github.com/michaelfaith/package-json-validator/commit/0b451206ca73a0f7a1578e74c38b73d7c8bd4e61))
+* **validateDependencies:** improve version validation ([#822](https://github.com/michaelfaith/package-json-validator/issues/822)) ([c364a95](https://github.com/michaelfaith/package-json-validator/commit/c364a95d46e39d5406614ec3d7b623638e3821a6))
+* **validateExports:** allowing nested null paths ([#734](https://github.com/michaelfaith/package-json-validator/issues/734)) ([dba9434](https://github.com/michaelfaith/package-json-validator/commit/dba9434f1ce6348b6bb45470330e3179be90ccd6))
+* **validateFunding:** array within array error message isn't accurate ([#763](https://github.com/michaelfaith/package-json-validator/issues/763)) ([25a6748](https://github.com/michaelfaith/package-json-validator/commit/25a67484333b9c1c9e5d76c213cf5f801345bffe))
+
 ## [1.6.1](https://github.com/michaelfaith/package-json-validator/compare/v1.6.0...v1.6.1) (2026-08-13)
 
 
