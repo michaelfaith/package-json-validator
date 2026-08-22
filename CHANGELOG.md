@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.0-beta.0](https://github.com/michaelfaith/package-json-validator/compare/v1.6.1...v2.0.0-beta.0) (2026-08-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove `main` and `types` from `package.json` ([#1033](https://github.com/michaelfaith/package-json-validator/issues/1033))
+* update node compatibility to `^22.22.2 || ^24.15.0 || >= 26.0.0` ([#1031](https://github.com/michaelfaith/package-json-validator/issues/1031))
+
+### 🚀 Features
+
+* update node compatibility to `^22.22.2 || ^24.15.0 || >= 26.0.0` ([#1031](https://github.com/michaelfaith/package-json-validator/issues/1031)) ([5f1a1e0](https://github.com/michaelfaith/package-json-validator/commit/5f1a1e004dfc7103823710072f1df92be62edb26))
+
+
+### 🩹 Bug Fixes
+
+* remove `main` and `types` from `package.json` ([#1033](https://github.com/michaelfaith/package-json-validator/issues/1033)) ([29c0caf](https://github.com/michaelfaith/package-json-validator/commit/29c0cafe7624ebbd589a936884bf93a43aa91ba3))
+
 ## [1.6.1](https://github.com/michaelfaith/package-json-validator/compare/v1.6.0...v1.6.1) (2026-08-13)
 
 
