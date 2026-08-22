@@ -1,5 +1,7 @@
 export type { Result } from './Result.ts';
+// eslint-disable-next-line @typescript-eslint/no-deprecated
 export { validate } from './validate.ts';
+export type { ValidateFunction } from './validate.types.ts';
 export {
   validateAuthor,
   validateBin,
