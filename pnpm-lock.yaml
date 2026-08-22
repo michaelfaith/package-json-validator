@@ -12,14 +12,14 @@ importers:
         specifier: ^14.0.0
         version: 14.0.0
       semver:
-        specifier: ^7.7.2
+        specifier: ^7.8.5
         version: 7.8.5
       validate-npm-package-license:
         specifier: ^3.0.4
         version: 3.0.4
       validate-npm-package-name:
-        specifier: ^7.0.0
-        version: 7.0.2
+        specifier: ^8.0.0
+        version: 8.0.0
     devDependencies:
       '@eslint-community/eslint-plugin-eslint-comments':
         specifier: 4.7.0
