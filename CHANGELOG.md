@@ -1,5 +1,16 @@
 # Changelog
 
+## [2.0.0-beta.1](https://github.com/michaelfaith/package-json-validator/compare/v2.0.0-beta.0...v2.0.0-beta.1) (2026-08-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove legacy `validate` return type ([#1036](https://github.com/michaelfaith/package-json-validator/issues/1036))
+
+### 🚀 Features
+
+* remove legacy `validate` return type ([#1036](https://github.com/michaelfaith/package-json-validator/issues/1036)) ([76dba3f](https://github.com/michaelfaith/package-json-validator/commit/76dba3f24a884b91aff95b75e46073c22301dd43))
+
 ## [2.0.0-beta.0](https://github.com/michaelfaith/package-json-validator/compare/v1.6.1...v2.0.0-beta.0) (2026-08-22)
 
 
