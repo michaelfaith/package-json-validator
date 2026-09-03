@@ -97,8 +97,8 @@ importers:
         specifier: 3.9.6
         version: 3.9.6
       prettier-plugin-curly:
-        specifier: 0.4.0
-        version: 0.4.0(prettier@3.9.6)
+        specifier: 0.4.1
+        version: 0.4.1(prettier@3.9.6)
       prettier-plugin-packagejson:
         specifier: 3.0.0
         version: 3.0.0(prettier@3.9.6)
@@ -1879,11 +1879,11 @@ packages:
     resolution: {integrity: sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==}
     engines: {node: '>= 0.8.0'}
 
-  prettier-plugin-curly@0.4.0:
-    resolution: {integrity: sha512-URhXSCdeYs+hWFyFS5NDrRBarFU5RV7X9C00LuUKmjFDqD2wxJJWZU+wmkgN50jyn97TWgqI2XrE6rX2AdGgZg==}
+  prettier-plugin-curly@0.4.1:
+    resolution: {integrity: sha512-Xc7zatoD0/08zYFv+hwnlqT5ekM81DCbBr73CWAsr1Fmx7qLQT/M0wfPx6w/+zfnmXH009xYvjzLUPcwzq7Fbw==}
     engines: {node: '>=18'}
     peerDependencies:
-      prettier: ^2 || ^3
+      prettier: ^3
 
   prettier-plugin-packagejson@3.0.0:
     resolution: {integrity: sha512-z8/QmPSqx/ANvvQMWJSkSq1+ihBXeuwDEYdjX3ZjRJ5Ty1k7vGbFQfhzk2eDe0rwS/TNyRjWK/qnjJEStAOtDw==}
@@ -4026,7 +4026,7 @@ snapshots:
 
   prelude-ls@1.2.1: {}
 
-  prettier-plugin-curly@0.4.0(prettier@3.9.6):
+  prettier-plugin-curly@0.4.1(prettier@3.9.6):
     dependencies:
       prettier: 3.9.6
 
