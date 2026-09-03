@@ -82,7 +82,7 @@
     "eslint-plugin-jsonc": "3.4.2",
     "eslint-plugin-n": "18.3.0",
     "eslint-plugin-package-json": "1.8.0",
-    "eslint-plugin-perfectionist": "5.10.1",
+    "eslint-plugin-perfectionist": "5.11.0",
     "eslint-plugin-regexp": "3.2.0",
     "eslint-plugin-yml": "3.8.1",
     "jiti": "2.7.0",
