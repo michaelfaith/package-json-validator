@@ -76,8 +76,8 @@ importers:
         specifier: 18.3.0
         version: 18.3.0(@typescript/typescript6@6.0.2)(eslint@10.10.0(jiti@2.7.0))
       eslint-plugin-package-json:
-        specifier: 1.8.0
-        version: 1.8.0(@eslint/json@2.1.0)(eslint@10.10.0(jiti@2.7.0))
+        specifier: 1.8.1
+        version: 1.8.1(@eslint/json@2.1.0)(eslint@10.10.0(jiti@2.7.0))
       eslint-plugin-perfectionist:
         specifier: 5.11.0
         version: 5.11.0(@typescript/typescript6@6.0.2)(eslint@10.10.0(jiti@2.7.0))
@@ -1309,8 +1309,8 @@ packages:
       typescript:
         optional: true
 
-  eslint-plugin-package-json@1.8.0:
-    resolution: {integrity: sha512-nfWWrak5t8yPgSVchNOHCjdFW/pl3+1135Bxsq0KZKo6PUdWWqUTqOVBrvzw1S+8BNOhhEx5c/YxeeCSYySFog==}
+  eslint-plugin-package-json@1.8.1:
+    resolution: {integrity: sha512-/Adb7EHfwIM2t13zdBuB6IjIsNSDkbPT+T9ZlIK0N6aAnj9hiekqFlFbUpEIsiQX4Zv7bASBDP2C3hu362e2kw==}
     engines: {node: ^22.22.2 || >=24.15.0}
     peerDependencies:
       '@eslint/json': '>=1.0.0'
@@ -3226,7 +3226,7 @@ snapshots:
     optionalDependencies:
       typescript: '@typescript/typescript6@6.0.2'
 
-  eslint-plugin-package-json@1.8.0(@eslint/json@2.1.0)(eslint@10.10.0(jiti@2.7.0)):
+  eslint-plugin-package-json@1.8.1(@eslint/json@2.1.0)(eslint@10.10.0(jiti@2.7.0)):
     dependencies:
       '@altano/repository-tools': 2.1.1
       '@types/estree': 1.0.9
