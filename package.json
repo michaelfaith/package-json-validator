@@ -53,6 +53,7 @@
     "format": "prettier .",
     "lint": "eslint . --max-warnings 0",
     "lint:knip": "knip",
+    "prepare": "simple-git-hooks",
     "test": "vitest",
     "typecheck": "tsc"
   },
