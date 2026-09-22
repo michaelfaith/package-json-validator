@@ -20,9 +20,7 @@ export const validatePeerDependenciesMeta = (value: unknown): Result => {
   const result = new Result();
 
   if (value == null) {
-    result.addIssue(
-      'the value is `null`, but should be an object with peer dependency metadata',
-    );
+    result.addIssue('the value is `null`, but should be an object with peer dependency metadata');
   } else if (typeof value === 'object' && !Array.isArray(value)) {
     const entries: [string, unknown][] = Object.entries(value);
 
@@ -36,11 +34,7 @@ export const validatePeerDependenciesMeta = (value: unknown): Result => {
 
       if (!isPlainObject(pkgMeta)) {
         const pkgMetaType =
-          pkgMeta === null
-            ? 'null'
-            : Array.isArray(pkgMeta)
-              ? 'Array'
-              : typeof pkgMeta;
+          pkgMeta === null ? 'null' : Array.isArray(pkgMeta) ? 'Array' : typeof pkgMeta;
         childResult.addIssue(
           `the peer dependency metadata for \`${pkg}\` should be an object, not \`${pkgMetaType}\``,
         );
@@ -60,9 +54,7 @@ export const validatePeerDependenciesMeta = (value: unknown): Result => {
                   : Array.isArray(pkgMeta[key])
                     ? 'Array'
                     : typeof pkgMeta[key];
-              grandChildResult.addIssue(
-                `the value should be a boolean, not \`${optionalType}\``,
-              );
+              grandChildResult.addIssue(`the value should be a boolean, not \`${optionalType}\``);
             }
           } else {
             grandChildResult.addIssue(

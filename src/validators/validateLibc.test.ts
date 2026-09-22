@@ -64,9 +64,7 @@ describe(validateLibc, () => {
 
   it('should return issues if the value is a number', () => {
     const result = validateLibc(123);
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array` or `string`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `Array` or `string`, not `number`']);
   });
 
   it('should return issues if the value is an object', () => {

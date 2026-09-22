@@ -8,9 +8,7 @@ const validatePackageManagerString = (value: string): string[] => {
   const results: string[] = [];
 
   if (!value.includes('@')) {
-    results.push(
-      'the value should be in the form "name@version" (e.g. "pnpm@10.3.0")',
-    );
+    results.push('the value should be in the form "name@version" (e.g. "pnpm@10.3.0")');
   } else {
     const [name, version] = value.split('@');
     if (!packageManagers.includes(name)) {

@@ -16,13 +16,9 @@ describe(validateAuthor, () => {
 
   it("should call validatePeople with 'author' and a string if input is a string", () => {
     const mockResult = new Result([{ message: 'error' }]);
-    const mockValidatePeople = vi
-      .mocked(validatePeople)
-      .mockReturnValue(mockResult);
+    const mockValidatePeople = vi.mocked(validatePeople).mockReturnValue(mockResult);
 
-    const result = validateAuthor(
-      'Barney Rubble <b@rubble.com> (http://barnyrubble.tumblr.com/)',
-    );
+    const result = validateAuthor('Barney Rubble <b@rubble.com> (http://barnyrubble.tumblr.com/)');
     expect(mockValidatePeople).toHaveBeenCalledWith(
       'Barney Rubble <b@rubble.com> (http://barnyrubble.tumblr.com/)',
     );
@@ -36,9 +32,7 @@ describe(validateAuthor, () => {
       url: 'http://barnyrubble.tumblr.com/',
     };
     const mockResult = new Result();
-    const mockValidatePeople = vi
-      .mocked(validatePeople)
-      .mockReturnValue(mockResult);
+    const mockValidatePeople = vi.mocked(validatePeople).mockReturnValue(mockResult);
     vi.mocked(isPerson).mockReturnValue(true);
 
     const result = validateAuthor(personObj);

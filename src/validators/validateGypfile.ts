@@ -11,9 +11,7 @@ export const validateGypfile = (type: unknown): Result => {
       result.addIssue('the value is `null`, but should be a `boolean`');
     } else {
       const valueType = Array.isArray(type) ? 'Array' : typeof type;
-      result.addIssue(
-        `the value should be a \`boolean\`, not \`${valueType}\``,
-      );
+      result.addIssue(`the value should be a \`boolean\`, not \`${valueType}\``);
     }
   }
 

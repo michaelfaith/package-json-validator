@@ -11,21 +11,18 @@ describe(validateRepository, () => {
     'git://github.com/michaelfaith/package-json-validator.git',
     'git://github.com/michaelfaith/package-json-validator',
     'git@github.com:michaelfaith/package-json-validator.git',
-  ])(
-    'should return no issues if the value is a valid object (with directory) (%s)',
-    (url) => {
-      const result = validateRepository({
-        directory: 'packages/lib-a',
-        type: 'git',
-        url,
-      });
-      expect(result.errorMessages).toEqual([]);
-      expect(result.childResults).toHaveLength(3);
-      result.childResults.forEach((childResult) => {
-        expect(childResult.issues).toHaveLength(0);
-      });
-    },
-  );
+  ])('should return no issues if the value is a valid object (with directory) (%s)', (url) => {
+    const result = validateRepository({
+      directory: 'packages/lib-a',
+      type: 'git',
+      url,
+    });
+    expect(result.errorMessages).toEqual([]);
+    expect(result.childResults).toHaveLength(3);
+    result.childResults.forEach((childResult) => {
+      expect(childResult.issues).toHaveLength(0);
+    });
+  });
 
   it('should return no issues if the value is a valid object (without directory)', () => {
     const result = validateRepository({
@@ -53,13 +50,10 @@ describe(validateRepository, () => {
     'bitbucket:my-org/my-repo',
     'gitlab:some.user/some.repo',
     'gist:abc-123',
-  ])(
-    'should return no issues if the value is a shorthand string: %s',
-    (value) => {
-      const result = validateRepository(value);
-      expect(result.errorMessages).toEqual([]);
-    },
-  );
+  ])('should return no issues if the value is a shorthand string: %s', (value) => {
+    const result = validateRepository(value);
+    expect(result.errorMessages).toEqual([]);
+  });
 
   it.each([
     'svn:npm/example',
@@ -67,15 +61,12 @@ describe(validateRepository, () => {
     'git:npm/example',
     'github:npm/example/repo',
     'org/user/repo',
-  ])(
-    'should return issues if the value is an invalid shorthand string: %s',
-    (value) => {
-      const result = validateRepository(value);
-      expect(result.errorMessages).toEqual([
-        `the value "${value}" is invalid; it should be the shorthand for a repository (e.g. "github:npm/example")`,
-      ]);
-    },
-  );
+  ])('should return issues if the value is an invalid shorthand string: %s', (value) => {
+    const result = validateRepository(value);
+    expect(result.errorMessages).toEqual([
+      `the value "${value}" is invalid; it should be the shorthand for a repository (e.g. "github:npm/example")`,
+    ]);
+  });
 
   it('should return an issue when the value is an empty string', () => {
     const result = validateRepository('');
@@ -165,9 +156,7 @@ describe(validateRepository, () => {
   it('should return an issue if the value is neither an object nor a string', () => {
     const result = validateRepository(123);
     expect(result.issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object` or `string`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object` or `string`, not `number`']);
   });
 
   it('should return an issue if the value is an array', () => {
@@ -176,9 +165,7 @@ describe(validateRepository, () => {
       'git+https://github.com/michaelfaith/package-json-validator.git',
     ]);
     expect(result.issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object` or `string`, not `Array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object` or `string`, not `Array`']);
   });
 
   it('should return an issue if the value is null', () => {

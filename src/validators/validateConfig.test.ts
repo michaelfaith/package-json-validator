@@ -19,22 +19,16 @@ describe(validateConfig, () => {
 
   it('should return a result with issues if the field is an array', () => {
     const result = validateConfig(['array', 'of', 'values']);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `array`']);
   });
 
   it('should return a result with issues if the field is null', () => {
     const result = validateConfig(null);
-    expect(result.errorMessages).toEqual([
-      'the value is `null`, but should be an `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is `null`, but should be an `object`']);
   });
 
   it('should return a result with issues if the field is a string', () => {
     const result = validateConfig('string');
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `string`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `string`']);
   });
 });

@@ -75,18 +75,14 @@ describe(validateCpu, () => {
   it('should return an issue if the value is a number', () => {
     const result = validateCpu(123);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `Array`, not `number`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the value is an object', () => {
     const result = validateCpu({});
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array`, not `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `Array`, not `object`']);
     expect(result.issues).toHaveLength(1);
   });
 

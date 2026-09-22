@@ -18,65 +18,49 @@ describe(validateLicense, () => {
 
   it('should return an issue if the value is not a string (number)', () => {
     const result = validateLicense(123);
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `number`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the value is not a string (object)', () => {
     const result = validateLicense({});
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `object`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the value is not a string (array)', () => {
     const result = validateLicense([]);
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `Array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `Array`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if value is not a string (boolean)', () => {
     const result = validateLicense(true);
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `boolean`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `boolean`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if value is not a string (undefined)', () => {
     const result = validateLicense(undefined);
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `undefined`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `undefined`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if value is not a string (null)', () => {
     const result = validateLicense(null);
-    expect(result.errorMessages).toEqual([
-      'the value is `null`, but should be a `string`',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is `null`, but should be a `string`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the value is an empty string', () => {
     const result = validateLicense('');
-    expect(result.errorMessages).toEqual([
-      'the value is empty, but should be a valid license',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is empty, but should be a valid license']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the value is whitespace only', () => {
     const result = validateLicense('   ');
-    expect(result.errorMessages).toEqual([
-      'the value is empty, but should be a valid license',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is empty, but should be a valid license']);
     expect(result.issues).toHaveLength(1);
   });
 

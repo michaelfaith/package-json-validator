@@ -25,9 +25,7 @@ describe(validateContributors, () => {
       name: 'Fred Flintstone',
       url: 'http://fflintstone.tumblr.com/',
     };
-    const mockValidatePeople = vi
-      .mocked(validatePeople)
-      .mockReturnValue(new Result());
+    const mockValidatePeople = vi.mocked(validatePeople).mockReturnValue(new Result());
 
     const result = validateContributors([barney, fred]);
 
@@ -56,9 +54,7 @@ describe(validateContributors, () => {
       email: 'f@flintstone.com',
     };
     const contributors = [barney, fred];
-    const mockValidatePeople = vi
-      .mocked(validatePeople)
-      .mockReturnValue(new Result());
+    const mockValidatePeople = vi.mocked(validatePeople).mockReturnValue(new Result());
 
     const result = validateContributors(contributors);
     expect(result.issues).toHaveLength(0);

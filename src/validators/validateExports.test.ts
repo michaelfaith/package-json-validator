@@ -92,9 +92,7 @@ describe(validateExports, () => {
     expect(result.childResults).toHaveLength(3);
     [
       [],
-      [
-        'the value of "./secondary" is empty, but should be an entry point path',
-      ],
+      ['the value of "./secondary" is empty, but should be an entry point path'],
       ['the value of "./tertiary" is empty, but should be an entry point path'],
     ].forEach((childErrors, i) => {
       expect(result.childResults[i].errorMessages).toEqual(childErrors);
@@ -154,25 +152,19 @@ describe(validateExports, () => {
 
   it('should return an issue if the value is an empty string', () => {
     const result = validateExports('');
-    expect(result.errorMessages).toEqual([
-      'the value is empty, but should be an entry point path',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is empty, but should be an entry point path']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the value is neither a string nor an object', () => {
     const result = validateExports(123);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object` or `string`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object` or `string`, not `number`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the scripts field is an array', () => {
     const result = validateExports(['./index.js', './secondary.js']);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object` or `string`, not `Array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object` or `string`, not `Array`']);
     expect(result.issues).toHaveLength(1);
   });
 

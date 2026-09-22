@@ -1,15 +1,6 @@
 import { ChildResult, Result } from '../Result.ts';
 
-const VALID_OSS = [
-  'aix',
-  'android',
-  'darwin',
-  'freebsd',
-  'linux',
-  'openbsd',
-  'sunos',
-  'win32',
-];
+const VALID_OSS = ['aix', 'android', 'darwin', 'freebsd', 'linux', 'openbsd', 'sunos', 'win32'];
 
 /**
  * Validate the `os` field in a package.json, which should be an array of
@@ -28,9 +19,7 @@ export const validateOs = (obj: unknown): Result => {
 
       if (typeof item !== 'string') {
         const itemType = item === null ? 'null' : typeof item;
-        childResult.addIssue(
-          `item at index ${i} should be a string, not \`${itemType}\``,
-        );
+        childResult.addIssue(`item at index ${i} should be a string, not \`${itemType}\``);
       } else if (item.trim() === '') {
         childResult.addIssue(
           `item at index ${i} is empty, but should be the name of an operating system`,

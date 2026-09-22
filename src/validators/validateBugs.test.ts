@@ -17,14 +17,11 @@ describe(validateBugs, () => {
       description: 'object with email and url',
       value: { email: 'test@example.com', url: 'http://example.com/bugs' },
     },
-  ])(
-    'should return no errors if the value is a valid %description',
-    ({ value }) => {
-      const result = validateBugs(value);
-      expect(result.issues).toHaveLength(0);
-      expect(result.errorMessages).toEqual([]);
-    },
-  );
+  ])('should return no errors if the value is a valid %description', ({ value }) => {
+    const result = validateBugs(value);
+    expect(result.issues).toHaveLength(0);
+    expect(result.errorMessages).toEqual([]);
+  });
 
   it('should return an issue if the string is not a valid URL', () => {
     const result = validateBugs('invalidString');
@@ -45,9 +42,7 @@ describe(validateBugs, () => {
     expect(result.issues).toHaveLength(0);
     expect(result.childResults).toHaveLength(1);
     expect(result.childResults[0].issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the value of `email` should be a valid email address',
-    ]);
+    expect(result.errorMessages).toEqual(['the value of `email` should be a valid email address']);
   });
 
   it('should return an issue if the object has an invalid url', () => {
@@ -55,9 +50,7 @@ describe(validateBugs, () => {
     expect(result.issues).toHaveLength(0);
     expect(result.childResults).toHaveLength(1);
     expect(result.childResults[0].issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the value of `url` should be a valid URL',
-    ]);
+    expect(result.errorMessages).toEqual(['the value of `url` should be a valid URL']);
   });
 
   it('should return issues if the object has both invalid email and url', () => {
