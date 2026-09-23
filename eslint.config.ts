@@ -58,12 +58,14 @@ const config: Linter.Config[] = defineConfig(
       // TODO: Eventually clean this up
       '@typescript-eslint/no-unsafe-member-access': 'off',
 
-      // Stylistic concerns that don't interfere with Prettier
+      // Stylistic concerns that don't interfere with Oxfmt
       'logical-assignment-operators': ['error', 'always', { enforceForIfStatements: true }],
       'no-useless-rename': 'error',
       'object-shorthand': 'error',
       'operator-assignment': 'error',
       'perfectionist/sort-exports': 'error',
+      'perfectionist/sort-named-exports': 'error',
+      'perfectionist/sort-named-imports': 'error',
     },
     settings: {
       perfectionist: { partitionByComment: true, type: 'natural' },
