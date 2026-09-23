@@ -22,12 +22,7 @@ describe(validateBundleDependencies, () => {
   });
 
   it('should return a result with issues if the value is an array with some non-string values', () => {
-    const result = validateBundleDependencies([
-      'nin',
-      null,
-      'thee-silver-mt-zion',
-      123,
-    ]);
+    const result = validateBundleDependencies(['nin', null, 'thee-silver-mt-zion', 123]);
     expect(result.errorMessages).toEqual([
       'item at index 1 should be a string, not `null`',
       'item at index 3 should be a string, not `number`',
@@ -42,12 +37,7 @@ describe(validateBundleDependencies, () => {
   });
 
   it('should return a result with issues if the value is an array with non-empty strings', () => {
-    const result = validateBundleDependencies([
-      '',
-      'nin',
-      '',
-      'thee-silver-mt-zion',
-    ]);
+    const result = validateBundleDependencies(['', 'nin', '', 'thee-silver-mt-zion']);
     expect(result.errorMessages).toEqual([
       'item at index 0 is empty, but should be a dependency name',
       'item at index 2 is empty, but should be a dependency name',
@@ -62,9 +52,7 @@ describe(validateBundleDependencies, () => {
 
   it('should return a result with issues if the value is a number', () => {
     const result = validateBundleDependencies(123);
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array` or `boolean`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `Array` or `boolean`, not `number`']);
     expect(result.issues).toHaveLength(1);
   });
 

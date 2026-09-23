@@ -33,11 +33,7 @@ const validateDevEngineObject = (value: unknown): Result => {
       if (key === 'name') {
         if (typeof value[key] !== 'string') {
           const valueType =
-            value[key] === null
-              ? 'null'
-              : Array.isArray(value[key])
-                ? 'Array'
-                : typeof value[key];
+            value[key] === null ? 'null' : Array.isArray(value[key]) ? 'Array' : typeof value[key];
           childResult.addIssue(
             `the \`name\` property should be a string, but got \`${valueType}\``,
           );
@@ -48,11 +44,7 @@ const validateDevEngineObject = (value: unknown): Result => {
       if (key === 'onFail') {
         if (typeof value[key] !== 'string') {
           const valueType =
-            value[key] === null
-              ? 'null'
-              : Array.isArray(value[key])
-                ? 'Array'
-                : typeof value[key];
+            value[key] === null ? 'null' : Array.isArray(value[key]) ? 'Array' : typeof value[key];
           childResult.addIssue(
             `the \`onFail\` property should be a string, but got \`${valueType}\``,
           );
@@ -65,11 +57,7 @@ const validateDevEngineObject = (value: unknown): Result => {
       if (key === 'version') {
         if (typeof value[key] !== 'string') {
           const valueType =
-            value[key] === null
-              ? 'null'
-              : Array.isArray(value[key])
-                ? 'Array'
-                : typeof value[key];
+            value[key] === null ? 'null' : Array.isArray(value[key]) ? 'Array' : typeof value[key];
           childResult.addIssue(
             `the \`version\` property should be a string, but got \`${valueType}\``,
           );

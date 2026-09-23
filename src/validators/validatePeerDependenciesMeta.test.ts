@@ -28,17 +28,13 @@ describe(validatePeerDependenciesMeta, () => {
   it('should return an issue when peerDependenciesMeta is not an object (Array)', () => {
     const result = validatePeerDependenciesMeta(['react']);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `Array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `Array`']);
   });
 
   it('should return an issue when peerDependenciesMeta is not an object (number)', () => {
     const result = validatePeerDependenciesMeta(13);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `number`']);
   });
 
   it('should return an issue for invalid package names', () => {
@@ -48,9 +44,7 @@ describe(validatePeerDependenciesMeta, () => {
     });
 
     expect(result.childResults).toHaveLength(2);
-    expect(result.childResults[0].errorMessages).toEqual([
-      'invalid package name: ``',
-    ]);
+    expect(result.childResults[0].errorMessages).toEqual(['invalid package name: ``']);
     expect(result.childResults[1].errorMessages).toEqual([
       'invalid package name: `invalid package`',
     ]);

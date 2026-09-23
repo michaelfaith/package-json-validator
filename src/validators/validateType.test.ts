@@ -3,59 +3,44 @@ import { describe, expect, it } from 'vitest';
 import { validateType } from './validateType.ts';
 
 describe(validateType, () => {
-  it.each(['commonjs', 'module'])(
-    "should return no issues for valid type '%s'",
-    (type) => {
-      expect(validateType(type).errorMessages).toEqual([]);
-    },
-  );
+  it.each(['commonjs', 'module'])("should return no issues for valid type '%s'", (type) => {
+    expect(validateType(type).errorMessages).toEqual([]);
+  });
 
   it('should return an issue if type is not a string (number)', () => {
     const result = validateType(123);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `number`']);
   });
 
   it('should return error if type is not a string (object)', () => {
     const result = validateType({});
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `object`']);
   });
 
   it('should return error if type is not a string (array)', () => {
     const result = validateType([]);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `array`']);
   });
 
   it('should return error if type is not a string (boolean)', () => {
     const result = validateType(true);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `boolean`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `boolean`']);
   });
 
   it('should return error if type is not a string (undefined)', () => {
     const result = validateType(undefined);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `undefined`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `undefined`']);
   });
 
   it('should return error if type is not a string (null)', () => {
     const result = validateType(null);
 
-    expect(result.errorMessages).toEqual([
-      'the value is `null`, but should be a `string`',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is `null`, but should be a `string`']);
   });
 
   it('should return error if type is an empty string', () => {

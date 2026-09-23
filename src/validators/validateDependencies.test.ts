@@ -68,9 +68,7 @@ describe(validateDependencies, () => {
     const result = validateDependencies(dependencies);
     expect(result.errorMessages).toEqual([]);
     expect(result.issues).toEqual([]);
-    expect(result.childResults).toHaveLength(
-      Object.entries(dependencies).length,
-    );
+    expect(result.childResults).toHaveLength(Object.entries(dependencies).length);
     result.childResults.forEach((child) => {
       expect(child.issues).toEqual([]);
     });
@@ -137,9 +135,7 @@ describe(validateDependencies, () => {
       ]);
     });
     unpublishedKeys.forEach((_, i) => {
-      expect(
-        result.childResults[publishedKeys.length + i].errorMessages,
-      ).toEqual([]);
+      expect(result.childResults[publishedKeys.length + i].errorMessages).toEqual([]);
     });
   });
 
@@ -169,45 +165,37 @@ describe(validateDependencies, () => {
         'git+foo://github.com/npm/cli.git',
         'Unsupported URL Type "git+foo:": git+foo://github.com/npm/cli.git',
       ],
-    ] satisfies [
-      testCaseName: string,
-      name: string,
-      spec: string,
-      errorMessage: string,
-    ][])('%s', ([, name, spec, errorMessage]) => {
-      const dependencies = { [name]: spec };
+    ] satisfies [testCaseName: string, name: string, spec: string, errorMessage: string][])(
+      '%s',
+      ([, name, spec, errorMessage]) => {
+        const dependencies = { [name]: spec };
 
-      const result = validateDependencies(dependencies);
+        const result = validateDependencies(dependencies);
 
-      expect(result.issues).toEqual([]);
-      expect(result.childResults[0].errorMessages).toStrictEqual([
-        `invalid version spec for dependency \`${name}\`: ${errorMessage}`,
-      ]);
-    });
+        expect(result.issues).toEqual([]);
+        expect(result.childResults[0].errorMessages).toStrictEqual([
+          `invalid version spec for dependency \`${name}\`: ${errorMessage}`,
+        ]);
+      },
+    );
   });
 
   it('should return an issue if the value is a string', () => {
     const result = validateDependencies('123');
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `string`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `string`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the value is a number', () => {
     const result = validateDependencies(123);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `number`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the value is an object', () => {
     const result = validateDependencies([]);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `array`']);
     expect(result.issues).toHaveLength(1);
   });
 
@@ -220,9 +208,7 @@ describe(validateDependencies, () => {
   });
 
   it('should display raw version when error is thrown', () => {
-    const spy = vi
-      .spyOn(npmPackageArg, 'resolve')
-      .mockThrow(new Error('Some error'));
+    const spy = vi.spyOn(npmPackageArg, 'resolve').mockThrow(new Error('Some error'));
 
     const result = validateDependencies({
       'bad-catalog': 'catalob:',
@@ -258,17 +244,14 @@ describe(validateDependencies, () => {
         ...validDependencies,
         // Custom protocol (https://github.com/michaelfaith/package-json-validator/issues/994)
         'custom-registry': 'work:foo@1.2.3',
-        'custom-registry-with-url':
-          'work:git+https://isaacs@github.com/npm/cli.git',
+        'custom-registry-with-url': 'work:git+https://isaacs@github.com/npm/cli.git',
         'custom-registry-with-space': 'work registry:foo@1.2.3',
       };
 
       const result = validateDependencies(dependencies, options);
       expect(result.errorMessages).toEqual([]);
       expect(result.issues).toEqual([]);
-      expect(result.childResults).toHaveLength(
-        Object.entries(dependencies).length,
-      );
+      expect(result.childResults).toHaveLength(Object.entries(dependencies).length);
       result.childResults.forEach((child) => {
         expect(child.issues).toEqual([]);
       });
@@ -330,9 +313,7 @@ describe(validateDependencies, () => {
       );
       expect(result.issues).toEqual([]);
       expect(result.errorMessages).toEqual(
-        publishedKeys.map(
-          (key) => `invalid dependency package name: \`${key}\``,
-        ),
+        publishedKeys.map((key) => `invalid dependency package name: \`${key}\``),
       );
       publishedKeys.forEach((key, i) => {
         expect(result.childResults[i].errorMessages).toEqual([
@@ -340,9 +321,7 @@ describe(validateDependencies, () => {
         ]);
       });
       unpublishedKeys.forEach((_, i) => {
-        expect(
-          result.childResults[publishedKeys.length + i].errorMessages,
-        ).toEqual([]);
+        expect(result.childResults[publishedKeys.length + i].errorMessages).toEqual([]);
       });
     });
 
@@ -372,27 +351,23 @@ describe(validateDependencies, () => {
           'work:',
           'Unsupported URL Type "work:": work:',
         ],
-      ] satisfies [
-        testCaseName: string,
-        name: string,
-        spec: string,
-        errorMessage: string,
-      ][])('%s', ([, name, spec, errorMessage]) => {
-        const dependencies = { [name]: spec };
+      ] satisfies [testCaseName: string, name: string, spec: string, errorMessage: string][])(
+        '%s',
+        ([, name, spec, errorMessage]) => {
+          const dependencies = { [name]: spec };
 
-        const result = validateDependencies(dependencies, options);
+          const result = validateDependencies(dependencies, options);
 
-        expect(result.issues).toEqual([]);
-        expect(result.childResults[0].errorMessages).toStrictEqual([
-          `invalid version spec for dependency \`${name}\`: ${errorMessage}`,
-        ]);
-      });
+          expect(result.issues).toEqual([]);
+          expect(result.childResults[0].errorMessages).toStrictEqual([
+            `invalid version spec for dependency \`${name}\`: ${errorMessage}`,
+          ]);
+        },
+      );
     });
 
     it('should display raw version when error is thrown', () => {
-      const spy = vi
-        .spyOn(npmPackageArg, 'resolve')
-        .mockThrow(new Error('Some error'));
+      const spy = vi.spyOn(npmPackageArg, 'resolve').mockThrow(new Error('Some error'));
 
       const result = validateDependencies(
         {
@@ -427,12 +402,10 @@ describe(validateDependencies, () => {
     });
 
     it('should use the raw protocol package arg when npm-package-arg throws and unknown error', () => {
-      const spy = vi
-        .spyOn(npmPackageArgModule, 'default')
-        .mockImplementation(() => {
-          // eslint-disable-next-line @typescript-eslint/only-throw-error -- simulating the throwing of a non-Error
-          throw { message: 'some weird error' };
-        });
+      const spy = vi.spyOn(npmPackageArgModule, 'default').mockImplementation(() => {
+        // eslint-disable-next-line @typescript-eslint/only-throw-error -- simulating the throwing of a non-Error
+        throw { message: 'some weird error' };
+      });
 
       const result = validateDependencies(
         {

@@ -10,59 +10,44 @@ describe(validatePackageManager, () => {
     'bun@1.0.0',
     'deno@1.0.0',
     'yarn@4.2.3+sha224.953c8233f7a92884eee2de69a1b92d1f2ec1655e66d08071ba9a02fa',
-  ])(
-    "should return no issues for valid package manager '%s'",
-    (packageManager) => {
-      expect(validatePackageManager(packageManager).errorMessages).toEqual([]);
-    },
-  );
+  ])("should return no issues for valid package manager '%s'", (packageManager) => {
+    expect(validatePackageManager(packageManager).errorMessages).toEqual([]);
+  });
 
   it('should return an issue if the value is not a string (number)', () => {
     const result = validatePackageManager(123);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `number`']);
   });
 
   it('should return an issue if the value is not a string (object)', () => {
     const result = validatePackageManager({});
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `object`']);
   });
 
   it('should return an issue if the value is not a string (array)', () => {
     const result = validatePackageManager([]);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `array`']);
   });
 
   it('should return an issue if the value is not a string (boolean)', () => {
     const result = validatePackageManager(true);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `boolean`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `boolean`']);
   });
 
   it('should return an issue if the value is not a string (undefined)', () => {
     const result = validatePackageManager(undefined);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `undefined`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `undefined`']);
   });
 
   it('should return an issue if the value is not a string (null)', () => {
     const result = validatePackageManager(null);
 
-    expect(result.errorMessages).toEqual([
-      'the value is `null`, but should be a `string`',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is `null`, but should be a `string`']);
   });
 
   it('should return an issue if the value is an empty string', () => {

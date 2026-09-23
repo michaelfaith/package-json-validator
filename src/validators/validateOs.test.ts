@@ -2,16 +2,7 @@ import { describe, expect, it } from 'vitest';
 
 import { validateOs } from './validateOs.ts';
 
-const VALID_OSS = [
-  'aix',
-  'android',
-  'darwin',
-  'freebsd',
-  'linux',
-  'openbsd',
-  'sunos',
-  'win32',
-];
+const VALID_OSS = ['aix', 'android', 'darwin', 'freebsd', 'linux', 'openbsd', 'sunos', 'win32'];
 
 describe(validateOs, () => {
   it('should return no issues if the value is an empty array', () => {
@@ -72,18 +63,14 @@ describe(validateOs, () => {
   it('should return an issue if the value is a number', () => {
     const result = validateOs(123);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `Array`, not `number`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the value is an object', () => {
     const result = validateOs({});
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array`, not `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `Array`, not `object`']);
     expect(result.issues).toHaveLength(1);
   });
 

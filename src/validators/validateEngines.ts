@@ -18,13 +18,10 @@ export const validateEngines = (obj: unknown): Result => {
     for (const [key, value] of Object.entries(obj)) {
       const childResult = new ChildResult(propertyNumber);
       const normalizedKey = key.trim();
-      const fieldName =
-        normalizedKey === '' ? String(propertyNumber) : `"${normalizedKey}"`;
+      const fieldName = normalizedKey === '' ? String(propertyNumber) : `"${normalizedKey}"`;
 
       if (typeof value !== 'string') {
-        childResult.addIssue(
-          `the value of property ${fieldName} should be a string`,
-        );
+        childResult.addIssue(`the value of property ${fieldName} should be a string`);
       } else if (value.trim() === '') {
         childResult.addIssue(
           `the value of property ${fieldName} is empty, but should be a semver range`,

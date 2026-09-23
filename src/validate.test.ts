@@ -2,9 +2,7 @@ import { assert, describe, expect, it, test } from 'vitest';
 
 import { validate } from './validate.ts';
 
-const getPackageJson = (
-  extra: Record<string, unknown> = {},
-): Record<string, unknown> => ({
+const getPackageJson = (extra: Record<string, unknown> = {}): Record<string, unknown> => ({
   config: {
     debug: true,
   },
@@ -64,32 +62,24 @@ describe(validate, () => {
 
     test('Field formats', () => {
       assert.equal(
-        validate(JSON.stringify(getPackageJson({ bin: './path/to/program' })))
-          .valid,
+        validate(JSON.stringify(getPackageJson({ bin: './path/to/program' }))).valid,
         true,
         'bin: can be string',
       );
       assert.equal(
-        validate(
-          JSON.stringify(
-            getPackageJson({ bin: { 'my-project': './path/to/program' } }),
-          ),
-        ).valid,
+        validate(JSON.stringify(getPackageJson({ bin: { 'my-project': './path/to/program' } })))
+          .valid,
         true,
         'bin: can be object',
       );
       assert.equal(
-        validate(JSON.stringify(getPackageJson({ bin: ['./path/to/program'] })))
-          .valid,
+        validate(JSON.stringify(getPackageJson({ bin: ['./path/to/program'] }))).valid,
         false,
         "bin: can't be an array",
       );
       assert.equal(
-        validate(
-          JSON.stringify(
-            getPackageJson({ dependencies: { bad: { version: '3.3.3' } } }),
-          ),
-        ).valid,
+        validate(JSON.stringify(getPackageJson({ dependencies: { bad: { version: '3.3.3' } } })))
+          .valid,
         false,
         'version should be a string',
       );
@@ -99,8 +89,7 @@ describe(validate, () => {
         'bin: can be string | with object input',
       );
       assert.equal(
-        validate(getPackageJson({ bin: { 'my-project': './path/to/program' } }))
-          .valid,
+        validate(getPackageJson({ bin: { 'my-project': './path/to/program' } })).valid,
         true,
         'bin: can be object | with object input',
       );
@@ -110,9 +99,7 @@ describe(validate, () => {
         "bin: can't be an array | with object input",
       );
       assert.equal(
-        validate(
-          getPackageJson({ dependencies: { bad: { version: '3.3.3' } } }),
-        ).valid,
+        validate(getPackageJson({ dependencies: { bad: { version: '3.3.3' } } })).valid,
         false,
         'version should be a string | with object input',
       );
@@ -349,11 +336,7 @@ describe(validate, () => {
             warnings: false,
           });
           assert.equal(result.valid, true, JSON.stringify(result));
-          assert.equal(
-            result.recommendations?.length,
-            1,
-            JSON.stringify(result),
-          );
+          assert.equal(result.recommendations?.length, 1, JSON.stringify(result));
         }
       });
 
@@ -631,11 +614,7 @@ describe(validate, () => {
             warnings: false,
           });
           assert.equal(result.valid, true, JSON.stringify(result));
-          assert.equal(
-            result.recommendations?.length,
-            1,
-            JSON.stringify(result),
-          );
+          assert.equal(result.recommendations?.length, 1, JSON.stringify(result));
         }
       });
 
@@ -669,9 +648,7 @@ describe(validate, () => {
     });
 
     it('should throw for invalid input type', () => {
-      expect(() => validate(123 as unknown as string, true)).toThrow(
-        'Invalid data - Not a string',
-      );
+      expect(() => validate(123 as unknown as string, true)).toThrow('Invalid data - Not a string');
     });
 
     it('should return a successful Result for valid package data', () => {

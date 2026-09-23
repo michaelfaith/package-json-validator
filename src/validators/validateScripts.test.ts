@@ -69,9 +69,7 @@ describe(validateScripts, () => {
       build: 'rollup -c',
       invalid: 123,
     });
-    expect(result.errorMessages).toEqual([
-      'the value of property "invalid" should be a string',
-    ]);
+    expect(result.errorMessages).toEqual(['the value of property "invalid" should be a string']);
     expect(result.issues).toHaveLength(0);
     expect(result.childResults).toHaveLength(2);
     expect(result.childResults[0].errorMessages).toEqual([]);
@@ -82,25 +80,19 @@ describe(validateScripts, () => {
 
   it('should return an issue if the scripts field is neither a string nor an object', () => {
     const result = validateScripts(123);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `number`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the scripts field is an array', () => {
     const result = validateScripts(['rollup -c', 'eslint .']);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `array`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the scripts field is null', () => {
     const result = validateScripts(null);
-    expect(result.errorMessages).toEqual([
-      'the value is `null`, but should be an `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is `null`, but should be an `object`']);
     expect(result.issues).toHaveLength(1);
   });
 });

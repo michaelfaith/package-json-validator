@@ -17,11 +17,8 @@ export const validateWorkspaces = (value: unknown): Result => {
       const item: unknown = value[i];
 
       if (typeof item !== 'string') {
-        const itemType =
-          item === null ? 'null' : Array.isArray(item) ? 'Array' : typeof item;
-        childResult.addIssue(
-          `item at index ${i} should be a string, not \`${itemType}\``,
-        );
+        const itemType = item === null ? 'null' : Array.isArray(item) ? 'Array' : typeof item;
+        childResult.addIssue(`item at index ${i} should be a string, not \`${itemType}\``);
       } else if (item.trim() === '') {
         childResult.addIssue(
           `item at index ${i} is empty, but should be a file path or glob pattern`,

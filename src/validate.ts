@@ -141,11 +141,7 @@ const parse = (data: string) => {
     return errorMessage;
   }
 
-  if (
-    typeof parsed !== 'object' ||
-    parsed === null ||
-    parsed instanceof Array
-  ) {
+  if (typeof parsed !== 'object' || parsed === null || parsed instanceof Array) {
     return `Invalid JSON - not an object (actual type: ${typeof parsed})`;
   }
 
@@ -188,10 +184,7 @@ export function validate(
  * @param useNewReturnType Opt-in to use the new return type (Result) instead of the legacy output.  This is a temporary option to allow users to migrate to the new return type before it becomes the default in a future major release.
  * @returns an object with the validation results.
  */
-export function validate(
-  data: object | string,
-  useNewReturnType: false,
-): LegacyValidationOutput;
+export function validate(data: object | string, useNewReturnType: false): LegacyValidationOutput;
 
 /**
  * Validate a package.json object (or string) against the npm spec.
@@ -217,9 +210,7 @@ export function validate(
         throw new Error(parsedData);
       }
 
-      const map = getSpecMap(
-        (parsedData.private as boolean | undefined) ?? false,
-      );
+      const map = getSpecMap((parsedData.private as boolean | undefined) ?? false);
 
       const keys = Object.keys(map);
       for (let i = 0; i < keys.length; i++) {
@@ -287,9 +278,7 @@ const validateLegacy = (
 
     // Validation is expected to return an array of errors (empty means no errors)
     errors.push(
-      ...field
-        .validate(parsed[name])
-        .errorMessages.map((e) => ({ field: name, message: e })),
+      ...field.validate(parsed[name]).errorMessages.map((e) => ({ field: name, message: e })),
     );
   }
 

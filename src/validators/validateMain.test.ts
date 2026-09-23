@@ -12,49 +12,37 @@ describe(validateMain, () => {
   it('should return an issue if the value is not a string (number)', () => {
     const result = validateMain(123);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `number`']);
   });
 
   it('should return an issue if the value is not a string (object)', () => {
     const result = validateMain({});
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `object`']);
   });
 
   it('should return an issue if the value is not a string (Array)', () => {
     const result = validateMain([]);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `Array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `Array`']);
   });
 
   it('should return an issue if value is not a string (boolean)', () => {
     const result = validateMain(true);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `boolean`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `boolean`']);
   });
 
   it('should return an issue if value is not a string (undefined)', () => {
     const result = validateMain(undefined);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be a `string`, not `undefined`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be a `string`, not `undefined`']);
   });
 
   it('should return an issue if value is not a string (null)', () => {
     const result = validateMain(null);
 
-    expect(result.errorMessages).toEqual([
-      'the value is `null`, but should be a `string`',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is `null`, but should be a `string`']);
   });
 
   it('should return an issue if the value is an empty string', () => {

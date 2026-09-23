@@ -33,10 +33,7 @@ export class Result {
    * @param issuesOrMessages the collection of issues from this property value
    * @param childResults results from child property values
    */
-  constructor(
-    issuesOrMessages: Issue[] | string[] = [],
-    childResults: ChildResult[] = [],
-  ) {
+  constructor(issuesOrMessages: Issue[] | string[] = [], childResults: ChildResult[] = []) {
     const issues: Issue[] = issuesOrMessages.map((item) =>
       typeof item === 'string' ? { message: item } : item,
     );
@@ -128,11 +125,7 @@ export class ChildResult extends Result {
    * @param childResults results from child property values
    * @returns The new ChildResult object
    */
-  constructor(
-    index: number,
-    issuesOrMessages?: Issue[] | string[],
-    childResults?: ChildResult[],
-  );
+  constructor(index: number, issuesOrMessages?: Issue[] | string[], childResults?: ChildResult[]);
 
   /**
    * Given an index and all the parameters of `Result` constructor, this creates a new ChildResult object.
@@ -147,10 +140,7 @@ export class ChildResult extends Result {
     childResults: ChildResult[] = [],
   ) {
     if (issuesOrMessagesOrResult instanceof Result) {
-      super(
-        issuesOrMessagesOrResult.issues,
-        issuesOrMessagesOrResult.childResults,
-      );
+      super(issuesOrMessagesOrResult.issues, issuesOrMessagesOrResult.childResults);
     } else {
       super(issuesOrMessagesOrResult, childResults);
     }

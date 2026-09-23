@@ -26,12 +26,8 @@ describe(validateDirectories, () => {
     expect(result.childResults).toHaveLength(3);
     [
       [],
-      [
-        'the value of property "man" is empty, but should be a path to a directory',
-      ],
-      [
-        'the value of property "test" is empty, but should be a path to a directory',
-      ],
+      ['the value of property "man" is empty, but should be a path to a directory'],
+      ['the value of property "test" is empty, but should be a path to a directory'],
     ].forEach((childErrors, index) => {
       expect(result.childResults[index].errorMessages).toEqual(childErrors);
     });
@@ -64,34 +60,26 @@ describe(validateDirectories, () => {
     });
     expect(result.issues).toEqual([]);
     expect(result.childResults).toHaveLength(2);
-    [[], ['the value of property "invalid" should be a string']].forEach(
-      (childErrors, index) => {
-        expect(result.childResults[index].errorMessages).toEqual(childErrors);
-      },
-    );
+    [[], ['the value of property "invalid" should be a string']].forEach((childErrors, index) => {
+      expect(result.childResults[index].errorMessages).toEqual(childErrors);
+    });
   });
 
   it('should return an issue if the value is neither a string nor an object', () => {
     const result = validateDirectories(123);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `number`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the value is an array', () => {
     const result = validateDirectories(['dist/bin', 'docs']);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `array`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the value is null', () => {
     const result = validateDirectories(null);
-    expect(result.errorMessages).toEqual([
-      'the value is `null`, but should be an `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is `null`, but should be an `object`']);
     expect(result.issues).toHaveLength(1);
   });
 });

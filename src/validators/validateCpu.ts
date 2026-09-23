@@ -31,9 +31,7 @@ export const validateCpu = (obj: unknown): Result => {
 
       if (typeof item !== 'string') {
         const itemType = item === null ? 'null' : typeof item;
-        childResult.addIssue(
-          `item at index ${i} should be a string, not \`${itemType}\``,
-        );
+        childResult.addIssue(`item at index ${i} should be a string, not \`${itemType}\``);
       } else if (item.trim() === '') {
         childResult.addIssue(
           `item at index ${i} is empty, but should be the name of a CPU architecture`,

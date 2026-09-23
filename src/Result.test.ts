@@ -17,9 +17,7 @@ describe(Result, () => {
         const issueStrings = ['issue 1', 'issue 2'];
         const result = new Result(issueStrings);
 
-        expect(result.issues).toEqual(
-          issueStrings.map((message) => ({ message })),
-        );
+        expect(result.issues).toEqual(issueStrings.map((message) => ({ message })));
         expect(result.errorMessages).toEqual(issueStrings);
         expect(result.childResults).toEqual([]);
       });
@@ -29,9 +27,7 @@ describe(Result, () => {
         const result = new Result(issues);
 
         expect(result.issues).toEqual(issues);
-        expect(result.errorMessages).toEqual(
-          issues.map((issue) => issue.message),
-        );
+        expect(result.errorMessages).toEqual(issues.map((issue) => issue.message));
         expect(result.childResults).toEqual([]);
       });
 
@@ -70,9 +66,7 @@ describe(Result, () => {
 
         parent.addChildResult(0, childIssueString);
 
-        expect(parent.childResults).toEqual([
-          new ChildResult(0, [childIssueString]),
-        ]);
+        expect(parent.childResults).toEqual([new ChildResult(0, [childIssueString])]);
         expect(parent.errorMessages).toEqual([childIssueString]);
       });
 
@@ -82,9 +76,7 @@ describe(Result, () => {
 
         parent.addChildResult(0, childIssueStrings);
 
-        expect(parent.childResults).toEqual([
-          new ChildResult(0, childIssueStrings),
-        ]);
+        expect(parent.childResults).toEqual([new ChildResult(0, childIssueStrings)]);
         expect(parent.errorMessages).toEqual(childIssueStrings);
       });
 
@@ -142,11 +134,7 @@ describe(Result, () => {
 
         const flattened = parent.flatten();
 
-        expect(flattened.issues).toEqual([
-          ...parentIssues,
-          ...child1Issues,
-          ...child2Issues,
-        ]);
+        expect(flattened.issues).toEqual([...parentIssues, ...child1Issues, ...child2Issues]);
         expect(flattened.errorMessages).toEqual([
           ...parentIssues.map((issue) => issue.message),
           ...child1Issues.map((issue) => issue.message),
@@ -157,11 +145,7 @@ describe(Result, () => {
 
       it('should flatten a Result with multiple levels of nested child results', () => {
         const grandchild = new ChildResult(0, ['grandchild issue1']);
-        const child = new ChildResult(
-          0,
-          ['child issue1', 'child issue2'],
-          [grandchild],
-        );
+        const child = new ChildResult(0, ['child issue1', 'child issue2'], [grandchild]);
         const parent = new Result(['parent issue1'], [child]);
         const parentIssues = parent.issues;
         const childIssues = child.issues;
@@ -169,11 +153,7 @@ describe(Result, () => {
 
         const flattened = parent.flatten();
 
-        expect(flattened.issues).toEqual([
-          ...parentIssues,
-          ...childIssues,
-          ...grandchildIssues,
-        ]);
+        expect(flattened.issues).toEqual([...parentIssues, ...childIssues, ...grandchildIssues]);
         expect(flattened.errorMessages).toEqual([
           ...parentIssues.map((issue) => issue.message),
           ...childIssues.map((issue) => issue.message),
@@ -200,9 +180,7 @@ describe(Result, () => {
         const childResult = new ChildResult(13, issueStrings);
 
         expect(childResult.index).toBe(13);
-        expect(childResult.issues).toEqual(
-          issueStrings.map((message) => ({ message })),
-        );
+        expect(childResult.issues).toEqual(issueStrings.map((message) => ({ message })));
         expect(childResult.errorMessages).toEqual(issueStrings);
         expect(childResult.childResults).toEqual([]);
       });
@@ -213,9 +191,7 @@ describe(Result, () => {
 
         expect(childResult.index).toBe(0);
         expect(childResult.issues).toEqual(issues);
-        expect(childResult.errorMessages).toEqual(
-          issues.map((issue) => issue.message),
-        );
+        expect(childResult.errorMessages).toEqual(issues.map((issue) => issue.message));
         expect(childResult.childResults).toEqual([]);
       });
 
@@ -244,9 +220,7 @@ describe(Result, () => {
 
         expect(childResult.index).toBe(5);
         expect(childResult.issues).toEqual(issues);
-        expect(childResult.errorMessages).toEqual(
-          issues.map((issue) => issue.message),
-        );
+        expect(childResult.errorMessages).toEqual(issues.map((issue) => issue.message));
         expect(childResult.childResults).toEqual([]);
       });
     });
