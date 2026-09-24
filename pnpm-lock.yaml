@@ -3639,7 +3639,7 @@ snapshots:
 
   hosted-git-info@10.1.1:
     dependencies:
-      lru-cache: 11.5.2
+      lru-cache: 11.5.3
 
   hosted-git-info@9.0.3:
     dependencies:
