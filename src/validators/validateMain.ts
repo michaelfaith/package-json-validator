@@ -15,9 +15,7 @@ export const validateMain = (value: unknown): Result => {
       result.addIssue(`the type should be a \`string\`, not \`${valueType}\``);
     }
   } else if (value.trim() === '') {
-    result.addIssue(
-      "the value is empty, but should be the path to the package's main module",
-    );
+    result.addIssue("the value is empty, but should be the path to the package's main module");
   }
 
   return result;

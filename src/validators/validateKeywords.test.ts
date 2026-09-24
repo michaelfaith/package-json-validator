@@ -39,13 +39,9 @@ describe(validateKeywords, () => {
       'item at index 2 is empty, but should be a keyword string',
     ]);
     expect(result.childResults).toEqual([
-      new ChildResult(0, [
-        'item at index 0 is empty, but should be a keyword string',
-      ]),
+      new ChildResult(0, ['item at index 0 is empty, but should be a keyword string']),
       new ChildResult(1),
-      new ChildResult(2, [
-        'item at index 2 is empty, but should be a keyword string',
-      ]),
+      new ChildResult(2, ['item at index 2 is empty, but should be a keyword string']),
       new ChildResult(3),
     ]);
   });
@@ -53,23 +49,15 @@ describe(validateKeywords, () => {
   it('should return an issue if the value is a number', () => {
     const result = validateKeywords(123);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array`, not `number`',
-    ]);
-    expect(result.issues[0].message).toEqual(
-      'the type should be `Array`, not `number`',
-    );
+    expect(result.errorMessages).toEqual(['the type should be `Array`, not `number`']);
+    expect(result.issues[0].message).toEqual('the type should be `Array`, not `number`');
   });
 
   it('should return an issue if the value is an object', () => {
     const result = validateKeywords({});
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array`, not `object`',
-    ]);
-    expect(result.issues[0].message).toEqual(
-      'the type should be `Array`, not `object`',
-    );
+    expect(result.errorMessages).toEqual(['the type should be `Array`, not `object`']);
+    expect(result.issues[0].message).toEqual('the type should be `Array`, not `object`');
   });
 
   it('should return an issue if the value is null', () => {

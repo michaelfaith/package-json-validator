@@ -18,25 +18,17 @@ export const validateBundleDependencies = (obj: unknown): Result => {
       const item: unknown = obj[i];
       if (typeof item !== 'string') {
         const itemType = item === null ? 'null' : typeof item;
-        childResult.addIssue(
-          `item at index ${i} should be a string, not \`${itemType}\``,
-        );
+        childResult.addIssue(`item at index ${i} should be a string, not \`${itemType}\``);
       } else if (item.trim() === '') {
-        childResult.addIssue(
-          `item at index ${i} is empty, but should be a dependency name`,
-        );
+        childResult.addIssue(`item at index ${i} is empty, but should be a dependency name`);
       }
       result.addChildResult(childResult);
     }
   } else if (obj == null) {
-    result.addIssue(
-      'the value is `null`, but should be an `Array` or a `boolean`',
-    );
+    result.addIssue('the value is `null`, but should be an `Array` or a `boolean`');
   } else {
     const valueType = typeof obj;
-    result.addIssue(
-      `the type should be \`Array\` or \`boolean\`, not \`${valueType}\``,
-    );
+    result.addIssue(`the type should be \`Array\` or \`boolean\`, not \`${valueType}\``);
   }
 
   return result;

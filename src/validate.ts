@@ -1,8 +1,5 @@
 import { Result } from './Result.ts';
-import type {
-  PropertyValidations,
-  ValidateFunction,
-} from './validate.types.ts';
+import type { PropertyValidations, ValidateFunction } from './validate.types.ts';
 import {
   validateAuthor,
   validateBin,
@@ -94,11 +91,7 @@ const parse = (data: string) => {
     return errorMessage;
   }
 
-  if (
-    typeof parsed !== 'object' ||
-    parsed === null ||
-    parsed instanceof Array
-  ) {
+  if (typeof parsed !== 'object' || parsed === null || parsed instanceof Array) {
     return `JSON string has invalid type. It should be an object.`;
   }
 

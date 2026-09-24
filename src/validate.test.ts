@@ -2,9 +2,7 @@ import { describe, expect, it, test } from 'vitest';
 
 import { validate } from './validate.ts';
 
-const getPackageJson = (
-  extra: Record<string, unknown> = {},
-): Record<string, unknown> => ({
+const getPackageJson = (extra: Record<string, unknown> = {}): Record<string, unknown> => ({
   config: {
     debug: true,
   },
@@ -50,19 +48,13 @@ const baseFields = {
 // eslint-disable-next-line @typescript-eslint/no-deprecated
 describe(validate, () => {
   test('Field formats', () => {
+    expect(validate(getPackageJson({ bin: './path/to/program' })).errorMessages).toHaveLength(0);
     expect(
-      validate(getPackageJson({ bin: './path/to/program' })).errorMessages,
+      validate(getPackageJson({ bin: { 'my-project': './path/to/program' } })).errorMessages,
     ).toHaveLength(0);
+    expect(validate(getPackageJson({ bin: ['./path/to/program'] })).errorMessages).toHaveLength(1);
     expect(
-      validate(getPackageJson({ bin: { 'my-project': './path/to/program' } }))
-        .errorMessages,
-    ).toHaveLength(0);
-    expect(
-      validate(getPackageJson({ bin: ['./path/to/program'] })).errorMessages,
-    ).toHaveLength(1);
-    expect(
-      validate(getPackageJson({ dependencies: { bad: { version: '3.3.3' } } }))
-        .errorMessages,
+      validate(getPackageJson({ dependencies: { bad: { version: '3.3.3' } } })).errorMessages,
     ).toHaveLength(1);
   });
 
@@ -166,9 +158,7 @@ describe(validate, () => {
         json = getPackageJson();
         delete json[field];
         result = validate(JSON.stringify(json));
-        expect(result.errorMessages).toEqual([
-          `Missing required property: ${field}`,
-        ]);
+        expect(result.errorMessages).toEqual([`Missing required property: ${field}`]);
       });
     });
   });
@@ -281,9 +271,7 @@ describe(validate, () => {
         json = getPackageJson();
         delete json[field];
         result = validate(json);
-        expect(result.errorMessages).toEqual([
-          `Missing required property: ${field}`,
-        ]);
+        expect(result.errorMessages).toEqual([`Missing required property: ${field}`]);
       });
     });
 
@@ -299,9 +287,7 @@ describe(validate, () => {
   });
 
   it('should throw for invalid type using string input (array)', () => {
-    expect(() => validate('[]')).toThrow(
-      'JSON string has invalid type. It should be an object.',
-    );
+    expect(() => validate('[]')).toThrow('JSON string has invalid type. It should be an object.');
   });
 
   it('should throw for invalid input type', () => {

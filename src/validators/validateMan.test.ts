@@ -49,12 +49,7 @@ describe(validateMan, () => {
   });
 
   it('should return issues if the value is an array with invalid strings', () => {
-    const result = validateMan([
-      './man/doc.one',
-      './man/doc.gz',
-      './man/doc.Infinity',
-      'man/doc',
-    ]);
+    const result = validateMan(['./man/doc.one', './man/doc.gz', './man/doc.Infinity', 'man/doc']);
     expect(result.errorMessages).toEqual([
       'item at index 0 is not valid; it should be the path to a man file',
       'item at index 1 is not valid; it should be the path to a man file',
@@ -83,16 +78,13 @@ describe(validateMan, () => {
     './man/doc.',
     'man/doc.Infinity',
     './man/doc.gz',
-  ])(
-    'should return an issue if the value is an invalid string (%s)',
-    (input) => {
-      const result = validateMan(input);
-      expect(result.errorMessages).toEqual([
-        'the value is not valid; it should be the path to a man file',
-      ]);
-      expect(result.issues).toHaveLength(1);
-    },
-  );
+  ])('should return an issue if the value is an invalid string (%s)', (input) => {
+    const result = validateMan(input);
+    expect(result.errorMessages).toEqual([
+      'the value is not valid; it should be the path to a man file',
+    ]);
+    expect(result.issues).toHaveLength(1);
+  });
 
   it('should return an issue if the value is an empty string', () => {
     let result = validateMan('');
@@ -110,9 +102,7 @@ describe(validateMan, () => {
 
   it('should return issues if the value is a number', () => {
     const result = validateMan(123);
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array` or `string`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `Array` or `string`, not `number`']);
   });
 
   it('should return issues if the value is an object', () => {

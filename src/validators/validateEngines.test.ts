@@ -81,40 +81,30 @@ describe(validateEngines, () => {
   it('should return an issue if the value is neither a string nor an object', () => {
     const result = validateEngines(123);
     expect(result.issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `number`']);
   });
 
   it('should return an issue if the value is an array', () => {
     const result = validateEngines(['node']);
     expect(result.issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `Array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `Array`']);
   });
 
   it('should return an issue if the value is a string', () => {
     const result = validateEngines('node');
     expect(result.issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `string`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `string`']);
   });
 
   it('should return an issue if the value is null', () => {
     const result = validateEngines(null);
     expect(result.issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the value is `null`, but should be an `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is `null`, but should be an `object`']);
   });
 
   it('should return an issue if the value is undefined', () => {
     const result = validateEngines(undefined);
     expect(result.issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `undefined`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `undefined`']);
   });
 });

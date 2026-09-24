@@ -20,9 +20,7 @@ const validateFundingObject = (value: Record<string, unknown>): Result => {
     if (key === 'type') {
       if (typeof value[key] !== 'string') {
         const valueType = value[key] === null ? 'null' : typeof value[key];
-        childResult.addIssue(
-          `the \`type\` property should be a string, but got ${valueType}`,
-        );
+        childResult.addIssue(`the \`type\` property should be a string, but got ${valueType}`);
       } else if (value[key].trim() === '') {
         childResult.addIssue('the `type` property should not be empty');
       }
@@ -30,9 +28,7 @@ const validateFundingObject = (value: Record<string, unknown>): Result => {
     if (key === 'url') {
       if (typeof value[key] !== 'string') {
         const valueType = value[key] === null ? 'null' : typeof value[key];
-        childResult.addIssue(
-          `the \`url\` property should be a string, but got ${valueType}`,
-        );
+        childResult.addIssue(`the \`url\` property should be a string, but got ${valueType}`);
       } else if (value[key].trim() === '') {
         childResult.addIssue('the `url` property should not be empty');
       } else if (!urlFormat.test(value[key])) {
@@ -67,9 +63,7 @@ const validateFundingItem = (value: unknown): Result => {
   } else if (isPlainObject(value)) {
     result = validateFundingObject(value);
   } else {
-    result.addIssue(
-      'the value should be an object with `type` and `url` or a string URL',
-    );
+    result.addIssue('the value should be an object with `type` and `url` or a string URL');
   }
   return result;
 };

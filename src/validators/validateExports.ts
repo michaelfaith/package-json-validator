@@ -1,28 +1,19 @@
 import { Result } from '../Result.ts';
 
-const validateExportCondition = (
-  obj: unknown,
-  propertyName?: string,
-  index?: number,
-): Result => {
+const validateExportCondition = (obj: unknown, propertyName?: string, index?: number): Result => {
   const result = new Result();
 
   const normalizedKey = typeof propertyName === 'string' && propertyName.trim();
-  const fieldName =
-    normalizedKey === '' ? `property ${String(index)}` : `"${normalizedKey}"`;
+  const fieldName = normalizedKey === '' ? `property ${String(index)}` : `"${normalizedKey}"`;
 
   // Is the value of this property a `string`?
   if (typeof obj === 'string') {
     if (obj.trim() === '') {
       // If this property is the child of another...
       if (typeof propertyName === 'string') {
-        result.addIssue(
-          `the value of ${fieldName} is empty, but should be an entry point path`,
-        );
+        result.addIssue(`the value of ${fieldName} is empty, but should be an entry point path`);
       } else {
-        result.addIssue(
-          'the value is empty, but should be an entry point path',
-        );
+        result.addIssue('the value is empty, but should be an entry point path');
       }
     }
   }
@@ -36,9 +27,7 @@ const validateExportCondition = (
       const childResult = validateExportCondition(value, key, i);
 
       if (key.trim() === '') {
-        childResult.addIssue(
-          `property ${i} has an empty key, but should be an export condition`,
-        );
+        childResult.addIssue(`property ${i} has an empty key, but should be an export condition`);
       }
       result.addChildResult(i, childResult);
     }
@@ -46,9 +35,7 @@ const validateExportCondition = (
   // The value of this property is `null`, and this property is not the child of another
   else if (obj === null) {
     if (typeof propertyName !== 'string') {
-      result.addIssue(
-        'the value is `null`, but should be an `object` or `string`',
-      );
+      result.addIssue('the value is `null`, but should be an `object` or `string`');
     }
   }
   // The value of this property is not correct, and this property is the child of another
@@ -59,9 +46,7 @@ const validateExportCondition = (
     // The value of this property is not correct, and this property is not the child of another
   } else {
     const valueType = Array.isArray(obj) ? 'Array' : typeof obj;
-    result.addIssue(
-      `the type should be \`object\` or \`string\`, not \`${valueType}\``,
-    );
+    result.addIssue(`the type should be \`object\` or \`string\`, not \`${valueType}\``);
   }
 
   return result;
@@ -71,5 +56,4 @@ const validateExportCondition = (
  * Validate the `exports` field in a package.json. The value of
  * should be either a string or a Record&lt;string, object | string&gt;
  */
-export const validateExports = (obj: unknown): Result =>
-  validateExportCondition(obj);
+export const validateExports = (obj: unknown): Result => validateExportCondition(obj);

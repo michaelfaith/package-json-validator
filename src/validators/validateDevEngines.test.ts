@@ -57,9 +57,7 @@ describe(validateDevEngines, () => {
   it('should return an issue if the value is not an object (null)', () => {
     const result = validateDevEngines(null);
     expect(result.issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the value is `null`, but should be an `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is `null`, but should be an `object`']);
   });
 
   it('should return an issue if the value has unexpected properties', () => {
@@ -86,9 +84,7 @@ describe(validateDevEngines, () => {
     expect(result.issues).toHaveLength(0);
     expect(result.childResults).toHaveLength(1);
     expect(result.childResults[0].issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'missing required property `name` in devEngine object',
-    ]);
+    expect(result.errorMessages).toEqual(['missing required property `name` in devEngine object']);
   });
 
   it('should return issues if a devEngine object has extra properties', () => {

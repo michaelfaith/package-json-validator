@@ -98,7 +98,7 @@ jobs:
     steps:
       - uses: $/.github/actions/setup
       - run: pnpm run test --coverage
-      - uses: codecov/codecov-action@v5
+      - uses: codecov/codecov-action@303a32d7a59b442fa8d48b6a1cc6825c09c847a5 # v7
         if: success() && (matrix.os == 'ubuntu-latest')
         with:
           fail_ci_if_error: true

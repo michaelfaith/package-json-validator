@@ -18,10 +18,7 @@ const parsePackageArg = (arg: string): ParseArgReturn => {
     const result = npmPackageArg(arg);
     return { result };
   } catch (error) {
-    if (
-      !(error instanceof Error) ||
-      !('code' in error && typeof error.code === 'string')
-    ) {
+    if (!(error instanceof Error) || !('code' in error && typeof error.code === 'string')) {
       return { error: '' };
     }
 
@@ -34,10 +31,7 @@ const parseSpecWithNpa = (spec: string): ParseArgReturn => {
     const result = npmPackageArg.resolve('dummy', spec);
     return { result };
   } catch (error) {
-    if (
-      !(error instanceof Error) ||
-      !('code' in error && typeof error.code === 'string')
-    ) {
+    if (!(error instanceof Error) || !('code' in error && typeof error.code === 'string')) {
       return { error: '' };
     }
 
@@ -46,8 +40,7 @@ const parseSpecWithNpa = (spec: string): ParseArgReturn => {
     let errorMessage = rawErrorMessage;
     // The message contains the dummy package name, should use custom message
     if (code === 'EINVALIDTAGNAME') {
-      errorMessage =
-        'tags may not have any characters that encodeURIComponent encodes';
+      errorMessage = 'tags may not have any characters that encodeURIComponent encodes';
     }
 
     return { error: errorMessage };
@@ -103,9 +96,7 @@ export const validateDependencies = (
   const result = new Result();
 
   if (value == null) {
-    result.addIssue(
-      'the value is `null`, but should be a record of dependencies',
-    );
+    result.addIssue('the value is `null`, but should be a record of dependencies');
   } else if (typeof value === 'object' && !Array.isArray(value)) {
     const entries = Object.entries(value);
     for (let i = 0; i < entries.length; ++i) {
@@ -119,19 +110,15 @@ export const validateDependencies = (
       const childResult = new ChildResult(i);
       result.addChildResult(childResult);
 
-      if (
-        !packageFormat.test(pkg) &&
-        !(isSpecString && isUnpublished(npaResult, spec))
-      ) {
+      if (!packageFormat.test(pkg) && !(isSpecString && isUnpublished(npaResult, spec))) {
         childResult.addIssue(`invalid dependency package name: \`${pkg}\``);
       }
 
       if (isSpecString && npaResult) {
         if (!('result' in npaResult)) {
-          const isKnownPackageManagerProtocol =
-            PACKAGE_MANAGER_SPECIFIC_PROTOCOLS.some((protocol) =>
-              spec.startsWith(`${protocol}:`),
-            );
+          const isKnownPackageManagerProtocol = PACKAGE_MANAGER_SPECIFIC_PROTOCOLS.some(
+            (protocol) => spec.startsWith(`${protocol}:`),
+          );
           if (!isKnownPackageManagerProtocol) {
             const protocolMatch = parseProtocol.exec(spec);
             if (allowNamedRegistries && protocolMatch) {
@@ -139,8 +126,7 @@ export const validateDependencies = (
               const protocolPackageArg = protocolMatch[1];
 
               // Parse the portion right of the custom protocol to validate that.
-              const protocolArgParseResult =
-                parsePackageArg(protocolPackageArg);
+              const protocolArgParseResult = parsePackageArg(protocolPackageArg);
               if (typeof protocolArgParseResult.error === 'string') {
                 childResult.addIssue(
                   `invalid custom protocol arg for dependency \`${pkg}\`: ${protocolArgParseResult.error || protocolPackageArg}`,
@@ -156,9 +142,7 @@ export const validateDependencies = (
           }
         }
       } else {
-        childResult.addIssue(
-          `dependency version for \`${pkg}\` should be a string: ${spec}`,
-        );
+        childResult.addIssue(`dependency version for \`${pkg}\` should be a string: ${spec}`);
       }
     }
   } else {

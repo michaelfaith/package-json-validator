@@ -17,13 +17,9 @@ export const validateType = (type: unknown): Result => {
       result.addIssue(`the type should be a \`string\`, not \`${valueType}\``);
     }
   } else if (type.trim() === '') {
-    result.addIssue(
-      `the value is empty, but should be one of: ${VALID_TYPES.join(', ')}`,
-    );
+    result.addIssue(`the value is empty, but should be one of: ${VALID_TYPES.join(', ')}`);
   } else if (!VALID_TYPES.includes(type)) {
-    result.addIssue(
-      `the value "${type}" is not valid. Valid types are: ${VALID_TYPES.join(', ')}`,
-    );
+    result.addIssue(`the value "${type}" is not valid. Valid types are: ${VALID_TYPES.join(', ')}`);
   }
 
   return result;

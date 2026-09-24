@@ -18,9 +18,7 @@ describe(validateBin, () => {
 
   it('should return a Result with one issue when the bin field is an empty string', () => {
     const result = validateBin('');
-    expect(result.errorMessages).toEqual([
-      'the value is empty, but should be a relative path',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is empty, but should be a relative path']);
     expect(result.issues).toHaveLength(1);
   });
 
@@ -92,17 +90,13 @@ describe(validateBin, () => {
   it('should return a Result with an issue if the bin field is neither a string nor an object', () => {
     const result = validateBin(123);
     expect(result.issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the type should be `string` or `object`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `string` or `object`, not `number`']);
   });
 
   it('should return an error if the bin field is an array', () => {
     const result = validateBin(['./cli.js']);
     expect(result.issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the type should be `string` or `object`, not `array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `string` or `object`, not `array`']);
   });
 
   it('should return a Result with an issue if the bin field is null', () => {

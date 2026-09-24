@@ -27,9 +27,7 @@ export const validateBugs = (value: unknown): Result => {
         if (typeof keyValue !== 'string') {
           childResult.addIssue('the value of `email` should be a string');
         } else if (!emailFormat.test(keyValue)) {
-          childResult.addIssue(
-            'the value of `email` should be a valid email address',
-          );
+          childResult.addIssue('the value of `email` should be a valid email address');
         }
       } else if (key === 'url') {
         if (typeof keyValue !== 'string') {
@@ -38,16 +36,12 @@ export const validateBugs = (value: unknown): Result => {
           childResult.addIssue('the value of `url` should be a valid URL');
         }
       } else {
-        childResult.addIssue(
-          `unexpected property "${key}". Only "email" and "url" are allowed`,
-        );
+        childResult.addIssue(`unexpected property "${key}". Only "email" and "url" are allowed`);
       }
       result.addChildResult(i, childResult);
     }
     if (!keys.includes('email') && !keys.includes('url')) {
-      result.addIssue(
-        'the object should have at least one of these properties: email, url',
-      );
+      result.addIssue('the object should have at least one of these properties: email, url');
     }
   } else {
     result.addIssue(

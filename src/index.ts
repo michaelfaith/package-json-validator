@@ -12,6 +12,7 @@ export {
   validateContributors,
   validateCpu,
   validateDependencies,
+  type ValidateDependenciesOptions,
   validateDescription,
   validateDependencies as validateDevDependencies,
   validateDevEngines,
@@ -41,5 +42,4 @@ export {
   validateType,
   validateVersion,
   validateWorkspaces,
-  type ValidateDependenciesOptions,
 } from './validators/index.ts';

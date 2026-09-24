@@ -14,13 +14,10 @@ export const validateDirectories = (obj: unknown): Result => {
       const [key, value] = entries[i] as [string, unknown];
 
       const normalizedKey = key.trim();
-      const propertyName =
-        normalizedKey === '' ? String(i) : `"${normalizedKey}"`;
+      const propertyName = normalizedKey === '' ? String(i) : `"${normalizedKey}"`;
 
       if (typeof value !== 'string') {
-        childResult.addIssue(
-          `the value of property ${propertyName} should be a string`,
-        );
+        childResult.addIssue(`the value of property ${propertyName} should be a string`);
       } else if (value.trim() === '') {
         childResult.addIssue(
           `the value of property ${propertyName} is empty, but should be a path to a directory`,

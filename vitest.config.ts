@@ -1,14 +1,10 @@
-import { coverageConfigDefaults, defineConfig } from 'vitest/config';
+import { coverageConfigDefaults, defineConfig, type ViteUserConfig } from 'vitest/config';
 
-const config: ReturnType<typeof defineConfig> = defineConfig({
+const config: ViteUserConfig = defineConfig({
   test: {
     clearMocks: true,
     coverage: {
-      exclude: [
-        ...coverageConfigDefaults.exclude,
-        'src/index.ts',
-        '**/*.types.ts',
-      ],
+      exclude: [...coverageConfigDefaults.exclude, 'src/index.ts', '**/*.types.ts'],
       include: ['src'],
       reporter: ['html', 'lcov', 'text'],
     },

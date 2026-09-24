@@ -10,26 +10,14 @@ describe(validateWorkspaces, () => {
   });
 
   it('should return no issues if the value is a valid array with all strings', () => {
-    const result = validateWorkspaces([
-      'app',
-      './packages/a',
-      './packages/b',
-      './tools/*',
-    ]);
+    const result = validateWorkspaces(['app', './packages/a', './packages/b', './tools/*']);
 
     expect(result.errorMessages).toEqual([]);
     expect(result.childResults).toHaveLength(4);
   });
 
   it('should return issues if the value is an array with some non-string values', () => {
-    const result = validateWorkspaces([
-      'app',
-      null,
-      './packages/*',
-      123,
-      undefined,
-      [],
-    ]);
+    const result = validateWorkspaces(['app', null, './packages/*', 123, undefined, []]);
 
     expect(result.errorMessages).toEqual([
       'item at index 1 should be a string, not `null`',
@@ -65,18 +53,14 @@ describe(validateWorkspaces, () => {
   it('should return an issue if the value is a number', () => {
     const result = validateWorkspaces(123);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array`, not `number`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `Array`, not `number`']);
     expect(result.issues).toHaveLength(1);
   });
 
   it('should return an issue if the value is an object', () => {
     const result = validateWorkspaces({});
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array`, not `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `Array`, not `object`']);
     expect(result.issues).toHaveLength(1);
   });
 

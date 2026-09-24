@@ -23,11 +23,7 @@ describe(validateFunding, () => {
     { description: 'a valid funding string', value: mockGoodFundingString },
     {
       description: 'a valid funding array',
-      value: [
-        mockGoodFundingObject,
-        mockGoodFundingString,
-        mockGoodFundingObject,
-      ],
+      value: [mockGoodFundingObject, mockGoodFundingString, mockGoodFundingObject],
     },
   ])('should not return any issues for $description', ({ value }) => {
     const result = validateFunding(value);
@@ -52,9 +48,7 @@ describe(validateFunding, () => {
   it('should return an issue if the value is an empty string', () => {
     const result = validateFunding('');
     expect(result.issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the value is empty, but should be a URL',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is empty, but should be a URL']);
   });
 
   it('should return issues if the value is a funding object with url missing and an extra property', () => {
@@ -71,9 +65,7 @@ describe(validateFunding, () => {
     const result = validateFunding({ url: mockGoodFundingString });
     expect(result.issues).toHaveLength(1);
     expect(result.childResults).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'missing required property `type` in funding object',
-    ]);
+    expect(result.errorMessages).toEqual(['missing required property `type` in funding object']);
   });
 
   it('should return issues if the value is a funding object with invalid property values (number)', () => {
@@ -134,9 +126,7 @@ describe(validateFunding, () => {
     expect(result.childResults).toHaveLength(2);
     expect(result.childResults[0].issues).toHaveLength(0);
     expect(result.childResults[1].issues).toHaveLength(1);
-    expect(result.errorMessages).toEqual([
-      'the `url` property should be a valid URL',
-    ]);
+    expect(result.errorMessages).toEqual(['the `url` property should be a valid URL']);
   });
 
   it('should return issues if the value is an array with some invalid items', () => {

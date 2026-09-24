@@ -15,9 +15,7 @@ const validateAccess = (value: unknown): Result => {
       result.addIssue(`the type should be a \`string\`, not \`${valueType}\``);
     }
   } else if (value.trim() === '') {
-    result.addIssue(
-      `the value is empty, but should be "public" or "restricted"`,
-    );
+    result.addIssue(`the value is empty, but should be "public" or "restricted"`);
   } else if (!VALID_ACCESS.includes(value)) {
     result.addIssue(
       `the value "${value}" is not valid. Valid types are: ${VALID_ACCESS.join(', ')}`,
@@ -41,10 +39,7 @@ const validateBoolean = (value: unknown): Result => {
   return result;
 };
 
-const validateString = (
-  value: unknown,
-  propertyDescription: string,
-): Result => {
+const validateString = (value: unknown, propertyDescription: string): Result => {
   const result = new Result();
 
   if (typeof value !== 'string') {

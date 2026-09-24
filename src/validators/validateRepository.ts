@@ -2,16 +2,10 @@ import { ChildResult, Result } from '../Result.ts';
 
 type RepositoryValidator = (value: string) => Result;
 
-const validateNonEmptyString = (
-  value: string,
-  property: string,
-  description: string,
-) => {
+const validateNonEmptyString = (value: string, property: string, description: string) => {
   const result = new Result();
   if (value.trim() === '') {
-    result.addIssue(
-      `the value of property "${property}" is empty, but should be ${description}`,
-    );
+    result.addIssue(`the value of property "${property}" is empty, but should be ${description}`);
   }
   return result;
 };
@@ -20,17 +14,9 @@ const repoUrlRegex =
   /^(?:(?:git\+)?(?:https?|git):\/\/[\w.-]+(?::\d+)?(?:\/[\w.~:/?#@!$&'()*+,;=%-]+)?(?:\.git)?\/?|git@[\w.-]+:[\w.~:/?#@!$&'()*+,;=%-]+\.git)$/;
 const repositoryValidators = {
   directory: (value) =>
-    validateNonEmptyString(
-      value,
-      'directory',
-      'the path to this package in the repository',
-    ),
+    validateNonEmptyString(value, 'directory', 'the path to this package in the repository'),
   type: (value) =>
-    validateNonEmptyString(
-      value,
-      'type',
-      'the type of repository this is (e.g. "git")',
-    ),
+    validateNonEmptyString(value, 'type', 'the type of repository this is (e.g. "git")'),
   url: (value: string) => {
     const result = new Result();
 
@@ -95,9 +81,7 @@ export const validateRepository = (obj: unknown): Result => {
 
   if (typeof obj === 'string') {
     if (obj.trim() === '') {
-      result.addIssue(
-        'the value is empty, but should be repository shorthand string',
-      );
+      result.addIssue('the value is empty, but should be repository shorthand string');
     } else if (!isValidShorthandRepoString(obj)) {
       result.addIssue(
         `the value "${obj}" is invalid; it should be the shorthand for a repository (e.g. "github:npm/example")`,
@@ -109,16 +93,13 @@ export const validateRepository = (obj: unknown): Result => {
     for (const [key, value] of Object.entries(obj)) {
       const childResult = new ChildResult(propertyNumber);
       const normalizedKey = key.trim();
-      const propertyName =
-        normalizedKey === '' ? String(propertyNumber) : `"${normalizedKey}"`;
+      const propertyName = normalizedKey === '' ? String(propertyNumber) : `"${normalizedKey}"`;
 
       if (key === 'directory' || key === 'type' || key === 'url') {
         seenProperties.add(key);
 
         if (typeof value !== 'string') {
-          childResult.addIssue(
-            `the value of property ${propertyName} should be a string`,
-          );
+          childResult.addIssue(`the value of property ${propertyName} should be a string`);
         } else {
           const propertyResult = repositoryValidators[key](value);
           propertyResult.issues.forEach((issue) => {
@@ -146,14 +127,10 @@ export const validateRepository = (obj: unknown): Result => {
       );
     }
   } else if (obj === null) {
-    result.addIssue(
-      'the value is `null`, but should be an `object` or a `string`',
-    );
+    result.addIssue('the value is `null`, but should be an `object` or a `string`');
   } else {
     const valueType = Array.isArray(obj) ? 'Array' : typeof obj;
-    result.addIssue(
-      `the type should be \`object\` or \`string\`, not \`${valueType}\``,
-    );
+    result.addIssue(`the type should be \`object\` or \`string\`, not \`${valueType}\``);
   }
 
   return result;

@@ -37,13 +37,10 @@ describe(validatePublishConfig, () => {
       cpu: [],
       exports: './dist/index.js',
     },
-  ])(
-    'should return no issues if the value is an object with known properties (%0)',
-    (input) => {
-      const result = validatePublishConfig(input);
-      expect(result.errorMessages).toEqual([]);
-    },
-  );
+  ])('should return no issues if the value is an object with known properties (%0)', (input) => {
+    const result = validatePublishConfig(input);
+    expect(result.errorMessages).toEqual([]);
+  });
 
   it.each([
     [
@@ -159,32 +156,23 @@ describe(validatePublishConfig, () => {
         'the type should be a `string`, not `Array`',
       ],
     ],
-  ])(
-    "should return issues if known properties don't pass validation ($1)",
-    (input, expected) => {
-      const result = validatePublishConfig(input);
-      expect(result.errorMessages).toEqual(expected);
-    },
-  );
+  ])("should return issues if known properties don't pass validation ($1)", (input, expected) => {
+    const result = validatePublishConfig(input);
+    expect(result.errorMessages).toEqual(expected);
+  });
 
   it('should return issues if the value is an array', () => {
     const result = validatePublishConfig(['array', 'of', 'values']);
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `Array`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `Array`']);
   });
 
   it('should return issues if the value is null', () => {
     const result = validatePublishConfig(null);
-    expect(result.errorMessages).toEqual([
-      'the value is `null`, but should be an `object`',
-    ]);
+    expect(result.errorMessages).toEqual(['the value is `null`, but should be an `object`']);
   });
 
   it('should return issues if the value is a string', () => {
     const result = validatePublishConfig('string');
-    expect(result.errorMessages).toEqual([
-      'the type should be `object`, not `string`',
-    ]);
+    expect(result.errorMessages).toEqual(['the type should be `object`, not `string`']);
   });
 });

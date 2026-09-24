@@ -17,9 +17,7 @@ export const validateSideEffects = (value: unknown): Result => {
       const item: unknown = value[i];
       if (typeof item !== 'string') {
         const itemType = item === null ? 'null' : typeof item;
-        childResult.addIssue(
-          `item at index ${i} should be a string, not \`${itemType}\``,
-        );
+        childResult.addIssue(`item at index ${i} should be a string, not \`${itemType}\``);
       } else if (item.trim() === '') {
         childResult.addIssue(
           `item at index ${i} is empty, but should be a path to a file with side effects or a glob pattern`,
@@ -28,14 +26,10 @@ export const validateSideEffects = (value: unknown): Result => {
       result.addChildResult(childResult);
     }
   } else if (value == null) {
-    result.addIssue(
-      'the value is `null`, but should be a `boolean` or an `Array`',
-    );
+    result.addIssue('the value is `null`, but should be a `boolean` or an `Array`');
   } else {
     const valueType = typeof value;
-    result.addIssue(
-      `the type should be \`boolean\` or \`Array\`, not \`${valueType}\``,
-    );
+    result.addIssue(`the type should be \`boolean\` or \`Array\`, not \`${valueType}\``);
   }
 
   return result;

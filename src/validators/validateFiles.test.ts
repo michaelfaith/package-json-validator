@@ -56,23 +56,15 @@ describe(validateFiles, () => {
   it('should return an issue if the value is a number', () => {
     const result = validateFiles(123);
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array`, not `number`',
-    ]);
-    expect(result.issues[0].message).toEqual(
-      'the type should be `Array`, not `number`',
-    );
+    expect(result.errorMessages).toEqual(['the type should be `Array`, not `number`']);
+    expect(result.issues[0].message).toEqual('the type should be `Array`, not `number`');
   });
 
   it('should return an issue if the value is an object', () => {
     const result = validateFiles({});
 
-    expect(result.errorMessages).toEqual([
-      'the type should be `Array`, not `object`',
-    ]);
-    expect(result.issues[0].message).toEqual(
-      'the type should be `Array`, not `object`',
-    );
+    expect(result.errorMessages).toEqual(['the type should be `Array`, not `object`']);
+    expect(result.issues[0].message).toEqual('the type should be `Array`, not `object`');
   });
 
   it('should return an issue if the value is null', () => {
