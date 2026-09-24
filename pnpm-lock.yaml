@@ -180,7 +180,7 @@ importers:
         version: 7.0.2
     devDependencies:
       '@arethetypeswrong/core':
-        specifier: ^0.18.5
+        specifier: 0.18.5
         version: 0.18.5
       '@eslint-community/eslint-plugin-eslint-comments':
         specifier: 4.8.1
