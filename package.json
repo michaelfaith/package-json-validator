@@ -64,6 +64,7 @@
     "validate-npm-package-name": "^7.0.0"
   },
   "devDependencies": {
+    "@arethetypeswrong/core": "^0.18.5",
     "@eslint-community/eslint-plugin-eslint-comments": "4.8.1",
     "@eslint/js": "10.0.1",
     "@eslint/json": "2.1.0",
