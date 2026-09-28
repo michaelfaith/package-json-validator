@@ -4,6 +4,7 @@ const config: UserConfig = defineConfig({
   attw: {
     enabled: 'ci-only',
     level: 'error',
+    profile: 'esm-only',
   },
 });
 
