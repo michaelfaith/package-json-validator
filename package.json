@@ -72,7 +72,7 @@
     "@eslint/js": "10.0.1",
     "@eslint/json": "2.1.0",
     "@eslint/markdown": "8.0.3",
-    "@types/node": "24.19.0",
+    "@types/node": "24.19.1",
     "@types/npm-package-arg": "6.1.4",
     "@types/semver": "7.8.0",
     "@types/validate-npm-package-license": "3.0.3",
