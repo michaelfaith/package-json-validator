@@ -3,7 +3,6 @@ import eslint from '@eslint/js';
 import eslintJson from '@eslint/json';
 import markdown from '@eslint/markdown';
 import vitest from '@vitest/eslint-plugin';
-import type { Linter } from 'eslint';
 import jsdoc from 'eslint-plugin-jsdoc';
 import jsonc from 'eslint-plugin-jsonc';
 import n from 'eslint-plugin-n';
@@ -11,14 +10,14 @@ import packageJson from 'eslint-plugin-package-json/experimental';
 import perfectionist from 'eslint-plugin-perfectionist';
 import * as regexp from 'eslint-plugin-regexp';
 import yml from 'eslint-plugin-yml';
-import { defineConfig } from 'eslint/config';
+import { type ConfigObject, defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
 const JS_FILES = ['**/*.js'];
 const TS_FILES = ['**/*.ts'];
 const JS_TS_FILES = [...JS_FILES, ...TS_FILES];
 
-const config: Linter.Config[] = defineConfig(
+const config: ConfigObject[] = defineConfig(
   {
     ignores: ['**/*.snap', 'README.md/*.js', 'coverage', 'dist', 'node_modules', 'pnpm-lock.yaml'],
   },
