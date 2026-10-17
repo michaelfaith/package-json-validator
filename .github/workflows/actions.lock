@@ -8,7 +8,7 @@ workflows:
     '.github/workflows/ci.yml':
         - 'actions/checkout@v7.0.1'
         - 'codecov/codecov-action@v7.1.1'
-        - 'pnpm/setup@v3.0.0'
+        - 'pnpm/setup@v3.1.1'
     '.github/workflows/octoguide.yml':
         - 'octoguide/bot@0.26.6'
     '.github/workflows/pr-review-requested.yml':
@@ -18,7 +18,7 @@ workflows:
         - 'actions/create-github-app-token@v3.2.0'
         - 'apexskier/github-release-commenter@v1.4.1'
         - 'googleapis/release-please-action@v5.0.0'
-        - 'pnpm/setup@v3.0.0'
+        - 'pnpm/setup@v3.1.1'
 dependencies:
     'actions-ecosystem/action-remove-labels@v1.3.0':
         ref: 'v1.3.0'
@@ -67,8 +67,8 @@ dependencies:
         commit: 'sha1-eb010e70cf0630b514ae390ecbdc74716e43ab87'
         owner_id: 231299902
         repo_id: 964218711
-    'pnpm/setup@v3.0.0':
-        ref: 'v3.0.0'
-        commit: 'sha1-fbda4c85fc2e1e08721cd8763afea8f48d60f024'
+    'pnpm/setup@v3.1.1':
+        ref: 'v3.1.1'
+        commit: 'sha1-a0881977cd8ea73b1ed212236c99ca10dcc80cf4'
         owner_id: 21320719
         repo_id: 1235693694

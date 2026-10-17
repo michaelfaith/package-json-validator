@@ -20,7 +20,7 @@ runs:
   steps:
     - uses: actions/checkout@v7.0.1
 
-    - uses: pnpm/setup@v3.0.0
+    - uses: pnpm/setup@v3.1.1
       with:
         cache: ${{ inputs.cache }}
         install: ${{ inputs.install-flags == '' }}
