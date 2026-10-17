@@ -1,6 +1,6 @@
 {
   "name": "package-json-validator",
-  "version": "1.6.1",
+  "version": "2.0.0-beta.1",
   "description": "Tools to validate package.json files.",
   "keywords": [
     "lint",
@@ -37,14 +37,9 @@
   "sideEffects": false,
   "type": "module",
   "exports": {
-    ".": {
-      "type": "./dist/index.d.mts",
-      "default": "./dist/index.mjs"
-    },
+    ".": "./dist/index.mjs",
     "./package.json": "./package.json"
   },
-  "main": "dist/index.mjs",
-  "types": "dist/index.d.mts",
   "files": [
     "dist/"
   ],
@@ -61,10 +56,10 @@
     "*": "oxfmt --no-error-on-unmatched-pattern"
   },
   "dependencies": {
-    "npm-package-arg": "^13.0.2",
-    "semver": "^7.7.2",
+    "npm-package-arg": "^14.0.0",
+    "semver": "^7.8.5",
     "validate-npm-package-license": "^3.0.4",
-    "validate-npm-package-name": "^7.0.0"
+    "validate-npm-package-name": "^8.0.0"
   },
   "devDependencies": {
     "@arethetypeswrong/core": "0.18.5",
@@ -101,6 +96,6 @@
   },
   "packageManager": "pnpm@12.13.0",
   "engines": {
-    "node": "^20.19.0 || ^22.12.0 || >=24.0.0"
+    "node": "^22.22.2 || ^24.15.0 || >= 26.0.0"
   }
 }

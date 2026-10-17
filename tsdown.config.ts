@@ -6,6 +6,7 @@ const config: UserConfig = defineConfig({
     level: 'error',
     profile: 'esm-only',
   },
+  exports: true,
 });
 
 export default config;
