@@ -10,7 +10,7 @@ workflows:
         - 'codecov/codecov-action@v7.1.1'
         - 'pnpm/setup@v3.1.1'
     '.github/workflows/octoguide.yml':
-        - 'octoguide/bot@0.26.6'
+        - 'octoguide/bot@0.27.0'
     '.github/workflows/pr-review-requested.yml':
         - 'actions-ecosystem/action-remove-labels@v1.3.0'
     '.github/workflows/release.yml':
@@ -62,9 +62,9 @@ dependencies:
         commit: 'sha1-45996ed1f6d02564a971a2fa1b5860e934307cf7'
         owner_id: 16785467
         repo_id: 262236530
-    'octoguide/bot@0.26.6':
-        ref: '0.26.6'
-        commit: 'sha1-eb010e70cf0630b514ae390ecbdc74716e43ab87'
+    'octoguide/bot@0.27.0':
+        ref: '0.27.0'
+        commit: 'sha1-49fa0936c154c279c3bb7674b1ace392a62f0ebd'
         owner_id: 231299902
         repo_id: 964218711
     'pnpm/setup@v3.1.1':
