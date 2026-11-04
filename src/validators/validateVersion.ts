@@ -1,9 +1,9 @@
-import { valid } from 'semver';
+import { isValid } from 'verkit';
 
 import { Result } from '../Result.ts';
 
 /**
- * Validate the `version` field in a package.json, using `semver`.
+ * Validate the `version` field in a package.json, using `verkit`.
  */
 export const validateVersion = (version: unknown): Result => {
   const result = new Result();
@@ -18,7 +18,7 @@ export const validateVersion = (version: unknown): Result => {
   } else if (version.trim() === '') {
     result.addIssue('the value is empty, but should be a valid version');
   } else {
-    if (!valid(version)) {
+    if (!isValid(version)) {
       result.addIssue('the value is not a valid semver version');
     }
   }
