@@ -47,7 +47,6 @@
     "build": "tsdown",
     "format": "oxfmt",
     "lint": "eslint . --max-warnings 0",
-    "lint:knip": "knip",
     "prepare": "simple-git-hooks",
     "test": "vitest",
     "typecheck": "tsc"
@@ -69,7 +68,6 @@
     "@eslint/markdown": "8.0.3",
     "@types/node": "26.6.6",
     "@types/npm-package-arg": "6.1.4",
-    "@types/semver": "7.8.0",
     "@types/validate-npm-package-license": "3.0.3",
     "@types/validate-npm-package-name": "4.0.2",
     "@typescript/native": "npm:typescript@7.0.2",

@@ -49,6 +49,13 @@ jobs:
       - uses: $/.github/actions/setup
       - run: pnpm format --list-different
 
+  knip:
+    name: Knip
+    runs-on: ubuntu-latest
+    steps:
+      - uses: $/.github/actions/setup
+      - run: pnpm knip
+
   lint:
     name: Lint
     runs-on: ubuntu-latest
@@ -56,13 +63,6 @@ jobs:
       - uses: $/.github/actions/setup
       - run: pnpm build
       - run: pnpm lint
-
-  lint_knip:
-    name: Lint Knip
-    runs-on: ubuntu-latest
-    steps:
-      - uses: $/.github/actions/setup
-      - run: pnpm lint:knip
 
   test_node:
     name: Test (Node.js ${{ matrix.node-version }})
