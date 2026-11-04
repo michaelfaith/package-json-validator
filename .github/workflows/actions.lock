@@ -8,7 +8,7 @@ workflows:
     '.github/workflows/ci.yml':
         - 'actions/checkout@v7.0.1'
         - 'codecov/codecov-action@v7.1.1'
-        - 'pnpm/setup@v3.1.1'
+        - 'pnpm/setup@v3.1.2'
     '.github/workflows/pr-review-requested.yml':
         - 'actions-ecosystem/action-remove-labels@v1.3.0'
     '.github/workflows/release.yml':
@@ -16,7 +16,7 @@ workflows:
         - 'actions/create-github-app-token@v3.3.0'
         - 'apexskier/github-release-commenter@v1.4.1'
         - 'googleapis/release-please-action@v5.0.0'
-        - 'pnpm/setup@v3.1.1'
+        - 'pnpm/setup@v3.1.2'
 dependencies:
     'actions-ecosystem/action-remove-labels@v1.3.0':
         ref: 'v1.3.0'
@@ -60,8 +60,8 @@ dependencies:
         commit: 'sha1-45996ed1f6d02564a971a2fa1b5860e934307cf7'
         owner_id: 16785467
         repo_id: 262236530
-    'pnpm/setup@v3.1.1':
-        ref: 'v3.1.1'
-        commit: 'sha1-a0881977cd8ea73b1ed212236c99ca10dcc80cf4'
+    'pnpm/setup@v3.1.2':
+        ref: 'v3.1.2'
+        commit: 'sha1-fa36a5ef7dcdefc3a7cb25655c122e00cf6e636e'
         owner_id: 21320719
         repo_id: 1235693694
