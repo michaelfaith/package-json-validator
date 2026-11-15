@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/michaelfaith/package-json-validator/compare/v2.0.0...v2.0.1) (2026-11-15)
+
+
+### 🩹 Bug Fixes
+
+* `validatePackageManager` should accept sha1 hashes and pre-release versions ([#1263](https://github.com/michaelfaith/package-json-validator/issues/1263)) ([5bb0a39](https://github.com/michaelfaith/package-json-validator/commit/5bb0a39cb68e25fa5f9c593d3854948315e8479f))
+
 ## [2.0.0](https://github.com/michaelfaith/package-json-validator/compare/v1.6.1...v2.0.0) (2026-10-31)
 
 
