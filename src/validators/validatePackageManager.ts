@@ -2,7 +2,7 @@ import { Result } from '../Result.ts';
 
 const packageManagers = ['npm', 'pnpm', 'yarn', 'bun', 'deno'];
 const versionRegex =
-  /^\d+\.\d+\.\d+(?:-[a-zA-Z0-9.]+)?(?:\+sha(?:224|256|384|512)\.[a-fA-F0-9]+)?$/;
+  /^\d+\.\d+\.\d+(?:-[a-zA-Z0-9.-]+)?(?:\+sha(?:1|224|256|384|512)\.[a-fA-F0-9]+)?$/;
 
 const validatePackageManagerString = (value: string): string[] => {
   const results: string[] = [];
