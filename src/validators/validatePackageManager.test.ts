@@ -11,7 +11,7 @@ describe(validatePackageManager, () => {
     'deno@1.0.0',
     'yarn@4.2.3+sha224.953c8233f7a92884eee2de69a1b92d1f2ec1655e66d08071ba9a02fa',
     'yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610',
-    'pnpm@9.0.0-alpha-1',
+    'pnpm@9.0.0-alpha.1',
   ])("should return no issues for valid package manager '%s'", (packageManager) => {
     expect(validatePackageManager(packageManager).errorMessages).toEqual([]);
   });
