@@ -1223,7 +1223,7 @@ Thanks! 💖
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/hyoban"><img src="https://avatars.githubusercontent.com/u/38493346?v=4&size=100" width="100px" height="100px" alt="Stephen Zhou"/><br /><sub><b>Stephen Zhou</b></sub></a><br /><a href="https://github.com/michaelfaith/package-json-validator/commits?author=hyoban" title="Code">💻</a></td>
     </tr>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/trackoor"><img src="https://avatars.githubusercontent.com/u/55851864?v=4&size=100" width="100px" height="100px" alt="trackoor"/><br /><sub><b>trackoor</b></sub></a><br /><a href="https://github.com/michaelfaith/package-json-validator/issues?q=author%3Atrackoor" title="Bug reports">🐛</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/trackoor"><img src="https://avatars.githubusercontent.com/u/55851864?v=4&size=100" width="100px" height="100px" alt="trackoor"/><br /><sub><b>trackoor</b></sub></a><br /><a href="https://github.com/michaelfaith/package-json-validator/issues?q=author%3Atrackoor" title="Bug reports">🐛</a> <a href="https://github.com/michaelfaith/package-json-validator/commits?author=trackoor" title="Code">💻</a></td>
       <td align="center" valign="top" width="14.28%"><a href="https://github.com/vkrol"><img src="https://avatars.githubusercontent.com/u/153412?v=4&size=100" width="100px" height="100px" alt="Veniamin Krol"/><br /><sub><b>Veniamin Krol</b></sub></a><br /><a href="https://github.com/michaelfaith/package-json-validator/commits?author=vkrol" title="Code">💻</a></td>
     </tr>
   </tbody>
