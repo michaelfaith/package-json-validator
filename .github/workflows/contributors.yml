@@ -1,0 +1,26 @@
+name: Contributors
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  contributors:
+    name: New Contributor Check
+    if: github.event.repository.fork != true
+    runs-on: ubuntu-slim
+    permissions:
+      contents: read
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7.0.1
+        with:
+          fetch-depth: 0
+      - uses: $/.github/actions/setup
+        with:
+          skip-checkout: true
+      - uses: JoshuaKGoldberg/all-contributors-auto-action@v0.7.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
