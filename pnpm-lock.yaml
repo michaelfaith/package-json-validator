@@ -179,8 +179,8 @@ importers:
         specifier: ^14.0.0
         version: 14.0.0
       validate-npm-package-license:
-        specifier: ^3.0.4
-        version: 3.0.4
+        specifier: ^4.0.0
+        version: 4.0.0
       validate-npm-package-name:
         specifier: ^8.0.0
         version: 8.0.0
@@ -2274,6 +2274,9 @@ packages:
   spdx-correct@3.2.0:
     resolution: {integrity: sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA==}
 
+  spdx-correct@4.0.0:
+    resolution: {integrity: sha512-uRpysaOg4EbabSjJJ8tCElrrCXqGGrTSr1EBG29EbirKvNeVROOuwu2ZLUR/iQiqHp8uReTWVvKZtGKSdr8Gdw==}
+
   spdx-exceptions@2.5.0:
     resolution: {integrity: sha512-PiU42r+xO4UbUS1buo3LPJkjlO7430Xn5SVAhdpzzsPHsjbYVflnnFdATgabnLude+Cqu25p6N+g2lw/PFsa4w==}
 
@@ -2431,6 +2434,9 @@ packages:
 
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
+
+  validate-npm-package-license@4.0.0:
+    resolution: {integrity: sha512-WG4I6EIV0Ovcergg4Jbw/d9SPm2XI7sQORC87nvuUQEVtqDsTj1SWnAuZ7VOXLO3UMsodaYz/RvfKV39k2Ccmg==}
 
   validate-npm-package-name@5.0.1:
     resolution: {integrity: sha512-OljLrQ9SQdOUqTaQxqL5dEfZWrXExyyWsozYlAWFawPVNuD83igl7uJD2RTkNMbniIYgt8l81eCJGIdQF7avLQ==}
@@ -4524,6 +4530,11 @@ snapshots:
       spdx-expression-parse: 3.0.1
       spdx-license-ids: 3.0.24
 
+  spdx-correct@4.0.0:
+    dependencies:
+      spdx-expression-parse: 5.0.0
+      spdx-license-ids: 3.0.24
+
   spdx-exceptions@2.5.0: {}
 
   spdx-expression-parse@3.0.1:
@@ -4687,6 +4698,11 @@ snapshots:
   validate-npm-package-license@3.0.4:
     dependencies:
       spdx-correct: 3.2.0
+      spdx-expression-parse: 3.0.1
+
+  validate-npm-package-license@4.0.0:
+    dependencies:
+      spdx-correct: 4.0.0
       spdx-expression-parse: 3.0.1
 
   validate-npm-package-name@5.0.1: {}
