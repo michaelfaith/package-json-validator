@@ -3,8 +3,6 @@
 # Docs: https://gh.io/actions-lockfile
 version: 'v0.0.3'
 workflows:
-    '.github/workflows/accessibility-alt-text-bot.yml':
-        - 'github/accessibility-alt-text-bot@v1.7.3'
     '.github/workflows/agentscan.yml':
         - 'actions/cache@v6.1.0'
         - 'joshuakgoldberg/slop-issue-unlink-action@v0.3.0'
@@ -75,11 +73,6 @@ dependencies:
         repo_id: 200299178
         uses:
             - 'actions/github-script@ed597411d8f924073f98dfc5c65a23a2325f34cd'
-    'github/accessibility-alt-text-bot@v1.7.3':
-        ref: 'v1.7.3'
-        commit: 'sha1-7e895d46677f15841def9acef1239ea7c12593a5'
-        owner_id: 9919
-        repo_id: 632088451
     'github/codeql-action@33d7b85da1a04171e211befe2c739303b9a4c066':
         ref: 'v4.39.3'
         commit: 'sha1-33d7b85da1a04171e211befe2c739303b9a4c066'

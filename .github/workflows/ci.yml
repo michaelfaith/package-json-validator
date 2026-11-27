@@ -7,6 +7,8 @@ on:
     branches:
       - main
 
+permissions: {}
+
 jobs:
   actions_security:
     name: GitHub Actions Security
@@ -34,6 +36,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: $/.github/actions/setup
       - run: pnpm build
@@ -42,6 +46,8 @@ jobs:
   dedupe_check:
     name: Dedupe Check
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: $/.github/actions/setup
       - run: pnpm dedupe --check --prefer-offline
@@ -49,6 +55,8 @@ jobs:
   engines_check:
     name: Engines Check (Node.js ${{ matrix.node-version }})
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       matrix:
@@ -68,6 +76,8 @@ jobs:
   format_check:
     name: Format Check
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: $/.github/actions/setup
       - run: pnpm format --list-different
@@ -75,6 +85,8 @@ jobs:
   knip:
     name: Knip
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: $/.github/actions/setup
       - run: pnpm knip
@@ -82,6 +94,8 @@ jobs:
   lint:
     name: Lint
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: $/.github/actions/setup
       - run: pnpm build
@@ -90,6 +104,8 @@ jobs:
   test_node:
     name: Test (Node.js ${{ matrix.node-version }})
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     strategy:
       fail-fast: false
       matrix:
@@ -110,6 +126,7 @@ jobs:
     name: Test (${{ matrix.os }})
     runs-on: ${{ matrix.os }}
     permissions:
+      contents: read
       id-token: write
     strategy:
       fail-fast: false
@@ -130,6 +147,8 @@ jobs:
   type_check:
     name: Type Check
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - uses: $/.github/actions/setup
       - run: pnpm typecheck
