@@ -21,8 +21,7 @@ workflows:
         - 'actions/checkout@v7.0.1'
         - 'joshuakgoldberg/all-contributors-auto-action@v0.7.0'
         - 'pnpm/setup@731dfb6463bbd11c11fd0ee11fe00ed0e36d48a1'
-    '.github/workflows/pr-review-requested.yml':
-        - 'actions-ecosystem/action-remove-labels@v1.3.0'
+    '.github/workflows/pr-review-requested.yml': []
     '.github/workflows/release.yml':
         - 'actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1'
         - 'actions/checkout@v7.0.1'
@@ -31,11 +30,6 @@ workflows:
         - 'googleapis/release-please-action@v5.0.0'
         - 'pnpm/setup@731dfb6463bbd11c11fd0ee11fe00ed0e36d48a1'
 dependencies:
-    'actions-ecosystem/action-remove-labels@v1.3.0':
-        ref: 'v1.3.0'
-        commit: 'sha1-2ce5d41b4b6aa8503e285553f75ed56e0a40bae0'
-        owner_id: 56633079
-        repo_id: 260787457
     'actions/cache@v6.1.0':
         ref: 'v6.1.0'
         commit: 'sha1-55cc8345863c7cc4c66a329aec7e433d2d1c52a9'
