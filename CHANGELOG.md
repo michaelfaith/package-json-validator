@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.2](https://github.com/michaelfaith/package-json-validator/compare/v2.0.1...v2.0.2) (2026-11-28)
+
+
+### 🩹 Bug Fixes
+
+* **deps:** update dependency validate-npm-package-license to v4 ([#1289](https://github.com/michaelfaith/package-json-validator/issues/1289)) ([d593778](https://github.com/michaelfaith/package-json-validator/commit/d5937785521a3fbf6861e0fb80527f91d2ee32f9))
+
 ## [2.0.1](https://github.com/michaelfaith/package-json-validator/compare/v2.0.0...v2.0.1) (2026-11-15)
 
 
